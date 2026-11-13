@@ -49,10 +49,28 @@
       <div class="p-5 border-b border-steel/30 flex items-center gap-3">
         <div class="w-11 h-11 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-id-badge"></i></div>
         <div class="min-w-0 flex-1">
-          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate">Marcus Vance</h4>
+          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate sidebar-responsive-name">Marcus Vance</h4>
           <span class="text-[11px] font-mono text-orange block user-id-display">WP-2026-8942</span>
           <span class="inline-block mt-0.5 px-2 py-0.2 text-[9px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">Active • Level 3</span>
         </div>
+      </div>
+
+      <!-- Mobile Quick Controls (Active <= 1240px) -->
+      <div class="sidebar-mobile-controls p-3 mx-3 my-2 rounded-lg bg-navy/60 border border-steel/40 flex items-center justify-around gap-2">
+        <button class="theme-toggle-btn w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center hover:border-orange transition text-yellow-400" aria-label="Toggle Theme" title="Toggle Theme">
+          <i class="fa-solid fa-sun text-sm"></i>
+        </button>
+        <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-steel bg-navy text-xs font-bold text-slate-200 hover:border-orange transition flex items-center gap-1.5" aria-label="Toggle Direction" title="Toggle RTL">
+          <i class="fa-solid fa-globe text-orange text-xs"></i>
+          <span class="dir-label text-xs">RTL</span>
+        </button>
+        <a href="notifications.html" class="w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center text-slate-200 hover:text-orange hover:border-orange transition relative" aria-label="Notifications" title="Notifications">
+          <i class="fa-solid fa-bell text-sm"></i>
+          <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange text-white rounded-full text-[10px] font-bold flex items-center justify-center">3</span>
+        </a>
+        <a href="my-profile.html" class="w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center text-orange hover:border-orange transition" aria-label="My Profile" title="My Profile">
+          <i class="fa-solid fa-user text-sm"></i>
+        </a>
       </div>
 
       <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
@@ -75,16 +93,16 @@
     <!-- Main Content -->
     <div class="dashboard-main">
       <header class="dashboard-topbar">
-        <div class="flex items-center gap-3">
-          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
-          <div>
-            <span class="text-xs text-slate-400 uppercase tracking-wider font-mono hidden sm:inline">Certified Qualifications</span>
-            <h1 class="text-lg sm:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-none">Earned Credentials &amp; Transcripts</h1>
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 mr-2">
+          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange flex-shrink-0" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
+          <div class="min-w-0 flex-1">
+            <span class="text-[10px] sm:text-xs text-orange uppercase tracking-wider font-mono font-bold flex items-center gap-1.5"><i class="fa-solid fa-award"></i> Certified Qualifications</span>
+            <h1 class="text-[13px] sm:text-base md:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-snug sm:leading-tight">Earned Credentials &amp; Transcripts</h1>
           </div>
         </div>
-        <div class="flex items-center gap-3">
-          <button class="theme-toggle-btn w-9 h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400"></i></button>
-          <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange"></i><span class="dir-label">RTL</span></button>
+        <div class="dashboard-topbar-controls flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
+          <button class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400 text-xs sm:text-sm"></i></button>
+          <button class="dir-toggle-btn px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange text-xs"></i><span class="dir-label hidden xs:inline sm:inline">RTL</span></button>
         </div>
       </header>
 
@@ -92,12 +110,12 @@
         
         <!-- Disclaimer Notice -->
         <div class="p-4 rounded-lg bg-orange/10 border border-orange/40 text-xs text-orange font-semibold flex items-center gap-2">
-          <i class="fa-solid fa-shield-halved text-base"></i>
+          <i class="fa-solid fa-shield-halved text-base flex-shrink-0"></i>
           <span>Sample Institutional Qualifications: All certificate previews are clearly designated as demo credentials for educational tracking verification.</span>
         </div>
 
         <!-- Earned Credentials Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           
           <!-- Cert 1: AWS D1.1 -->
           <div class="industrial-card bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/40 p-6 flex flex-col justify-between">
@@ -232,8 +250,8 @@
   </div>
 
   <!-- Modal: Certificate Preview & Print Frame -->
-  <div id="certificatePreviewModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
-    <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-300 dark:border-steel/60 shadow-2xl max-w-2xl w-full p-6 sm:p-8 relative max-h-[92vh] overflow-y-auto">
+  <div id="certificatePreviewModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 modal-backdrop">
+    <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-300 dark:border-steel/60 shadow-2xl max-w-2xl w-full p-4 sm:p-6 sm:p-8 relative max-h-[92vh] overflow-y-auto">
       
       <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200 dark:border-steel/40">
         <span class="text-xs font-mono text-orange uppercase font-bold">Credential Viewer</span>
@@ -241,7 +259,7 @@
       </div>
 
       <!-- Formal Certificate Simulated Frame -->
-      <div class="certificate-frame p-8 text-center rounded my-4">
+      <div class="certificate-frame p-4 sm:p-8 text-center rounded my-4">
         <div class="text-[9px] font-mono uppercase tracking-widest text-orange mb-2 font-bold">
           [ DEMO SAMPLE QUALIFICATION RECORD - INSTITUTIONAL SIMULATION ]
         </div>

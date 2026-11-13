@@ -9,28 +9,67 @@
     const backdrop = document.querySelector('.dashboard-backdrop');
 
     // Sidebar Mobile Toggling
-    if (sidebarToggle && sidebar) {
+    function openSidebar() {
+      if (sidebar) sidebar.classList.add('sidebar-open');
+      if (backdrop) backdrop.classList.add('active');
+      document.body.classList.add('sidebar-locked');
+    }
+
+    function closeSidebar() {
+      if (sidebar) sidebar.classList.remove('sidebar-open');
+      if (backdrop) backdrop.classList.remove('active');
+      document.body.classList.remove('sidebar-locked');
+    }
+
+    if (sidebarToggle) {
       sidebarToggle.addEventListener('click', (e) => {
         e.preventDefault();
-        sidebar.classList.toggle('sidebar-open');
-        if (backdrop) backdrop.classList.toggle('active');
+        if (sidebar && sidebar.classList.contains('sidebar-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
       });
     }
 
-    if (sidebarClose && sidebar) {
+    if (sidebarClose) {
       sidebarClose.addEventListener('click', (e) => {
         e.preventDefault();
-        sidebar.classList.remove('sidebar-open');
-        if (backdrop) backdrop.classList.remove('active');
+        closeSidebar();
       });
     }
 
-    if (backdrop && sidebar) {
+    if (backdrop) {
       backdrop.addEventListener('click', () => {
-        sidebar.classList.remove('sidebar-open');
-        backdrop.classList.remove('active');
+        closeSidebar();
       });
     }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSidebar();
+        document.querySelectorAll('.modal-backdrop').forEach(modal => {
+          modal.classList.add('hidden');
+        });
+      }
+    });
+
+    // Auto-close on resize to desktop (> 1240px)
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1240) {
+        closeSidebar();
+      }
+    });
+
+    // Close sidebar when clicking a navigation link on mobile (<= 1240px)
+    document.querySelectorAll('.sidebar-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1240) {
+          closeSidebar();
+        }
+      });
+    });
 
     // Populate Student Data across all UI slots
     const user = window.WeldAuth ? window.WeldAuth.getCurrentUser() : null;

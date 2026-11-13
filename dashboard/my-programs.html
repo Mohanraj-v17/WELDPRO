@@ -49,10 +49,28 @@
       <div class="p-5 border-b border-steel/30 flex items-center gap-3">
         <div class="w-11 h-11 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-id-badge"></i></div>
         <div class="min-w-0 flex-1">
-          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate">Marcus Vance</h4>
+          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate sidebar-responsive-name">Marcus Vance</h4>
           <span class="text-[11px] font-mono text-orange block user-id-display">WP-2026-8942</span>
           <span class="inline-block mt-0.5 px-2 py-0.2 text-[9px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">Active • Level 3</span>
         </div>
+      </div>
+
+      <!-- Mobile Quick Controls (Active <= 1240px) -->
+      <div class="sidebar-mobile-controls p-3 mx-3 my-2 rounded-lg bg-navy/60 border border-steel/40 flex items-center justify-around gap-2">
+        <button class="theme-toggle-btn w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center hover:border-orange transition text-yellow-400" aria-label="Toggle Theme" title="Toggle Theme">
+          <i class="fa-solid fa-sun text-sm"></i>
+        </button>
+        <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-steel bg-navy text-xs font-bold text-slate-200 hover:border-orange transition flex items-center gap-1.5" aria-label="Toggle Direction" title="Toggle RTL">
+          <i class="fa-solid fa-globe text-orange text-xs"></i>
+          <span class="dir-label text-xs">RTL</span>
+        </button>
+        <a href="notifications.html" class="w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center text-slate-200 hover:text-orange hover:border-orange transition relative" aria-label="Notifications" title="Notifications">
+          <i class="fa-solid fa-bell text-sm"></i>
+          <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange text-white rounded-full text-[10px] font-bold flex items-center justify-center">3</span>
+        </a>
+        <a href="my-profile.html" class="w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center text-orange hover:border-orange transition" aria-label="My Profile" title="My Profile">
+          <i class="fa-solid fa-user text-sm"></i>
+        </a>
       </div>
 
       <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
@@ -75,32 +93,32 @@
     <!-- Main Content -->
     <div class="dashboard-main">
       <header class="dashboard-topbar">
-        <div class="flex items-center gap-3">
-          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
-          <div>
-            <span class="text-xs text-slate-400 uppercase tracking-wider font-mono hidden sm:inline">Curriculum Progression</span>
-            <h1 class="text-lg sm:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-none">My Enrolled Programs</h1>
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 mr-2">
+          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange flex-shrink-0" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
+          <div class="min-w-0 flex-1">
+            <span class="text-[10px] sm:text-xs text-orange uppercase tracking-wider font-mono font-bold flex items-center gap-1.5"><i class="fa-solid fa-book-open"></i> Curriculum Progression</span>
+            <h1 class="text-[13px] sm:text-base md:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-snug sm:leading-tight">My Enrolled Programs</h1>
           </div>
         </div>
-        <div class="flex items-center gap-3">
-          <button class="theme-toggle-btn w-9 h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400"></i></button>
-          <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange"></i><span class="dir-label">RTL</span></button>
+        <div class="dashboard-topbar-controls flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
+          <button class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400 text-xs sm:text-sm"></i></button>
+          <button class="dir-toggle-btn px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange text-xs"></i><span class="dir-label hidden xs:inline sm:inline">RTL</span></button>
         </div>
       </header>
 
       <div class="p-4 sm:p-6 lg:p-8 space-y-6 max-w-5xl">
         
         <!-- Primary Active Program -->
-        <div class="bg-white dark:bg-darkcard rounded-lg border-2 border-orange p-6 sm:p-8 shadow-sm">
+        <div class="bg-white dark:bg-darkcard rounded-lg border-2 border-orange p-4 sm:p-6 sm:p-8 shadow-sm">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-slate-100 dark:border-steel/30 gap-3">
             <div>
               <span class="text-xs font-mono font-bold text-orange uppercase">Active Course • Level 3</span>
-              <h2 class="text-2xl font-heading font-bold text-slate-900 dark:text-white uppercase mt-0.5">
+              <h2 class="text-xl sm:text-2xl font-heading font-bold text-slate-900 dark:text-white uppercase mt-0.5">
                 Advanced Pipe &amp; Pressure Vessel Welding (ASME 6G)
               </h2>
               <p class="text-xs text-slate-500 dark:text-slate-400">Instructor: J. Miller, CWI • Schedule: Mon–Fri 7:30 AM – 12:00 PM</p>
             </div>
-            <div class="text-right">
+            <div class="text-left sm:text-right">
               <span class="font-heading text-2xl font-bold text-orange">71%</span>
               <span class="text-xs text-slate-400 block">Course Progress</span>
             </div>
@@ -114,48 +132,48 @@
           <h4 class="font-heading font-bold text-sm uppercase text-slate-900 dark:text-white mb-3">Syllabus Modules</h4>
           <div class="space-y-3 text-xs">
             
-            <div class="p-3 rounded bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+            <div class="p-3 rounded bg-emerald-500/10 border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="flex items-start sm:items-center gap-3">
+                <i class="fa-solid fa-circle-check text-emerald-500 text-sm mt-0.5 sm:mt-0 flex-shrink-0"></i>
                 <div>
                   <strong class="text-slate-900 dark:text-white block font-heading text-sm">Module 1: Pipe Beveling &amp; Saddle Fit-Up</strong>
                   <span class="text-slate-500">Torch bevel prep, root face land sizing, spacing wedge alignment. (40 hrs)</span>
                 </div>
               </div>
-              <span class="status-pill status-completed">Completed</span>
+              <span class="status-pill status-completed self-start sm:self-auto flex-shrink-0">Completed</span>
             </div>
 
-            <div class="p-3 rounded bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+            <div class="p-3 rounded bg-emerald-500/10 border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="flex items-start sm:items-center gap-3">
+                <i class="fa-solid fa-circle-check text-emerald-500 text-sm mt-0.5 sm:mt-0 flex-shrink-0"></i>
                 <div>
                   <strong class="text-slate-900 dark:text-white block font-heading text-sm">Module 2: 5G Fixed Horizontal Pipe (GTAW/SMAW)</strong>
                   <span class="text-slate-500">Open root keyhole, overhead to flat transition, feather grinding. (80 hrs)</span>
                 </div>
               </div>
-              <span class="status-pill status-completed">Completed</span>
+              <span class="status-pill status-completed self-start sm:self-auto flex-shrink-0">Completed</span>
             </div>
 
-            <div class="p-3 rounded bg-orange/10 border border-orange/40 flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <i class="fa-solid fa-clock text-orange text-sm"></i>
+            <div class="p-3 rounded bg-orange/10 border border-orange/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="flex items-start sm:items-center gap-3">
+                <i class="fa-solid fa-clock text-orange text-sm mt-0.5 sm:mt-0 flex-shrink-0"></i>
                 <div>
                   <strong class="text-slate-900 dark:text-white block font-heading text-sm">Module 3: 6G 45-Degree Fixed High-Pressure Pipe</strong>
                   <span class="text-slate-500">Carbon &amp; stainless Sch 80 pipe coupons in 45° fixed test stand. (94/100 hrs logged)</span>
                 </div>
               </div>
-              <span class="status-pill status-in-progress">In Progress</span>
+              <span class="status-pill status-in-progress self-start sm:self-auto flex-shrink-0">In Progress</span>
             </div>
 
-            <div class="p-3 rounded bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-steel/30 flex items-center justify-between opacity-80">
-              <div class="flex items-center gap-3">
-                <i class="fa-regular fa-circle text-slate-400 text-sm"></i>
+            <div class="p-3 rounded bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-steel/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 opacity-80">
+              <div class="flex items-start sm:items-center gap-3">
+                <i class="fa-regular fa-circle text-slate-400 text-sm mt-0.5 sm:mt-0 flex-shrink-0"></i>
                 <div>
                   <strong class="text-slate-700 dark:text-slate-300 block font-heading text-sm">Module 4: ASME Section IX Qualification Exam</strong>
                   <span class="text-slate-500">Official guided side-bend tests &amp; radiographic inspection. (40 hrs)</span>
                 </div>
               </div>
-              <span class="status-pill status-pending">Scheduled</span>
+              <span class="status-pill status-pending self-start sm:self-auto flex-shrink-0">Scheduled</span>
             </div>
 
           </div>

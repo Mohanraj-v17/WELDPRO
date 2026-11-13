@@ -49,10 +49,30 @@
       <div class="p-5 border-b border-steel/30 flex items-center gap-3">
         <div class="w-11 h-11 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-id-badge"></i></div>
         <div class="min-w-0 flex-1">
-          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate">Marcus Vance</h4>
+          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate sidebar-responsive-name">Marcus Vance</h4>
           <span class="text-[11px] font-mono text-orange block user-id-display">WP-2026-8942</span>
           <span class="inline-block mt-0.5 px-2 py-0.2 text-[9px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">Active • Level 3</span>
         </div>
+      </div>
+
+      <!-- Mobile Quick Controls (Active <= 1240px) -->
+      <div class="sidebar-mobile-controls p-3 mx-3 my-2 rounded-lg bg-navy/60 border border-steel/40 flex items-center justify-around gap-2">
+        <div class="dashboard-topbar-controls flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
+          <button class="theme-toggle-btn w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center hover:border-orange transition text-yellow-400" aria-label="Toggle Theme" title="Toggle Theme">
+          <i class="fa-solid fa-sun text-sm"></i>
+        </button>
+        <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-steel bg-navy text-xs font-bold text-slate-200 hover:border-orange transition flex items-center gap-1.5" aria-label="Toggle Direction" title="Toggle RTL">
+          <i class="fa-solid fa-globe text-orange text-xs"></i>
+          <span class="dir-label text-xs">RTL</span>
+        </button>
+        </div>
+        <a href="notifications.html" class="w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center text-slate-200 hover:text-orange hover:border-orange transition relative" aria-label="Notifications" title="Notifications">
+          <i class="fa-solid fa-bell text-sm"></i>
+          <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange text-white rounded-full text-[10px] font-bold flex items-center justify-center">3</span>
+        </a>
+        <a href="my-profile.html" class="w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center text-orange hover:border-orange transition" aria-label="My Profile" title="My Profile">
+          <i class="fa-solid fa-user text-sm"></i>
+        </a>
       </div>
 
       <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
@@ -75,19 +95,23 @@
     <!-- Main Content -->
     <div class="dashboard-main">
       <header class="dashboard-topbar">
-        <div class="flex items-center gap-3">
-          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
-          <div>
-            <span class="text-xs text-slate-400 uppercase tracking-wider font-mono hidden sm:inline">Communication Center</span>
-            <h1 class="text-lg sm:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-none">Notifications &amp; Shop Bulletins</h1>
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 mr-2">
+          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange flex-shrink-0" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
+          <div class="min-w-0 flex-1">
+            <span class="text-[10px] sm:text-xs text-orange uppercase tracking-wider font-mono font-bold flex items-center gap-1.5"><i class="fa-solid fa-bell"></i> Communication Center</span>
+            <h1 class="text-[13px] sm:text-base md:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-snug sm:leading-tight">Notifications &amp; Bulletins</h1>
           </div>
         </div>
-        <div class="flex items-center gap-3">
-          <button id="btnMarkAllRead" class="btn-weld btn-secondary-weld text-xs py-2 px-3 sm:px-4">
-            <i class="fa-solid fa-check-double mr-1.5"></i> Mark All as Read
+        <div class="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
+          <button id="btnMarkAllRead" class="btn-weld btn-secondary-weld text-xs py-1.5 sm:py-2 px-2 sm:px-3">
+            <i class="fa-solid fa-check-double sm:mr-1.5"></i>
+            <span class="hidden sm:inline">Mark All Read</span>
+            <span class="sm:hidden">Read</span>
           </button>
-          <button class="theme-toggle-btn w-9 h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400"></i></button>
-          <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange"></i><span class="dir-label">RTL</span></button>
+          <div class="dashboard-topbar-controls flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
+            <button class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400 text-xs sm:text-sm"></i></button>
+            <button class="dir-toggle-btn px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange text-xs"></i><span class="dir-label hidden xs:inline sm:inline">RTL</span></button>
+          </div>
         </div>
       </header>
 

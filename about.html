@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us – Welding Trade School</title>
+  <meta name="description" content="Learn about WELDPRO's history, mission, metallurgical training philosophy, 32,000 sq ft facility, and our AWS Certified Welding Inspector instructors.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="assets/logo/favicon.png">
+
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0B1726', DEFAULT: '#142B45', light: '#203E60' },
+            steel: { DEFAULT: '#29465F', dark: '#1C3144', light: '#3D6282' },
+            orange: { DEFAULT: '#F28C28', hover: '#D9771A', light: '#FF9E42' },
+            darkbg: '#101820', darkcard: '#1D2B38', lightbg: '#F4F6F8'
+          },
+          fontFamily: { heading: ['Oswald', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="bg-lightbg dark:bg-darkbg text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-body transition-colors duration-200">
+
+  <!-- Navbar -->
+  <header class="main-navbar sticky top-0 z-50 bg-white/95 dark:bg-navy-900/95 header-glass border-b border-slate-200 dark:border-steel/40 transition-colors">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between relative">
+      
+      <!-- Left: Brand Logo -->
+      <div class="flex-shrink-0 flex items-center justify-center">
+        <a href="index.html" class="inline-flex items-center gap-2 flex-shrink-0" aria-label="WELDPRO Home">
+          <img src="assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-10 w-auto">
+        </a>
+      </div>
+
+      <!-- Desktop Navigation Links (Centered, visible >= 1024px) -->
+      <nav class="hidden xl:flex items-center justify-center gap-1.5 xl:gap-2.5 mx-auto">
+        
+        <!-- Home Dropdown -->
+        <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0">
+          <button class="dropdown-trigger nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+            Home <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+          </button>
+          <div class="mega-dropdown-menu absolute left-0 top-full mt-1 w-56 bg-white dark:bg-darkcard rounded-lg shadow-2xl border border-slate-200 dark:border-steel/60 p-2 z-50">
+            <a href="index.html" class="block px-3 py-2 rounded text-sm font-medium hover:bg-orange/10 hover:text-orange text-slate-800 dark:text-slate-200 transition">
+              <i class="fa-solid fa-house-chimney mr-2 text-orange"></i> Home 1 (Industrial)
+            </a>
+            <a href="home-2.html" class="block px-3 py-2 rounded text-sm font-medium hover:bg-orange/10 hover:text-orange text-slate-800 dark:text-slate-200 transition">
+              <i class="fa-solid fa-industry mr-2 text-orange"></i> Home 2 (Editorial)
+            </a>
+          </div>
+        </div>
+
+        <!-- About Us Link -->
+        <a href="about.html" class="nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-orange font-bold whitespace-nowrap flex-shrink-0">About Us</a>
+
+        <!-- Programs Mega Menu (Centered to container/screen!) -->
+        <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0">
+          <button class="dropdown-trigger nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+            Programs <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+          </button>
+          <div class="mega-dropdown-menu mega-dropdown-menu-center absolute left-1/2 -translate-x-1/2 top-full mt-1.5 w-[90vw] max-w-md bg-white dark:bg-darkcard rounded-xl shadow-2xl border border-slate-200 dark:border-steel/60 p-3 z-50">
+            <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-200 dark:border-steel/40">
+              <span class="font-heading text-xs uppercase text-navy dark:text-white font-bold tracking-wide flex items-center gap-1.5">
+                <i class="fa-solid fa-fire text-orange"></i> Professional Programs
+              </span>
+              <a href="programs.html" class="text-[11px] font-semibold text-orange hover:underline flex items-center gap-1">All 6 Programs &rarr;</a>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5">
+              
+              <!-- Column 1: Core Arc Processes -->
+              <div>
+                <h4 class="font-heading text-[10px] uppercase tracking-wider text-orange font-bold mb-1 border-b border-orange/30 pb-0.5 flex items-center gap-1">
+                  <i class="fa-solid fa-bolt"></i> Core Processes
+                </h4>
+                <ul class="space-y-0.5">
+                  <li>
+                    <a href="programs/smaw-welding.html" class="group block py-1.5 px-2 rounded hover:bg-slate-100 dark:hover:bg-navy-900 transition">
+                      <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange leading-tight">SMAW (Stick) Welding</div>
+                      <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-snug truncate">AWS D1.1 structural plate</div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="programs/mig-welding.html" class="group block py-1.5 px-2 rounded hover:bg-slate-100 dark:hover:bg-navy-900 transition">
+                      <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange leading-tight">MIG (GMAW) Welding</div>
+                      <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-snug truncate">Gas metal arc production</div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="programs/tig-welding.html" class="group block py-1.5 px-2 rounded hover:bg-slate-100 dark:hover:bg-navy-900 transition">
+                      <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange leading-tight">TIG (GTAW) Welding</div>
+                      <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-snug truncate">Aerospace &amp; sanitary tube</div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Column 2: Heavy & Industrial -->
+              <div>
+                <h4 class="font-heading text-[10px] uppercase tracking-wider text-orange font-bold mb-1 border-b border-orange/30 pb-0.5 flex items-center gap-1">
+                  <i class="fa-solid fa-industry"></i> Industrial &amp; Pipe
+                </h4>
+                <ul class="space-y-0.5">
+                  <li>
+                    <a href="programs/flux-cored-welding.html" class="group block py-1.5 px-2 rounded hover:bg-slate-100 dark:hover:bg-navy-900 transition">
+                      <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange leading-tight">Flux-Cored (FCAW)</div>
+                      <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-snug truncate">Heavy bridge &amp; shipyard</div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="programs/pipe-welding.html" class="group block py-1.5 px-2 rounded hover:bg-slate-100 dark:hover:bg-navy-900 transition">
+                      <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange leading-tight">Pipe Welding (5G/6G)</div>
+                      <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-snug truncate">ASME Section IX pressure</div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="programs/structural-welding.html" class="group block py-1.5 px-2 rounded hover:bg-slate-100 dark:hover:bg-navy-900 transition">
+                      <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange leading-tight">Structural Steel</div>
+                      <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-snug truncate">Framing &amp; seismic joints</div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Facilities Dropdown (With Related Symbols & Clear Descriptions) -->
+        <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0">
+          <button class="dropdown-trigger nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+            Facilities <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+          </button>
+          <div class="mega-dropdown-menu absolute left-0 top-full mt-1 w-80 bg-white dark:bg-darkcard rounded-xl shadow-2xl border border-slate-200 dark:border-steel/60 p-2 z-50">
+            <a href="facilities.html" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-orange/10 group transition border-b border-slate-100 dark:border-steel/30 mb-1">
+              <div class="w-8 h-8 rounded-lg bg-orange/15 text-orange flex items-center justify-center flex-shrink-0 group-hover:bg-orange group-hover:text-white transition">
+                <i class="fa-solid fa-industry"></i>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange">Facilities Overview</div>
+                <div class="text-[10px] text-slate-500 dark:text-slate-400">32,000 sq ft industrial campus &amp; shop floor</div>
+              </div>
+            </a>
+            <a href="facilities/welding-lab.html" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-orange/10 group transition">
+              <div class="w-8 h-8 rounded-lg bg-orange/15 text-orange flex items-center justify-center flex-shrink-0 group-hover:bg-orange group-hover:text-white transition">
+                <i class="fa-solid fa-fire-burner"></i>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange">Welding Laboratory</div>
+                <div class="text-[10px] text-slate-500 dark:text-slate-400">40 negative-pressure multi-process booths</div>
+              </div>
+            </a>
+            <a href="facilities/equipment.html" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-orange/10 group transition">
+              <div class="w-8 h-8 rounded-lg bg-orange/15 text-orange flex items-center justify-center flex-shrink-0 group-hover:bg-orange group-hover:text-white transition">
+                <i class="fa-solid fa-gears"></i>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange">Equipment &amp; Technology</div>
+                <div class="text-[10px] text-slate-500 dark:text-slate-400">Miller, Lincoln power sources &amp; CNC plasma</div>
+              </div>
+            </a>
+            <a href="facilities/safety-training.html" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-orange/10 group transition">
+              <div class="w-8 h-8 rounded-lg bg-orange/15 text-orange flex items-center justify-center flex-shrink-0 group-hover:bg-orange group-hover:text-white transition">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-orange">Safety Training Bay</div>
+                <div class="text-[10px] text-slate-500 dark:text-slate-400">OSHA-10/30 certified industrial protection</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Instructors Link -->
+        <a href="instructors.html" class="nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange whitespace-nowrap flex-shrink-0">Instructors</a>
+        
+        <!-- Contact Link -->
+        <a href="contact.html" class="nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange whitespace-nowrap flex-shrink-0">Contact</a>
+
+        <!-- Dashboard Dropdown (Only Student Portal) -->
+        <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0">
+          <button class="dropdown-trigger nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+            Dashboard <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
+          </button>
+          <div class="mega-dropdown-menu absolute right-0 top-full mt-1 w-64 bg-white dark:bg-darkcard rounded-xl shadow-2xl border border-slate-200 dark:border-steel/60 p-2.5 z-50">
+          <!-- Main Student Portal Banner -->
+          <a href="dashboard/index.html" class="flex items-center justify-between p-2 rounded-lg bg-orange/10 hover:bg-orange/20 border border-orange/30 group transition mb-1.5">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-orange text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                <i class="fa-solid fa-id-card-clip text-sm"></i>
+              </div>
+              <div>
+                <div class="text-xs font-bold font-heading uppercase text-slate-900 dark:text-white group-hover:text-orange transition leading-tight flex items-center gap-1.5">
+                  Student Portal
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                </div>
+                <div class="text-[10px] text-slate-500 dark:text-slate-400 leading-none mt-0.5">Trainee Academic Hub</div>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-xs text-orange group-hover:translate-x-0.5 transition-transform mr-1"></i>
+          </a>
+
+          <!-- Direct Portal Modules -->
+          <div class="space-y-0.5 border-t border-slate-100 dark:border-steel/30 pt-1.5">
+            <a href="dashboard/lab-hours.html" class="flex items-center gap-2.5 py-1.5 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-navy-900 group transition">
+              <i class="fa-solid fa-clock text-orange text-xs w-4 text-center"></i>
+              <div class="text-xs font-semibold text-slate-700 dark:text-slate-200 group-hover:text-orange">Lab &amp; Booth Hours</div>
+            </a>
+            <a href="dashboard/skill-assessments.html" class="flex items-center gap-2.5 py-1.5 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-navy-900 group transition">
+              <i class="fa-solid fa-list-check text-orange text-xs w-4 text-center"></i>
+              <div class="text-xs font-semibold text-slate-700 dark:text-slate-200 group-hover:text-orange">Skill Assessments</div>
+            </a>
+            <a href="dashboard/certifications.html" class="flex items-center gap-2.5 py-1.5 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-navy-900 group transition">
+              <i class="fa-solid fa-award text-orange text-xs w-4 text-center"></i>
+              <div class="text-xs font-semibold text-slate-700 dark:text-slate-200 group-hover:text-orange">AWS Certifications</div>
+            </a>
+          </div>
+        </div>
+        </div>
+
+      </nav>
+
+      <!-- Right: Desktop Controls (Visible >= 1280px) -->
+      <div class="hidden xl:flex flex-shrink-0 items-center justify-center gap-2.5">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-btn w-10 h-10 rounded-lg border border-slate-300 dark:border-steel bg-slate-100 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme">
+          <i class="fa-solid fa-sun text-yellow-400"></i>
+        </button>
+
+        <!-- Layout Direction (LTR/RTL) Toggle -->
+        <button class="dir-toggle-btn h-10 px-3 rounded-lg border border-slate-300 dark:border-steel bg-slate-100 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1.5" aria-label="Toggle Text Direction">
+          <i class="fa-solid fa-globe text-orange"></i>
+          <span class="dir-label">RTL</span>
+        </button>
+
+        <!-- Login Button (Desktop) -->
+        <a href="auth/login.html" class="nav-login-btn btn-weld btn-primary-weld h-10 px-4 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
+          <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+          <span>Login</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle Button (Visible < 1280px) -->
+      <div class="xl:hidden flex items-center justify-end flex-shrink-0">
+        <button class="mobile-menu-toggle w-10 h-10 rounded-lg border border-slate-300 dark:border-steel bg-slate-100 dark:bg-navy flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-orange hover:border-orange transition" aria-label="Open Navigation Menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Full-Screen Hamburger Drawer (Takes over entire screen when opened) -->
+  <div class="mobile-nav-backdrop hidden fixed inset-0 bg-black/80 z-50 backdrop-blur-md"></div>
+  <aside class="mobile-menu-drawer fixed inset-0 w-full h-full bg-white dark:bg-darkbg z-50 transform -translate-x-full transition-transform duration-300 overflow-y-auto flex flex-col p-6 sm:p-8">
+    
+    <!-- Top Header: Brand Logo & Large Close Button -->
+    <div class="flex items-center justify-between pb-5 border-b border-slate-200 dark:border-steel/50">
+      <img src="assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-10 w-auto">
+      <button class="mobile-menu-close w-10 h-10 rounded-lg border border-slate-300 dark:border-steel bg-slate-100 dark:bg-navy flex items-center justify-center text-slate-600 dark:text-slate-200 hover:text-orange hover:border-orange transition" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Quick Preferences: Theme & RTL Switches (Moved inside hamburger for < 1024px) -->
+    <div class="py-4 border-b border-slate-200 dark:border-steel/40 flex items-center justify-between">
+      <span class="text-xs font-mono uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider">
+        Site Preferences
+      </span>
+      <div class="flex items-center gap-2">
+        <button class="theme-toggle-btn px-3 py-2 rounded-lg border border-slate-300 dark:border-steel bg-slate-100 dark:bg-navy text-xs font-bold flex items-center gap-2 hover:border-orange transition">
+          <i class="fa-solid fa-sun text-yellow-400"></i>
+          <span>Theme</span>
+        </button>
+        <button class="dir-toggle-btn px-3 py-2 rounded-lg border border-slate-300 dark:border-steel bg-slate-100 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-2">
+          <i class="fa-solid fa-globe text-orange"></i>
+          <span class="dir-label">RTL</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Links & Accordions -->
+    <div class="py-5 space-y-2 flex-1">
+      
+      <!-- Home Accordion -->
+      <div>
+        <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
+          <span class="flex items-center gap-2.5"><i class="fa-solid fa-house text-orange"></i> Home</span>
+          <i class="mobile-toggle-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+        </button>
+        <div class="hidden pl-4 py-2 space-y-1.5 border-l-2 border-orange/40 ml-4 mt-1">
+          <a href="index.html" class="block py-1.5 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-orange">Home 1 (Industrial)</a>
+          <a href="home-2.html" class="block py-1.5 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-orange">Home 2 (Editorial)</a>
+        </div>
+      </div>
+
+      <!-- About Us -->
+      <a href="about.html" class="block py-2.5 px-3 rounded-lg font-heading text-orange font-bold hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
+        <i class="fa-solid fa-circle-info text-orange mr-2"></i> About Us
+      </a>
+
+      <!-- Programs Accordion -->
+      <div>
+        <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
+          <span class="flex items-center gap-2.5"><i class="fa-solid fa-fire text-orange"></i> Programs</span>
+          <i class="mobile-toggle-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+        </button>
+        <div class="hidden pl-4 py-2 space-y-2 border-l-2 border-orange/40 ml-4 mt-1">
+          <a href="programs.html" class="block py-1.5 px-3 text-xs font-bold uppercase text-orange">All Programs Overview &rarr;</a>
+          <a href="programs/smaw-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-bolt text-xs text-orange"></i> SMAW (Stick)</a>
+          <a href="programs/mig-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-arrows-spin text-xs text-orange"></i> MIG (GMAW)</a>
+          <a href="programs/tig-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-wand-magic-sparkles text-xs text-orange"></i> TIG (GTAW)</a>
+          <a href="programs/flux-cored-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-layer-group text-xs text-orange"></i> Flux-Cored (FCAW)</a>
+          <a href="programs/pipe-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-circle-notch text-xs text-orange"></i> Pipe (5G/6G)</a>
+          <a href="programs/structural-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-cubes-stacked text-xs text-orange"></i> Structural Steel</a>
+        </div>
+      </div>
+
+      <!-- Facilities Accordion (With Symbols) -->
+      <div>
+        <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
+          <span class="flex items-center gap-2.5"><i class="fa-solid fa-industry text-orange"></i> Facilities</span>
+          <i class="mobile-toggle-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+        </button>
+        <div class="hidden pl-4 py-2 space-y-2 border-l-2 border-orange/40 ml-4 mt-1">
+          <a href="facilities.html" class="flex items-center gap-2 py-1 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-building-columns text-orange"></i> Overview</a>
+          <a href="facilities/welding-lab.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-fire-burner text-orange"></i> Welding Lab (40 Booths)</a>
+          <a href="facilities/equipment.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-gears text-orange"></i> Equipment &amp; Technology</a>
+          <a href="facilities/safety-training.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-shield-halved text-orange"></i> Safety Training Bay</a>
+        </div>
+      </div>
+
+      <!-- Instructors -->
+      <a href="instructors.html" class="block py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
+        <i class="fa-solid fa-user-tie text-orange mr-2"></i> Instructors
+      </a>
+
+      <!-- Contact -->
+      <a href="contact.html" class="block py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
+        <i class="fa-solid fa-headset text-orange mr-2"></i> Contact
+      </a>
+
+      <!-- Dashboard Accordion (Only Student Portal) -->
+      <div>
+        <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-orange hover:bg-orange/10 text-lg uppercase">
+          <span class="flex items-center gap-2.5"><i class="fa-solid fa-gauge-high"></i> Dashboard</span>
+          <i class="mobile-toggle-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+        </button>
+        <div class="hidden pl-4 py-2 space-y-1 border-l-2 border-orange/40 ml-4 mt-1">
+          <a href="dashboard/index.html" class="block py-2 px-3 text-sm font-bold text-orange hover:underline">
+            <i class="fa-solid fa-id-card-clip mr-1.5"></i> Student Portal
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mobile Footer CTAs -->
+    <div class="pt-5 border-t border-slate-200 dark:border-steel/50 flex flex-col sm:flex-row gap-3">
+      <a href="dashboard/index.html" class="btn-weld btn-primary-weld text-center text-sm py-3 flex-1">
+        <i class="fa-solid fa-id-card-clip mr-2"></i> Access Student Portal
+      </a>
+      <a href="auth/login.html" class="btn-weld btn-outline-weld text-center text-sm py-3 flex-1">
+        <i class="fa-solid fa-arrow-right-to-bracket mr-1.5"></i> Student Sign In
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- MAIN ABOUT CONTENT (8 Complete, Highly Detailed Sections) -->
+  <main class="flex-grow">
+    
+    <!-- 1. HERO (Full Screen-Fit, No Bottom Gap, Vivid Welding Photography) -->
+    <section class="relative min-h-[calc(100vh-72px)] flex flex-col justify-between bg-navy-900 overflow-hidden pt-8 pb-0">
+      <!-- Full-width hero photograph with vivid brightness -->
+      <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=2000&q=80" 
+           alt="WELDPRO Advanced Industrial Training Workshop and Fabrication Facility" 
+           class="absolute inset-0 w-full h-full object-cover object-center filter brightness-75">
+      
+      <div class="absolute inset-0 bg-gradient-to-t from-darkbg/95 via-navy-900/60 to-navy-900/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-900/60 to-transparent"></div>
+
+      <!-- Top & Middle Content -->
+      <div class="container mx-auto px-4 relative z-10 text-center max-w-4xl pt-6 sm:pt-10 my-auto">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-orange/20 border border-orange text-orange font-mono text-xs uppercase tracking-widest mb-4 font-bold">
+          Institutional Lineage • Est. 2014 • AWS Accredited Testing Facility
+        </span>
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold uppercase text-white tracking-tight leading-none mb-6">
+          DEDICATED EXCLUSIVELY TO <span class="text-orange">METALLURGICAL EXCELLENCE</span>
+        </h1>
+        <p class="text-base sm:text-xl lg:text-2xl text-slate-200 font-light max-w-3xl mx-auto mb-8 leading-relaxed">
+          WELDPRO was engineered with a clear mandate: to eliminate the gap between conventional vocational schools and the exacting demands of nuclear, pipeline, and structural steel manufacturing.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="programs.html" class="btn-weld btn-primary-weld text-sm sm:text-base py-3 px-6 sm:px-8">
+            Explore 6 Specializations <i class="fa-solid fa-arrow-right ml-1"></i>
+          </a>
+          <a href="facilities.html" class="btn-weld btn-outline-weld text-sm sm:text-base py-3 px-6 sm:px-8 text-white border-white hover:bg-white hover:text-navy">
+            Tour The 32,000 Sq Ft Lab <i class="fa-solid fa-building-columns ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pinned Bottom Metrics Bar (Full width, zero bottom gap) -->
+      <div class="relative z-10 w-full border-t border-steel/40 bg-navy-900/85 backdrop-blur-md mt-8">
+        <div class="container mx-auto px-4 py-4 sm:py-5">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-5xl mx-auto text-center">
+            <div class="p-2 sm:p-3 rounded-lg bg-navy-900/80 border border-steel/50">
+              <div class="text-2xl sm:text-3xl font-heading font-bold text-orange">32,000</div>
+              <div class="text-[11px] font-mono text-slate-300 uppercase tracking-wider">Sq Ft Shop Floor</div>
+            </div>
+            <div class="p-2 sm:p-3 rounded-lg bg-navy-900/80 border border-steel/50">
+              <div class="text-2xl sm:text-3xl font-heading font-bold text-white">40</div>
+              <div class="text-[11px] font-mono text-slate-300 uppercase tracking-wider">Private Booths</div>
+            </div>
+            <div class="p-2 sm:p-3 rounded-lg bg-navy-900/80 border border-steel/50">
+              <div class="text-2xl sm:text-3xl font-heading font-bold text-orange">85%</div>
+              <div class="text-[11px] font-mono text-slate-300 uppercase tracking-wider">Live Torch Time</div>
+            </div>
+            <div class="p-2 sm:p-3 rounded-lg bg-navy-900/80 border border-steel/50">
+              <div class="text-2xl sm:text-3xl font-heading font-bold text-white">98.4%</div>
+              <div class="text-[11px] font-mono text-slate-300 uppercase tracking-wider">Placement Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SCHOOL INTRODUCTION & OPERATIONAL CAPABILITIES -->
+    <section class="py-20 bg-white dark:bg-darkcard border-b border-slate-200 dark:border-steel/30">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 space-y-5">
+            <span class="text-orange font-mono text-xs font-bold tracking-widest uppercase block">Who We Are &amp; What We Do</span>
+            <h2 class="text-3xl sm:text-4xl font-heading font-bold uppercase text-slate-900 dark:text-white leading-tight">
+              An Industry-Leading Metallurgical &amp; Welding Academy
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+              Unlike broad technical colleges that divide budget across automotive repair, plumbing, and HVAC, WELDPRO is dedicated 100% to metals joining, precision fabrication, and nondestructive testing. Every inch of our facility is engineered to replicate severe commercial job-site conditions.
+            </p>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+              Each registered trainee is assigned their own private, negative-pressure ventilated booth outfitted with top-tier multi-process inverters from Lincoln Electric and Miller Electric. Students never share booth hours or take turns waiting for arc time.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="flex items-start gap-3 p-3.5 rounded-lg bg-slate-50 dark:bg-navy-900/60 border border-slate-200 dark:border-steel/30">
+                <i class="fa-solid fa-wind text-orange text-lg mt-0.5"></i>
+                <div>
+                  <h4 class="font-heading font-bold text-sm text-slate-900 dark:text-white uppercase">Negative Pressure</h4>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">High-velocity extraction pulls fumes away from welder breathing zones instantly.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3.5 rounded-lg bg-slate-50 dark:bg-navy-900/60 border border-slate-200 dark:border-steel/30">
+                <i class="fa-solid fa-microscope text-orange text-lg mt-0.5"></i>
+                <div>
+                  <h4 class="font-heading font-bold text-sm text-slate-900 dark:text-white uppercase">In-House NDT Lab</h4>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Hydraulic coupon bend rams, macro-etching, and radiographic inspection bays.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6">
+            <div class="industrial-box rounded-xl overflow-hidden shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1581092583537-20d51b4b4f1b?auto=format&fit=crop&w=800&q=80" 
+                   alt="WELDPRO Engineering Facility Blueprint and Joint Review" 
+                   class="w-full h-[440px] object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. OUR STORY & FOUNDING LINEAGE -->
+    <section class="py-20 bg-lightbg dark:bg-darkbg">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 order-2 lg:order-1">
+            <div class="industrial-box rounded-xl overflow-hidden shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=800&q=80" 
+                   alt="Certified Welding Quality Control and Guided Bend Test Coupon" 
+                   class="w-full h-[440px] object-cover">
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 order-1 lg:order-2 space-y-5">
+            <span class="text-orange font-mono text-xs font-bold tracking-widest uppercase block">Our Heritage &amp; Milestone Timeline</span>
+            <h2 class="text-3xl sm:text-4xl font-heading font-bold uppercase text-slate-900 dark:text-white leading-tight">
+              Built By Working Boilermakers, Pipefitters &amp; CWI Inspectors
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+              In 2014, a consortium of veteran cross-country pipeline contractors and AWS Certified Welding Inspectors established WELDPRO in response to a crippling shortage: new trade school graduates lacked the hands-on muscle memory to pass radiographic tests on heavy-wall pipe and structural moment joints.
+            </p>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+              We eliminated general education filler courses, academic lectures that put students to sleep, and simulated plastic torches. From day one, trainees handle live 7018 low-hydrogen electrodes, dual-shield flux-cored guns, and sanitary purge TIG torches. Over 1,800 alumni now earn premier hourly wages on nuclear plants, offshore rigs, and major suspension bridges worldwide.
+            </p>
+
+            <div class="space-y-3 pt-2">
+              <div class="flex items-center gap-3 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                <span class="w-6 h-6 rounded-full bg-orange/20 text-orange flex items-center justify-center font-bold font-mono">1</span>
+                <span><strong>2014:</strong> Founded with 12 booths and ASME Section IX pipeline focus.</span>
+              </div>
+              <div class="flex items-center gap-3 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                <span class="w-6 h-6 rounded-full bg-orange/20 text-orange flex items-center justify-center font-bold font-mono">2</span>
+                <span><strong>2018:</strong> Expanded to 32,000 sq ft and added dedicated CNC Plasma &amp; NDT Lab.</span>
+              </div>
+              <div class="flex items-center gap-3 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                <span class="w-6 h-6 rounded-full bg-orange/20 text-orange flex items-center justify-center font-bold font-mono">3</span>
+                <span><strong>2026:</strong> Over 1,800 certified graduates placed with AWS D1.1 and ASME qualifications.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MISSION, VISION & 4 PILLARS -->
+    <section class="py-20 bg-white dark:bg-darkcard border-y border-slate-200 dark:border-steel/30">
+      <div class="container mx-auto px-4">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-orange font-mono text-xs font-bold tracking-widest uppercase block mb-2">Institutional Anchor</span>
+          <h2 class="text-3xl sm:text-4xl font-heading font-bold uppercase text-slate-900 dark:text-white">
+            Mission, Vision &amp; Core Values
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3">
+            Our educational framework is anchored in four uncompromising commitments that govern our instructors, curriculum pacing, and safety expectations.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div class="p-8 rounded-xl bg-lightbg dark:bg-navy-900 border border-slate-200 dark:border-steel/40 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-orange/20 text-orange flex items-center justify-center text-xl mb-4 font-bold">
+                <i class="fa-solid fa-bullseye"></i>
+              </div>
+              <h3 class="font-heading text-2xl font-bold uppercase text-slate-900 dark:text-white mb-3">Our Mission</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                To transform determined craftspeople into master welding technicians through relentless booth practice, visual puddle scrutiny, and certified destructive coupon testing. We cultivate trade professionals who demand structural perfection and never accept cosmetic cover-ups.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-steel/40 text-xs font-mono text-orange font-bold">
+              Standard: Zero Structural Rejection Under X-Ray
+            </div>
+          </div>
+
+          <div class="p-8 rounded-xl bg-lightbg dark:bg-navy-900 border border-slate-200 dark:border-steel/40 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-orange/20 text-orange flex items-center justify-center text-xl mb-4 font-bold">
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <h3 class="font-heading text-2xl font-bold uppercase text-slate-900 dark:text-white mb-3">Our Vision</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                To be the internationally recognized benchmark in practical industrial welding education—the preferred source of skilled labor for heavy civil engineering consortia, aerospace contractors, pipeline operators, and shipbuilders worldwide.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-steel/40 text-xs font-mono text-orange font-bold">
+              Target: 100% Industry Recognized Accreditation
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Pillars Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-5 rounded-lg border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/40">
+            <i class="fa-solid fa-award text-orange text-xl mb-3 block"></i>
+            <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white uppercase mb-1">Code Competence</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Strict training to AWS D1.1, ASME Section IX, and API 1104 standard codes.</p>
+          </div>
+          <div class="p-5 rounded-lg border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/40">
+            <i class="fa-solid fa-shield-halved text-orange text-xl mb-3 block"></i>
+            <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white uppercase mb-1">Safety Culture</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400">OSHA-10 certification, hot-work permit discipline, and personal PPE rigor.</p>
+          </div>
+          <div class="p-5 rounded-lg border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/40">
+            <i class="fa-solid fa-users text-orange text-xl mb-3 block"></i>
+            <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white uppercase mb-1">1:8 Mentorship</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Strict faculty-to-student ratio guarantees instant live feedback inside the booth.</p>
+          </div>
+          <div class="p-5 rounded-lg border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/40">
+            <i class="fa-solid fa-briefcase text-orange text-xl mb-3 block"></i>
+            <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white uppercase mb-1">Direct Placement</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Direct hiring pipelines with commercial contractors, unions, and manufacturers.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. TRAINING METHODOLOGY & THE 85/15 RULE -->
+    <section class="py-20 bg-lightbg dark:bg-darkbg">
+      <div class="container mx-auto px-4">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-orange font-mono text-xs font-bold tracking-widest uppercase block mb-2">Pedagogical Framework</span>
+          <h2 class="text-3xl sm:text-4xl font-heading font-bold uppercase text-slate-900 dark:text-white">
+            The 85/15 Booth-First Methodology
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3">
+            Welders are forged through torch manipulation, puddle freeze awareness, and joint fit-up—not multiple-choice exams. 85% of every student’s clock hours are spent burning rod, running wire, or feeding filler metal under active arc light.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          
+          <div class="p-6 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/40 relative">
+            <span class="font-heading text-4xl font-bold text-orange">01</span>
+            <h4 class="font-heading text-lg font-bold text-slate-900 dark:text-white mt-3 mb-2 uppercase">Joint Fit-Up &amp; Bevel Prep</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Before striking an arc, students cut, bevel, and grind carbon plate and pipe coupons to exact 37.5° angles with precise root face lands and gap spacing.
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-steel/30 text-[11px] font-mono text-orange">
+              Tolerance: ±0.5mm Fitup
+            </div>
+          </div>
+
+          <div class="p-6 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/40 relative">
+            <span class="font-heading text-4xl font-bold text-orange">02</span>
+            <h4 class="font-heading text-lg font-bold text-slate-900 dark:text-white mt-3 mb-2 uppercase">Neuromuscular Arc Time</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Trainees master travel angle, oscillation frequency, arc length, and puddle keyhole management across all positions: 1G, 2G, 3G, 4G, 5G, and 6G.
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-steel/30 text-[11px] font-mono text-orange">
+              Volume: 250+ Logged Arcs
+            </div>
+          </div>
+
+          <div class="p-6 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/40 relative">
+            <span class="font-heading text-4xl font-bold text-orange">03</span>
+            <h4 class="font-heading text-lg font-bold text-slate-900 dark:text-white mt-3 mb-2 uppercase">Destructive Bend Tests</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              After visual CWI approval, students machine their own coupon straps and place them into our hydraulic plunger for an immediate 180° guided side-bend test.
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-steel/30 text-[11px] font-mono text-orange">
+              Requirement: Zero Fissures > 1/8"
+            </div>
+          </div>
+
+          <div class="p-6 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/40 relative">
+            <span class="font-heading text-4xl font-bold text-orange">04</span>
+            <h4 class="font-heading text-lg font-bold text-slate-900 dark:text-white mt-3 mb-2 uppercase">Digital Log Validation</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Every signed-off joint, electrode batch number, and test score is timestamped into the trainee's online student portal to build their verified employer portfolio.
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-steel/30 text-[11px] font-mono text-orange">
+              Audit: Live CWI Sign-off
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. GLOBAL CODE ACCREDITATION & CODES FOLLOWED -->
+    <section class="py-20 bg-white dark:bg-darkcard border-t border-slate-200 dark:border-steel/30">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6 space-y-6">
+            <span class="text-orange font-mono text-xs font-bold tracking-widest uppercase block">Engineering Standards</span>
+            <h2 class="text-3xl sm:text-4xl font-heading font-bold uppercase text-slate-900 dark:text-white leading-tight">
+              Trained to International Engineering Codes
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+              A weld certificate is only as valuable as the code it is tested under. WELDPRO students qualify under strict national welding procedure specifications (WPS) that grant full reciprocal qualification across the United States, Canada, and global energy consortia.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-lg bg-lightbg dark:bg-navy-900 border border-slate-200 dark:border-steel/40">
+                <span class="font-heading font-bold text-base text-orange block">AWS D1.1 / D1.5</span>
+                <span class="text-xs font-bold text-slate-900 dark:text-white block mt-0.5">Structural Steel &amp; Bridge Welding</span>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Multi-pass fillet &amp; complete joint penetration (CJP) groove welds on seismic framing.</p>
+              </div>
+
+              <div class="p-4 rounded-lg bg-lightbg dark:bg-navy-900 border border-slate-200 dark:border-steel/40">
+                <span class="font-heading font-bold text-orange block">ASME Section IX</span>
+                <span class="text-xs font-bold text-slate-900 dark:text-white block mt-0.5">Boiler &amp; Pressure Vessel Code</span>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">High-pressure steam pipes, nuclear containment vessels, and 6G fixed coupon testing.</p>
+              </div>
+
+              <div class="p-4 rounded-lg bg-lightbg dark:bg-navy-900 border border-slate-200 dark:border-steel/40">
+                <span class="font-heading font-bold text-orange block">API Standard 1104</span>
+                <span class="text-xs font-bold text-slate-900 dark:text-white block mt-0.5">Cross-Country Pipelines</span>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">High-speed downhill cellulose rod (E6010) root passes and low-hydrogen cap sequences.</p>
+              </div>
+
+              <div class="p-4 rounded-lg bg-lightbg dark:bg-navy-900 border border-slate-200 dark:border-steel/40">
+                <span class="font-heading font-bold text-orange block">AWS D17.1</span>
+                <span class="text-xs font-bold text-slate-900 dark:text-white block mt-0.5">Aerospace Fusion Specification</span>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">High-frequency GTAW on thin-gauge titanium, Inconel, and sanitary stainless steel.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6">
+            <div class="industrial-box rounded-xl overflow-hidden shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" 
+                   alt="Structural Steel Framing Construction and Quality Inspection" 
+                   class="w-full h-[460px] object-cover">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. OUR FACULTY & MASTER CWI INSTRUCTORS -->
+    <section class="py-20 bg-lightbg dark:bg-darkbg">
+      <div class="container mx-auto px-4">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
+          <div>
+            <span class="text-orange font-mono text-xs font-bold tracking-widest uppercase block mb-1">Elite Instructors</span>
+            <h2 class="text-3xl sm:text-4xl font-heading font-bold uppercase text-slate-900 dark:text-white">
+              Learn Under Master AWS Certified Welding Inspectors
+            </h2>
+          </div>
+          <a href="instructors.html" class="mt-4 sm:mt-0 text-xs font-bold text-orange hover:underline uppercase flex items-center gap-1">
+            View Full Faculty Directory <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <div class="p-6 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/40 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center font-bold text-base">
+                  <i class="fa-solid fa-user-shield"></i>
+                </span>
+                <span class="text-[10px] font-mono font-bold bg-orange/15 text-orange px-2 py-0.5 rounded">24 YRS EXP</span>
+              </div>
+              <h4 class="font-heading text-xl font-bold text-slate-900 dark:text-white uppercase mb-1">Robert Davis</h4>
+              <span class="text-xs font-mono text-orange block mb-3">Senior AWS CWI / CWE • Heavy Structural</span>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Former superintendent for major suspension bridge erection and nuclear reactor containment shells. Specializes in multi-pass flux-cored (FCAW) and submerged arc welding.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 dark:border-steel/30 text-[11px] font-mono text-slate-400">
+              Credentials: AWS-CWI #081024 • OSHA-500
+            </div>
+          </div>
+
+          <div class="p-6 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/40 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center font-bold text-base">
+                  <i class="fa-solid fa-user-shield"></i>
+                </span>
+                <span class="text-[10px] font-mono font-bold bg-orange/15 text-orange px-2 py-0.5 rounded">18 YRS EXP</span>
+              </div>
+              <h4 class="font-heading text-xl font-bold text-slate-900 dark:text-white uppercase mb-1">Sanjay Patel</h4>
+              <span class="text-xs font-mono text-orange block mb-3">Senior CWI / CSW • Aerospace TIG</span>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Specialist in titanium, Inconel 625, and sanitary stainless purging for orbital rocket motors and pharmaceutical processing pipe.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 dark:border-steel/30 text-[11px] font-mono text-slate-400">
+              Credentials: AWS-CWI #140922 • CSWIP 3.1
+            </div>
+          </div>
+
+          <div class="p-6 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/40 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center font-bold text-base">
+                  <i class="fa-solid fa-user-shield"></i>
+                </span>
+                <span class="text-[10px] font-mono font-bold bg-orange/15 text-orange px-2 py-0.5 rounded">20 YRS EXP</span>
+              </div>
+              <h4 class="font-heading text-xl font-bold text-slate-900 dark:text-white uppercase mb-1">James Miller</h4>
+              <span class="text-xs font-mono text-orange block mb-3">ASME CWI • Pressure Piping &amp; 6G</span>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Two decades of high-pressure refinery pipeline inspection, 6G pipe root puddle control, and hydrostatic pressure qualification testing.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 dark:border-steel/30 text-[11px] font-mono text-slate-400">
+              Credentials: ASME Sec IX CWI • API 1104
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 8. CAMPUS TOUR & APPLICATION CTA -->
+    <section class="py-20 bg-gradient-to-r from-navy-900 via-navy to-steel text-white text-center relative overflow-hidden">
+      <div class="container mx-auto px-4 max-w-3xl relative z-10">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-orange/20 border border-orange text-orange font-mono text-xs uppercase tracking-widest font-bold mb-4">
+          Next Cohort Enrollment Now Open
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-heading font-bold uppercase mb-4 tracking-tight">
+          Step Onto Our Shop Floor &amp; Strike Your First Arc
+        </h2>
+        <p class="text-slate-200 text-sm sm:text-base mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+          Walk the aisles of our 40 private booths, consult directly with our master CWI instructors, inspect test coupon bend specimens, and see firsthand why WELDPRO graduates are the most sought-after welders in the country.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="contact.html" class="btn-weld btn-primary-weld text-sm sm:text-base py-3.5 px-8 shadow-xl">
+            Schedule A Campus Walkthrough <i class="fa-solid fa-calendar-check ml-1"></i>
+          </a>
+          <a href="auth/register.html" class="btn-weld btn-outline-weld text-sm sm:text-base py-3.5 px-8 text-white border-white hover:bg-white hover:text-navy">
+            Apply For Admission &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- INDUSTRIAL FOOTER -->
+  <footer class="bg-navy-900 text-slate-300 border-t border-steel/40 pt-16 pb-8">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Accreditation & Industrial Standards Banner -->
+      <div class="border-b border-steel/40 pb-10 mb-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div class="p-4 rounded-lg bg-darkcard/60 border border-steel/40 flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-xl flex-shrink-0">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-white text-sm tracking-wide">AWS ACCREDITED</div>
+              <div class="text-[11px] text-slate-400">National Test Facility #892</div>
+            </div>
+          </div>
+          <div class="p-4 rounded-lg bg-darkcard/60 border border-steel/40 flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-xl flex-shrink-0">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-white text-sm tracking-wide">OSHA TRAINING</div>
+              <div class="text-[11px] text-slate-400">10 &amp; 30-Hour Safety Partner</div>
+            </div>
+          </div>
+          <div class="p-4 rounded-lg bg-darkcard/60 border border-steel/40 flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-xl flex-shrink-0">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-white text-sm tracking-wide">ASME SEC. IX</div>
+              <div class="text-[11px] text-slate-400">Pressure Vessel Pipe Testing</div>
+            </div>
+          </div>
+          <div class="p-4 rounded-lg bg-darkcard/60 border border-steel/40 flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-xl flex-shrink-0">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-white text-sm tracking-wide">MILLER &amp; LINCOLN</div>
+              <div class="text-[11px] text-slate-400">Factory Training Fleet</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Footer Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+        
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-2">
+          <a href="index.html" class="inline-block mb-4">
+            <img src="assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-10 w-auto">
+          </a>
+          <p class="text-xs text-slate-400 leading-relaxed mb-5 max-w-sm">
+            Welding Trade School is an elite industrial trade academy and accredited testing facility training certified welders across SMAW, MIG, TIG, FCAW, and ASME Section IX pressure piping.
+          </p>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold mb-6">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Practical Bays Active • 40 Booths Live
+          </div>
+          <div class="flex items-center gap-3 text-slate-400">
+            <a href="#" class="w-8 h-8 rounded bg-darkcard flex items-center justify-center hover:text-orange hover:border-orange transition border border-steel/40" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in text-xs"></i></a>
+            <a href="#" class="w-8 h-8 rounded bg-darkcard flex items-center justify-center hover:text-orange hover:border-orange transition border border-steel/40" aria-label="YouTube"><i class="fa-brands fa-youtube text-xs"></i></a>
+            <a href="#" class="w-8 h-8 rounded bg-darkcard flex items-center justify-center hover:text-orange hover:border-orange transition border border-steel/40" aria-label="Facebook"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+            <a href="#" class="w-8 h-8 rounded bg-darkcard flex items-center justify-center hover:text-orange hover:border-orange transition border border-steel/40" aria-label="Instagram"><i class="fa-brands fa-instagram text-xs"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Programs Links -->
+        <div>
+          <h4 class="font-heading text-sm text-white font-bold uppercase tracking-wider mb-4 border-b border-orange/40 pb-1">
+            Welding Programs
+          </h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="programs/smaw-welding.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-orange text-[10px]"></i> SMAW (Stick) Welding</a></li>
+            <li><a href="programs/mig-welding.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-orange text-[10px]"></i> MIG (GMAW) Welding</a></li>
+            <li><a href="programs/tig-welding.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-orange text-[10px]"></i> TIG (GTAW) Welding</a></li>
+            <li><a href="programs/flux-cored-welding.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-orange text-[10px]"></i> Flux-Cored (FCAW)</a></li>
+            <li><a href="programs/pipe-welding.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-orange text-[10px]"></i> Pipe Welding (5G/6G)</a></li>
+            <li><a href="programs/structural-welding.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-orange text-[10px]"></i> Structural Steel</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Campus & Portal -->
+        <div>
+          <h4 class="font-heading text-sm text-white font-bold uppercase tracking-wider mb-4 border-b border-orange/40 pb-1">
+            Campus &amp; Portal
+          </h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-orange text-[10px]"></i> About WELDPRO</a></li>
+            <li><a href="facilities.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-orange text-[10px]"></i> Training Facilities</a></li>
+            <li><a href="instructors.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-orange text-[10px]"></i> Faculty &amp; CWIs</a></li>
+            <li><a href="dashboard/index.html" class="hover:text-orange transition flex items-center gap-1.5 text-orange font-bold"><i class="fa-solid fa-id-card-clip"></i> Student Portal &rarr;</a></li>
+            <li><a href="auth/login.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-arrow-right-to-bracket text-orange text-[10px]"></i> Trainee Login</a></li>
+            <li><a href="auth/register.html" class="hover:text-orange transition flex items-center gap-1.5"><i class="fa-solid fa-user-plus text-orange text-[10px]"></i> New Registration</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Campus Contact -->
+        <div>
+          <h4 class="font-heading text-sm text-white font-bold uppercase tracking-wider mb-4 border-b border-orange/40 pb-1">
+            Campus Contact
+          </h4>
+          <ul class="space-y-3 text-xs text-slate-400">
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-location-dot text-orange mt-1"></i>
+              <span><strong>Welding Trade School</strong><br>Sri Vela Plaza, No. 38-C, Weavers St, Opp. Bye-Pass Rd, Hosur, Tamil Nadu 635109</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-phone text-orange"></i>
+              <span>(800) 555-WELD / (555) 234-9800</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-orange"></i>
+              <span>admissions@weldpro.edu</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-clock text-orange"></i>
+              <span>Shop Hours: Mon - Sat 7:00 AM - 10:00 PM</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-steel/30 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div>
+          &copy; <span class="current-year">2026</span> WELDPRO. All Rights Reserved. Accredited Industrial Welding Trade School.
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="#" class="hover:text-slate-400">AWS D1.1 Compliance</a>
+          <span>•</span>
+          <a href="#" class="hover:text-slate-400">Safety Standards</a>
+          <span>•</span>
+          <a href="#" class="hover:text-slate-400">Institutional Disclosures</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/direction.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/mega-menu.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Attendance &amp; Shop Floor Log – WELDPRO Dashboard</title>
+  <meta name="description" content="View verified training attendance rates, present booth sessions, excused absences, and CWI sign-off history.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="../assets/logo/favicon.png">
+
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0B1726', DEFAULT: '#142B45', light: '#203E60' },
+            steel: { DEFAULT: '#29465F', dark: '#1C3144', light: '#3D6282' },
+            orange: { DEFAULT: '#F28C28', hover: '#D9771A', light: '#FF9E42' },
+            darkbg: '#101820', darkcard: '#1D2B38', lightbg: '#F4F6F8'
+          },
+          fontFamily: { heading: ['Oswald', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="bg-lightbg dark:bg-darkbg text-slate-800 dark:text-slate-100 font-body transition-colors duration-200">
+
+  <div class="dashboard-layout">
+    <div class="dashboard-backdrop"></div>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="p-5 border-b border-steel/40 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2">
+          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-8 w-auto">
+        </a>
+        <button class="sidebar-close-btn lg:hidden text-slate-400 hover:text-white p-1" aria-label="Close Sidebar"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="p-5 border-b border-steel/30 flex items-center gap-3">
+        <div class="w-11 h-11 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-id-badge"></i></div>
+        <div class="min-w-0 flex-1">
+          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate">Marcus Vance</h4>
+          <span class="text-[11px] font-mono text-orange block user-id-display">WP-2026-8942</span>
+          <span class="inline-block mt-0.5 px-2 py-0.2 text-[9px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">Active • Level 3</span>
+        </div>
+      </div>
+
+      <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
+        <a href="index.html" class="sidebar-nav-link"><i class="fa-solid fa-gauge-high w-5"></i><span>Overview</span></a>
+        <a href="my-profile.html" class="sidebar-nav-link"><i class="fa-solid fa-id-badge w-5"></i><span>My Profile</span></a>
+        <a href="my-programs.html" class="sidebar-nav-link"><i class="fa-solid fa-book-open w-5"></i><span>My Programs</span></a>
+        <a href="lab-hours.html" class="sidebar-nav-link"><i class="fa-solid fa-stopwatch w-5"></i><span>Lab Hours</span><span class="badge-counter user-hours-completed">214</span></a>
+        <a href="skill-assessments.html" class="sidebar-nav-link"><i class="fa-solid fa-clipboard-check w-5"></i><span>Skill Assessments</span></a>
+        <a href="certifications.html" class="sidebar-nav-link"><i class="fa-solid fa-award w-5"></i><span>Certifications</span></a>
+        <a href="attendance.html" class="sidebar-nav-link active"><i class="fa-solid fa-calendar-check text-orange w-5"></i><span>Attendance</span></a>
+        <a href="notifications.html" class="sidebar-nav-link"><i class="fa-solid fa-bell w-5"></i><span>Notifications</span><span class="badge-counter">3</span></a>
+      </nav>
+
+      <div class="p-4 border-t border-steel/30 flex items-center justify-between text-xs text-slate-400">
+        <a href="../index.html" class="hover:text-white flex items-center gap-1.5 transition"><i class="fa-solid fa-arrow-left"></i><span>Public Site</span></a>
+        <button class="btn-logout-action text-rose-400 hover:text-rose-300 flex items-center gap-1 transition"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Log Out</span></button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="flex items-center gap-3">
+          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
+          <div>
+            <span class="text-xs text-slate-400 uppercase tracking-wider font-mono hidden sm:inline">Industrial Training Records</span>
+            <h1 class="text-lg sm:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-none">Attendance &amp; Shop Floor Log</h1>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="btnRequestMakeup" class="btn-weld btn-secondary-weld text-xs py-2 px-3 sm:px-4">
+            <i class="fa-solid fa-clock-rotate-left mr-1.5"></i> Request Lab Make-Up
+          </button>
+          <button class="theme-toggle-btn w-9 h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400"></i></button>
+          <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange"></i><span class="dir-label">RTL</span></button>
+        </div>
+      </header>
+
+      <div class="p-4 sm:p-6 lg:p-8 space-y-6">
+        
+        <!-- Metrics Banner -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="stat-card accent-orange">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-bold uppercase text-slate-400">Attendance Rate</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">Passing (&ge;90%)</span>
+            </div>
+            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white">96.5%</div>
+            <div class="w-full bg-slate-200 dark:bg-steel/40 h-1.5 rounded-full mt-3 overflow-hidden">
+              <div class="bg-emerald-500 h-full rounded-full" style="width: 96.5%;"></div>
+            </div>
+            <span class="text-[11px] text-slate-400 mt-2 block">Min requirement: 90% for AWS D1.1 Qualification</span>
+          </div>
+
+          <div class="stat-card">
+            <span class="text-xs font-bold uppercase text-slate-400 block mb-1">Total Scheduled Sessions</span>
+            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white">48</div>
+            <span class="text-[11px] text-slate-400 mt-2 block">192 Total Contact Hours Scheduled</span>
+          </div>
+
+          <div class="stat-card">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-bold uppercase text-slate-400">Present &amp; Verified</span>
+              <i class="fa-solid fa-check-double text-emerald-500 text-sm"></i>
+            </div>
+            <div class="text-3xl font-heading font-bold text-emerald-500">46</div>
+            <span class="text-[11px] text-slate-400 mt-2 block">184.0 Shop Floor Hours Credited</span>
+          </div>
+
+          <div class="stat-card">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-bold uppercase text-slate-400">Absences &amp; Makeups</span>
+              <i class="fa-solid fa-triangle-exclamation text-amber-500 text-sm"></i>
+            </div>
+            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white">2 <span class="text-xs font-normal text-slate-400">days</span></div>
+            <span class="text-[11px] text-amber-600 dark:text-amber-400 mt-2 block font-medium">1 Made Up • 1 Excused Approved</span>
+          </div>
+        </div>
+
+        <!-- Attendance Calendar & Shop Schedule Visualizer -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Monthly Shift Schedule / Calendar Grid -->
+          <div class="lg:col-span-2 dashboard-card p-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200 dark:border-steel/40">
+              <div>
+                <h3 class="font-heading text-lg font-bold uppercase text-slate-900 dark:text-white">Current Month: November 2026</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Shift A (Morning 08:00 – 12:30) • Booth #14</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mr-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Present
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mr-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Make-up
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Excused
+                </span>
+              </div>
+            </div>
+
+            <!-- Mini Calendar View -->
+            <div class="mt-4">
+              <div class="grid grid-cols-7 gap-2 text-center text-xs font-bold text-slate-400 uppercase py-2">
+                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+              </div>
+              <div class="grid grid-cols-7 gap-2 text-xs">
+                <!-- Week 1 -->
+                <div class="p-2.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-100/50 dark:bg-navy-900/40 text-slate-400 text-center">
+                  <span class="font-mono text-[11px] block text-slate-400">27</span>
+                  <span class="text-[9px] block text-slate-500 mt-1">Off</span>
+                </div>
+                <div class="p-2.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-100/50 dark:bg-navy-900/40 text-slate-400 text-center">
+                  <span class="font-mono text-[11px] block text-slate-400">28</span>
+                  <span class="text-[9px] block text-slate-500 mt-1">Off</span>
+                </div>
+                <div class="p-2.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-100/50 dark:bg-navy-900/40 text-slate-400 text-center">
+                  <span class="font-mono text-[11px] block text-slate-400">29</span>
+                  <span class="text-[9px] block text-slate-500 mt-1">Off</span>
+                </div>
+                <div class="p-2.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-100/50 dark:bg-navy-900/40 text-slate-400 text-center">
+                  <span class="font-mono text-[11px] block text-slate-400">30</span>
+                  <span class="text-[9px] block text-slate-500 mt-1">Off</span>
+                </div>
+                <div class="p-2.5 rounded border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-500/15 text-center">
+                  <span class="font-mono text-[11px] font-bold text-emerald-500">1</span>
+                  <span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 mt-1 block">4.0 hrs</span>
+                </div>
+                <div class="p-2.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-100/30 dark:bg-navy-900/20 text-slate-400 text-center">
+                  <span class="font-mono text-[11px] block">2</span>
+                  <span class="text-[9px] block text-slate-500 mt-1">Shop Closed</span>
+                </div>
+                <div class="p-2.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-100/30 dark:bg-navy-900/20 text-slate-400 text-center">
+                  <span class="font-mono text-[11px] block">3</span>
+                  <span class="text-[9px] block text-slate-500 mt-1">Shop Closed</span>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="p-2.5 rounded border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-500/15 text-center">
+                  <span class="font-mono text-[11px] font-bold text-emerald-500">4</span>
+                  <span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 mt-1 block">4.0 hrs</span>
+                </div>
+                <div class="p-2.5 rounded border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-500/15 text-center">
+                  <span class="font-mono text-[11px] font-bold text-emerald-500">5</span>
+                  <span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 mt-1 block">4.0 hrs</span>
+                </div>
+                <div class="p-2.5 rounded border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-500/15 text-center">
+                  <span class="font-mono text-[11px] font-bold text-emerald-500">6</span>
+                  <span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 mt-1 block">4.0 hrs</span>
+                </div>
+                <div class="p-2.5 rounded border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-500/15 text-center">
+                  <span class="font-mono text-[11px] font-bold text-emerald-500">7</span>
+                  <span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 mt-1 block">4.0 hrs</span>
+                </div>
+                <div class="p-2.5 rounded border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-500/15 text-center">
+                  <span class="font-mono text-[11px] font-bold text-emerald-500">8</span>
+                  <span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 mt-1 block">4.0 hrs</span>
+                </div>
+                <div class="p-2.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-100/30 dark:bg-navy-900/20 text-slate-400 text-center">
+                  <span class="font-mono text-[11px] block">9</span>
+                  <span class="text-[9px] block text-slate-500 mt-1">Shop Closed</span>
+                </div>
+                <div class="p-2.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-100/30 dark:bg-navy-900/20 text-slate-400 text-center">
+                  <span class="font-mono text-[11px] block">10</span>
+                  <span class="text-[9px] block text-slate-500 mt-1">Shop Closed</span>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="p-2.5 rounded border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-500/15 text-center">
+                  <span class="font-mono text-[11px] font-bold text-emerald-500">11</span>
+                  <span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 mt-1 block">4.0 hrs</span>
+                </div>
+                <div class="p-2.5 rounded border border-orange bg-orange/15 text-center ring-2 ring-orange/40">
+                  <span class="font-mono text-[11px] font-bold text-orange">12</span>
+                  <span class="text-[9px] font-bold text-orange mt-1 block">Today</span>
+                </div>
+                <div class="p-2.5 rounded border border-dashed border-slate-300 dark:border-steel/40 text-center">
+                  <span class="font-mono text-[11px] text-slate-400">13</span>
+                  <span class="text-[9px] text-slate-400 mt-1 block">Scheduled</span>
+                </div>
+                <div class="p-2.5 rounded border border-dashed border-slate-300 dark:border-steel/40 text-center">
+                  <span class="font-mono text-[11px] text-slate-400">14</span>
+                  <span class="text-[9px] text-slate-400 mt-1 block">Scheduled</span>
+                </div>
+                <div class="p-2.5 rounded border border-dashed border-slate-300 dark:border-steel/40 text-center">
+                  <span class="font-mono text-[11px] text-slate-400">15</span>
+                  <span class="text-[9px] text-slate-400 mt-1 block">Scheduled</span>
+                </div>
+                <div class="p-2.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-100/30 dark:bg-navy-900/20 text-slate-400 text-center">
+                  <span class="font-mono text-[11px] block">16</span>
+                  <span class="text-[9px] block text-slate-500 mt-1">Shop Closed</span>
+                </div>
+                <div class="p-2.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-100/30 dark:bg-navy-900/20 text-slate-400 text-center">
+                  <span class="font-mono text-[11px] block">17</span>
+                  <span class="text-[9px] block text-slate-500 mt-1">Shop Closed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Attendance Rules & Policy Checklist -->
+          <div class="dashboard-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <i class="fa-solid fa-shield-halved text-orange text-lg"></i>
+                <h3 class="font-heading text-base font-bold uppercase text-slate-900 dark:text-white">Shop Floor Policy</h3>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
+                ASME Section IX and AWS QC1 accrediting bodies mandate verifiable arc-on time records for all Welder Qualification Test Records (WQTR).
+              </p>
+              
+              <ul class="space-y-3 text-xs">
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-xs"></i>
+                  <span class="text-slate-600 dark:text-slate-300"><strong>90% Threshold:</strong> Minimum 270 hours required out of 300 to sit for certification bend testing.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-xs"></i>
+                  <span class="text-slate-600 dark:text-slate-300"><strong>Make-Up Sessions:</strong> Max 2 make-up shifts per module permitted in Open Lab on Saturdays.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-500 mt-0.5 text-xs"></i>
+                  <span class="text-slate-600 dark:text-slate-300"><strong>CWI Sign-off:</strong> Badge scans must be counter-signed by booth instructor within 24 hours.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 dark:border-steel/30 mt-4">
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-slate-400">Accreditation Standing:</span>
+                <span class="font-bold text-emerald-500">EXCELLENT</span>
+              </div>
+              <p class="text-[11px] text-slate-500">Last badge tap: Today at 07:54 AM (Main Shop Portal A)</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Attendance Table -->
+        <div class="dashboard-card overflow-hidden">
+          <div class="p-5 border-b border-slate-200 dark:border-steel/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-heading text-lg font-bold uppercase text-slate-900 dark:text-white">Training Session Attendance Log</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Chronological record of daily badge clock-ins and CWI validation.</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex items-center gap-1.5 p-1 rounded-md bg-slate-100 dark:bg-navy-900 border border-slate-200 dark:border-steel/40 text-xs">
+              <button class="filter-attendance-btn active px-3 py-1 rounded font-semibold text-slate-600 dark:text-slate-300 hover:text-white transition" data-filter="all">All (48)</button>
+              <button class="filter-attendance-btn px-3 py-1 rounded font-semibold text-slate-600 dark:text-slate-300 hover:text-white transition" data-filter="present">Present (46)</button>
+              <button class="filter-attendance-btn px-3 py-1 rounded font-semibold text-slate-600 dark:text-slate-300 hover:text-white transition" data-filter="makeup">Make-Up (1)</button>
+              <button class="filter-attendance-btn px-3 py-1 rounded font-semibold text-slate-600 dark:text-slate-300 hover:text-white transition" data-filter="excused">Excused (1)</button>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="table-industrial w-full" id="attendanceTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Shift &amp; Hours</th>
+                  <th>Training Module</th>
+                  <th>Booth #</th>
+                  <th>CWI Supervisor</th>
+                  <th>Time-In / Time-Out</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-status="present">
+                  <td class="font-mono text-xs font-bold text-slate-900 dark:text-white">Nov 12, 2026</td>
+                  <td>Morning (4.0 hrs)</td>
+                  <td class="font-medium">ASME Sec IX 6G Open Root</td>
+                  <td><span class="font-mono text-orange">Booth 14</span></td>
+                  <td>James Miller, CWI</td>
+                  <td class="font-mono text-xs text-slate-400">07:54 AM – In Progress</td>
+                  <td><span class="status-pill status-pass"><i class="fa-solid fa-circle-check text-[10px] mr-1"></i>Present</span></td>
+                </tr>
+                <tr data-status="present">
+                  <td class="font-mono text-xs font-bold text-slate-900 dark:text-white">Nov 11, 2026</td>
+                  <td>Morning (4.0 hrs)</td>
+                  <td class="font-medium">ASME Sec IX Hot Pass &amp; Fill</td>
+                  <td><span class="font-mono text-orange">Booth 14</span></td>
+                  <td>James Miller, CWI</td>
+                  <td class="font-mono text-xs text-slate-400">07:58 AM – 12:32 PM</td>
+                  <td><span class="status-pill status-pass"><i class="fa-solid fa-circle-check text-[10px] mr-1"></i>Present</span></td>
+                </tr>
+                <tr data-status="present">
+                  <td class="font-mono text-xs font-bold text-slate-900 dark:text-white">Nov 08, 2026</td>
+                  <td>Morning (4.0 hrs)</td>
+                  <td class="font-medium">5G Horizontal Fixed Coupon</td>
+                  <td><span class="font-mono text-orange">Booth 14</span></td>
+                  <td>Robert Davis, CWI</td>
+                  <td class="font-mono text-xs text-slate-400">07:55 AM – 12:30 PM</td>
+                  <td><span class="status-pill status-pass"><i class="fa-solid fa-circle-check text-[10px] mr-1"></i>Present</span></td>
+                </tr>
+                <tr data-status="present">
+                  <td class="font-mono text-xs font-bold text-slate-900 dark:text-white">Nov 07, 2026</td>
+                  <td>Morning (4.0 hrs)</td>
+                  <td class="font-medium">Bevel Preparation &amp; Tack Alignment</td>
+                  <td><span class="font-mono text-orange">Booth 14</span></td>
+                  <td>James Miller, CWI</td>
+                  <td class="font-mono text-xs text-slate-400">07:50 AM – 12:28 PM</td>
+                  <td><span class="status-pill status-pass"><i class="fa-solid fa-circle-check text-[10px] mr-1"></i>Present</span></td>
+                </tr>
+                <tr data-status="present">
+                  <td class="font-mono text-xs font-bold text-slate-900 dark:text-white">Nov 06, 2026</td>
+                  <td>Morning (4.0 hrs)</td>
+                  <td class="font-medium">E7018 Fill Pass Weave Sequences</td>
+                  <td><span class="font-mono text-orange">Booth 14</span></td>
+                  <td>James Miller, CWI</td>
+                  <td class="font-mono text-xs text-slate-400">08:00 AM – 12:35 PM</td>
+                  <td><span class="status-pill status-pass"><i class="fa-solid fa-circle-check text-[10px] mr-1"></i>Present</span></td>
+                </tr>
+                <tr data-status="makeup">
+                  <td class="font-mono text-xs font-bold text-slate-900 dark:text-white">Nov 02, 2026</td>
+                  <td>Open Lab (4.0 hrs)</td>
+                  <td class="font-medium">Lab Make-up: Root Run Reinforcement</td>
+                  <td><span class="font-mono text-orange">Booth 08</span></td>
+                  <td>Sanjay Patel, CWI</td>
+                  <td class="font-mono text-xs text-slate-400">09:00 AM – 01:15 PM</td>
+                  <td><span class="status-pill bg-blue-500/20 text-blue-400 border border-blue-500/30"><i class="fa-solid fa-clock-rotate-left text-[10px] mr-1"></i>Make-Up Completed</span></td>
+                </tr>
+                <tr data-status="excused">
+                  <td class="font-mono text-xs font-bold text-slate-900 dark:text-white">Oct 30, 2026</td>
+                  <td>Morning (0.0 hrs)</td>
+                  <td class="font-medium">Excused Absence (Medical Notice On File)</td>
+                  <td><span class="font-mono text-slate-400">—</span></td>
+                  <td>Dean Vance, Registrar</td>
+                  <td class="font-mono text-xs text-slate-400">—</td>
+                  <td><span class="status-pill status-pending"><i class="fa-solid fa-envelope-open-text text-[10px] mr-1"></i>Excused Notice</span></td>
+                </tr>
+                <tr data-status="present">
+                  <td class="font-mono text-xs font-bold text-slate-900 dark:text-white">Oct 28, 2026</td>
+                  <td>Morning (4.0 hrs)</td>
+                  <td class="font-medium">2G Pipe Fixed Axis Rotation Practice</td>
+                  <td><span class="font-mono text-orange">Booth 14</span></td>
+                  <td>Robert Davis, CWI</td>
+                  <td class="font-mono text-xs text-slate-400">07:52 AM – 12:30 PM</td>
+                  <td><span class="status-pill status-pass"><i class="fa-solid fa-circle-check text-[10px] mr-1"></i>Present</span></td>
+                </tr>
+                <tr data-status="present">
+                  <td class="font-mono text-xs font-bold text-slate-900 dark:text-white">Oct 25, 2026</td>
+                  <td>Morning (4.0 hrs)</td>
+                  <td class="font-medium">Purge Gas Shielding Flow Calibration</td>
+                  <td><span class="font-mono text-orange">Booth 14</span></td>
+                  <td>James Miller, CWI</td>
+                  <td class="font-mono text-xs text-slate-400">07:57 AM – 12:30 PM</td>
+                  <td><span class="status-pill status-pass"><i class="fa-solid fa-circle-check text-[10px] mr-1"></i>Present</span></td>
+                </tr>
+                <tr data-status="present">
+                  <td class="font-mono text-xs font-bold text-slate-900 dark:text-white">Oct 23, 2026</td>
+                  <td>Morning (4.0 hrs)</td>
+                  <td class="font-medium">GTAW Root Pass on 2" Stainless</td>
+                  <td><span class="font-mono text-orange">Booth 14</span></td>
+                  <td>James Miller, CWI</td>
+                  <td class="font-mono text-xs text-slate-400">08:02 AM – 12:31 PM</td>
+                  <td><span class="status-pill status-pass"><i class="fa-solid fa-circle-check text-[10px] mr-1"></i>Present</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="p-4 border-t border-slate-200 dark:border-steel/40 flex items-center justify-between text-xs text-slate-500">
+            <span>Showing 10 of 48 total session records</span>
+            <div class="flex items-center gap-2">
+              <button class="px-2.5 py-1 rounded border border-slate-200 dark:border-steel text-slate-400 hover:text-white" disabled>Previous</button>
+              <span class="font-bold text-slate-700 dark:text-slate-300">Page 1 of 5</span>
+              <button class="px-2.5 py-1 rounded border border-slate-200 dark:border-steel text-slate-400 hover:text-white">Next</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Request Lab Make-Up Modal -->
+  <div id="makeupModal" class="fixed inset-0 z-50 bg-black/75 hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-darkcard border border-steel/50 rounded-xl max-w-lg w-full p-6 shadow-2xl relative">
+      <button id="btnCloseMakeupModal" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-orange/20 text-orange flex items-center justify-center text-lg">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg font-bold text-slate-900 dark:text-white uppercase">Request Open Lab Make-Up</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Book an authorized 4-hour Saturday practical session</p>
+        </div>
+      </div>
+
+      <form id="makeupRequestForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Missed Session Date</label>
+          <input type="date" required value="2026-10-30" class="w-full px-3 py-2 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Requested Open Lab Date</label>
+          <select required class="w-full px-3 py-2 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs">
+            <option value="sat-nov-16">Saturday, Nov 16, 2026 (08:00 AM – 12:00 PM) - 6 Booths Open</option>
+            <option value="sat-nov-23">Saturday, Nov 23, 2026 (08:00 AM – 12:00 PM) - 8 Booths Open</option>
+            <option value="sat-dec-07">Saturday, Dec 07, 2026 (08:00 AM – 12:00 PM) - 4 Booths Open</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Welding Objective / Joint Coupon</label>
+          <input type="text" required placeholder="e.g. Complete 6G pipe root pass practice" class="w-full px-3 py-2 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Reason for Make-Up Request</label>
+          <textarea rows="2" class="w-full px-3 py-2 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs" placeholder="Describe the circumstance for instructor approval..."></textarea>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100 dark:border-steel/40 flex items-center justify-end gap-3">
+          <button type="button" id="btnCancelMakeupModal" class="px-4 py-2 rounded text-xs font-bold uppercase text-slate-500 hover:text-slate-700">Cancel</button>
+          <button type="submit" class="btn-weld btn-primary-weld text-xs py-2 px-5">Submit Make-Up Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/direction.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    // Attendance Filter Script
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-attendance-btn');
+      const rows = document.querySelectorAll('#attendanceTable tbody tr');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('active', 'bg-orange', 'text-white');
+            b.classList.add('text-slate-600', 'dark:text-slate-300');
+          });
+          btn.classList.add('active', 'bg-orange', 'text-white');
+          btn.classList.remove('text-slate-600', 'dark:text-slate-300');
+
+          const filter = btn.dataset.filter;
+          rows.forEach(row => {
+            if (filter === 'all' || row.dataset.status === filter) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Modal Handlers
+      const modal = document.getElementById('makeupModal');
+      const btnOpen = document.getElementById('btnRequestMakeup');
+      const btnClose = document.getElementById('btnCloseMakeupModal');
+      const btnCancel = document.getElementById('btnCancelMakeupModal');
+      const form = document.getElementById('makeupRequestForm');
+
+      if (btnOpen && modal) {
+        btnOpen.addEventListener('click', () => {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+        });
+      }
+
+      function closeModal() {
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      }
+
+      if (btnClose) btnClose.addEventListener('click', closeModal);
+      if (btnCancel) btnCancel.addEventListener('click', closeModal);
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+      }
+
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (window.WeldValidation) {
+            window.WeldValidation.showToast('Make-up lab session request submitted! Instructor will confirm within 24 hours.', 'success');
+          } else {
+            alert('Make-up lab session request submitted!');
+          }
+          closeModal();
+          form.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

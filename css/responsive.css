@@ -1,0 +1,251 @@
+/* ==========================================================================
+   WELDPRO Comprehensive Responsive Stylesheet
+   Desktop-to-Mobile Graceful Adaptation Matrix
+   ========================================================================== */
+
+/* 1. Global Box Sizing & Fluid Resets */
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: clip;
+  width: 100%;
+  min-width: 320px;
+}
+
+/* Prevent long metallurgical/technical headings from breaking viewport */
+h1, h2, h3, h4, h5, h6, .font-heading {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* 2. Responsive Typography Scaling */
+@media (max-width: 640px) {
+  h1, .text-4xl, .text-5xl, .text-6xl, .text-7xl {
+    font-size: 1.85rem !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.01em !important;
+  }
+  h2, .text-3xl {
+    font-size: 1.45rem !important;
+    line-height: 1.2 !important;
+  }
+  h3, .text-2xl {
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+  }
+  p, .text-base, .text-lg, .text-xl {
+    font-size: 0.9375rem !important;
+    line-height: 1.55 !important;
+  }
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Prevent iOS Safari auto-zoom on input focus by guaranteeing 16px font-size */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  h1, .text-5xl, .text-6xl, .text-7xl {
+    font-size: 2.5rem !important;
+    line-height: 1.15 !important;
+  }
+  h2, .text-3xl, .text-4xl {
+    font-size: 1.85rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* 3. Hero Section Fluid Viewport Sizing */
+.hero-screen-fit {
+  min-height: calc(100vh - 80px);
+  min-height: calc(100dvh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .hero-screen-fit {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+    min-height: calc(100vh - 70px);
+    min-height: calc(100dvh - 70px);
+  }
+}
+
+/* Mobile Hero Button Stacking (< 480px) */
+@media (max-width: 480px) {
+  .btn-weld {
+    width: 100% !important;
+    padding: 0.75rem 1.25rem !important;
+    font-size: 0.95rem !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-height: 44px !important;
+  }
+}
+
+/* 4. Full-Screen Hamburger Menu Drawer (< 1024px) */
+.mobile-menu-drawer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: var(--color-white);
+  z-index: 100;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .mobile-menu-drawer {
+  background-color: var(--color-dark-bg);
+}
+
+/* Touch Friendly Targets for Mobile Drawer */
+.mobile-menu-drawer a,
+.mobile-menu-drawer button {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* 5. Desktop Navbar Constraints (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .main-navbar .nav-link-item {
+    padding-left: 0.45rem !important;
+    padding-right: 0.45rem !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  .main-navbar .nav-auth-btn {
+    padding: 0.45rem 0.65rem !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+/* 6. Centered Programs Mega Menu */
+.mega-dropdown-menu-center {
+  left: 50% !important;
+  transform: translate(-50%, 8px) !important;
+  max-width: min(448px, 90vw) !important;
+}
+
+.nav-item-dropdown:hover .mega-dropdown-menu-center,
+.nav-item-dropdown.active .mega-dropdown-menu-center {
+  transform: translate(-50%, 0) !important;
+}
+
+/* 7. Responsive Tables with Smooth Touch Momentum */
+.table-responsive-wrapper,
+.overflow-x-auto {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive-wrapper table,
+.overflow-x-auto table {
+  min-width: 580px;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar,
+.overflow-x-auto::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar-thumb,
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: var(--color-secondary-steel);
+  border-radius: 3px;
+}
+
+/* 8. Dashboard Off-Canvas Sidebar (< 1024px) */
+@media (max-width: 1024px) {
+  .dashboard-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 290px;
+    max-width: 85vw;
+    transform: translateX(-100%);
+    box-shadow: 15px 0 35px rgba(0, 0, 0, 0.5);
+    z-index: 70;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [dir="rtl"] .dashboard-sidebar {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+    box-shadow: -15px 0 35px rgba(0, 0, 0, 0.5);
+  }
+
+  .dashboard-sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .dashboard-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(16, 24, 32, 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 65;
+  }
+
+  .dashboard-backdrop.active {
+    display: block;
+  }
+}
+
+/* 9. Container Scaling for Widescreen & Ultrawide Displays */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1240px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1360px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1560px;
+  }
+}
+
+/* 10. Modal Responsiveness */
+.certificate-modal-box {
+  width: 95vw;
+  max-width: 680px;
+  max-height: 90vh;
+  max-height: 90dvh;
+  overflow-y: auto;
+  margin: auto;
+}

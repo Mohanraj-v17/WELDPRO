@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Notifications &amp; Alerts – WELDPRO Dashboard</title>
+  <meta name="description" content="Stay updated with CWI evaluation grades, lab booth schedule alerts, certification approvals, and shop safety notices.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="../assets/logo/favicon.png">
+
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0B1726', DEFAULT: '#142B45', light: '#203E60' },
+            steel: { DEFAULT: '#29465F', dark: '#1C3144', light: '#3D6282' },
+            orange: { DEFAULT: '#F28C28', hover: '#D9771A', light: '#FF9E42' },
+            darkbg: '#101820', darkcard: '#1D2B38', lightbg: '#F4F6F8'
+          },
+          fontFamily: { heading: ['Oswald', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="bg-lightbg dark:bg-darkbg text-slate-800 dark:text-slate-100 font-body transition-colors duration-200">
+
+  <div class="dashboard-layout">
+    <div class="dashboard-backdrop"></div>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="p-5 border-b border-steel/40 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2">
+          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-8 w-auto">
+        </a>
+        <button class="sidebar-close-btn lg:hidden text-slate-400 hover:text-white p-1" aria-label="Close Sidebar"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="p-5 border-b border-steel/30 flex items-center gap-3">
+        <div class="w-11 h-11 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-id-badge"></i></div>
+        <div class="min-w-0 flex-1">
+          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate">Marcus Vance</h4>
+          <span class="text-[11px] font-mono text-orange block user-id-display">WP-2026-8942</span>
+          <span class="inline-block mt-0.5 px-2 py-0.2 text-[9px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">Active • Level 3</span>
+        </div>
+      </div>
+
+      <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
+        <a href="index.html" class="sidebar-nav-link"><i class="fa-solid fa-gauge-high w-5"></i><span>Overview</span></a>
+        <a href="my-profile.html" class="sidebar-nav-link"><i class="fa-solid fa-id-badge w-5"></i><span>My Profile</span></a>
+        <a href="my-programs.html" class="sidebar-nav-link"><i class="fa-solid fa-book-open w-5"></i><span>My Programs</span></a>
+        <a href="lab-hours.html" class="sidebar-nav-link"><i class="fa-solid fa-stopwatch w-5"></i><span>Lab Hours</span><span class="badge-counter user-hours-completed">214</span></a>
+        <a href="skill-assessments.html" class="sidebar-nav-link"><i class="fa-solid fa-clipboard-check w-5"></i><span>Skill Assessments</span></a>
+        <a href="certifications.html" class="sidebar-nav-link"><i class="fa-solid fa-award w-5"></i><span>Certifications</span></a>
+        <a href="attendance.html" class="sidebar-nav-link"><i class="fa-solid fa-calendar-check w-5"></i><span>Attendance</span></a>
+        <a href="notifications.html" class="sidebar-nav-link active"><i class="fa-solid fa-bell text-orange w-5"></i><span>Notifications</span><span class="badge-counter" id="sidebarNotifBadge">3</span></a>
+      </nav>
+
+      <div class="p-4 border-t border-steel/30 flex items-center justify-between text-xs text-slate-400">
+        <a href="../index.html" class="hover:text-white flex items-center gap-1.5 transition"><i class="fa-solid fa-arrow-left"></i><span>Public Site</span></a>
+        <button class="btn-logout-action text-rose-400 hover:text-rose-300 flex items-center gap-1 transition"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Log Out</span></button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="flex items-center gap-3">
+          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
+          <div>
+            <span class="text-xs text-slate-400 uppercase tracking-wider font-mono hidden sm:inline">Communication Center</span>
+            <h1 class="text-lg sm:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-none">Notifications &amp; Shop Bulletins</h1>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="btnMarkAllRead" class="btn-weld btn-secondary-weld text-xs py-2 px-3 sm:px-4">
+            <i class="fa-solid fa-check-double mr-1.5"></i> Mark All as Read
+          </button>
+          <button class="theme-toggle-btn w-9 h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400"></i></button>
+          <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange"></i><span class="dir-label">RTL</span></button>
+        </div>
+      </header>
+
+      <div class="p-4 sm:p-6 lg:p-8 space-y-6">
+        
+        <!-- Filter Tabs & Stats -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-steel/40">
+          <div class="flex flex-wrap items-center gap-2">
+            <button class="notif-filter-tab active px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase transition bg-orange text-white" data-filter="all">
+              All <span class="ml-1 px-1.5 py-0.2 text-[10px] rounded-full bg-black/20" id="countAll">7</span>
+            </button>
+            <button class="notif-filter-tab px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase transition bg-slate-100 dark:bg-navy text-slate-600 dark:text-slate-300 hover:text-white hover:bg-steel" data-filter="assessment">
+              Assessments <span class="ml-1 px-1.5 py-0.2 text-[10px] rounded-full bg-slate-200 dark:bg-steel">2</span>
+            </button>
+            <button class="notif-filter-tab px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase transition bg-slate-100 dark:bg-navy text-slate-600 dark:text-slate-300 hover:text-white hover:bg-steel" data-filter="schedule">
+              Lab &amp; Schedule <span class="ml-1 px-1.5 py-0.2 text-[10px] rounded-full bg-slate-200 dark:bg-steel">2</span>
+            </button>
+            <button class="notif-filter-tab px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase transition bg-slate-100 dark:bg-navy text-slate-600 dark:text-slate-300 hover:text-white hover:bg-steel" data-filter="certification">
+              Certifications <span class="ml-1 px-1.5 py-0.2 text-[10px] rounded-full bg-slate-200 dark:bg-steel">2</span>
+            </button>
+            <button class="notif-filter-tab px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase transition bg-slate-100 dark:bg-navy text-slate-600 dark:text-slate-300 hover:text-white hover:bg-steel" data-filter="safety">
+              Safety &amp; News <span class="ml-1 px-1.5 py-0.2 text-[10px] rounded-full bg-slate-200 dark:bg-steel">1</span>
+            </button>
+          </div>
+
+          <div class="text-xs text-slate-400">
+            <span id="unreadCounterText" class="font-bold text-orange">3 unread notifications</span>
+          </div>
+        </div>
+
+        <!-- Notification List -->
+        <div class="space-y-3" id="notificationsList">
+          
+          <!-- Item 1: Assessment Update (Unread) -->
+          <div class="notif-item unread dashboard-card p-5 border-l-4 border-l-orange flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition hover:border-slate-300 dark:hover:border-steel" data-category="assessment">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-lg shrink-0 mt-0.5">
+                <i class="fa-solid fa-clipboard-check"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.2 text-[10px] font-bold uppercase rounded bg-orange/20 text-orange">Assessment Graded</span>
+                  <span class="text-xs text-slate-400 font-mono">2 hours ago</span>
+                  <span class="unread-dot w-2 h-2 rounded-full bg-orange animate-pulse"></span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white">ASME Sec IX 6G Open Root Evaluation Ready</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                  Senior CWI James Miller completed visual inspection and recorded a score of <strong>94/100</strong>. No undercut detected; uniform interior melt-through.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <a href="skill-assessments.html" class="btn-weld btn-primary-weld text-xs py-1.5 px-3">View Rubric</a>
+              <button class="btn-toggle-read p-2 text-slate-400 hover:text-slate-200 text-xs" title="Toggle Read Status"><i class="fa-regular fa-envelope"></i></button>
+            </div>
+          </div>
+
+          <!-- Item 2: Lab Schedule Update (Unread) -->
+          <div class="notif-item unread dashboard-card p-5 border-l-4 border-l-blue-500 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition hover:border-slate-300 dark:hover:border-steel" data-category="schedule">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-blue-500/15 text-blue-400 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                <i class="fa-solid fa-calendar-day"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.2 text-[10px] font-bold uppercase rounded bg-blue-500/20 text-blue-400">Lab Schedule</span>
+                  <span class="text-xs text-slate-400 font-mono">Yesterday at 4:15 PM</span>
+                  <span class="unread-dot w-2 h-2 rounded-full bg-orange animate-pulse"></span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white">Booth Assignment &amp; Gas Supply Maintenance</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                  Booth #14 gas manifolds have been recalibrated for 100% Argon and 75/25 Ar/CO2. Friday shift start adjusted to 08:30 AM for scheduled manifold purge.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <a href="lab-hours.html" class="btn-weld btn-secondary-weld text-xs py-1.5 px-3">Review Schedule</a>
+              <button class="btn-toggle-read p-2 text-slate-400 hover:text-slate-200 text-xs" title="Toggle Read Status"><i class="fa-regular fa-envelope"></i></button>
+            </div>
+          </div>
+
+          <!-- Item 3: Certification Notification (Unread) -->
+          <div class="notif-item unread dashboard-card p-5 border-l-4 border-l-emerald-500 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition hover:border-slate-300 dark:hover:border-steel" data-category="certification">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.2 text-[10px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">WQTR Issued</span>
+                  <span class="text-xs text-slate-400 font-mono">Nov 10, 2026</span>
+                  <span class="unread-dot w-2 h-2 rounded-full bg-orange animate-pulse"></span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white">AWS D1.1 Structural Plate Bend Test Record Ready</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                  Guided side bend coupons #01 and #02 confirmed 180° elongation with zero fissuring. Official sample test record generated in your student portal.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <a href="certifications.html" class="btn-weld btn-primary-weld text-xs py-1.5 px-3">View Certificate</a>
+              <button class="btn-toggle-read p-2 text-slate-400 hover:text-slate-200 text-xs" title="Toggle Read Status"><i class="fa-regular fa-envelope"></i></button>
+            </div>
+          </div>
+
+          <!-- Item 4: Safety & Shop Floor (Read) -->
+          <div class="notif-item dashboard-card p-5 border-l-4 border-l-slate-400 opacity-80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition hover:opacity-100" data-category="safety">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-slate-200 dark:bg-steel/40 text-slate-500 dark:text-slate-300 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.2 text-[10px] font-bold uppercase rounded bg-slate-200 dark:bg-steel text-slate-400">Safety Briefing</span>
+                  <span class="text-xs text-slate-400 font-mono">Nov 07, 2026</span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white">Quarterly Hexavalent Chromium Exhaust Filter Inspection</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                  All torch fume extraction units in Bays 10-20 were serviced. Remember to position fume snouts within 6-8 inches of arc initiation.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <a href="../facilities/safety-training.html" class="btn-weld btn-secondary-weld text-xs py-1.5 px-3">Safety Protocol</a>
+              <button class="btn-toggle-read p-2 text-slate-400 hover:text-slate-200 text-xs" title="Toggle Read Status"><i class="fa-solid fa-envelope-open"></i></button>
+            </div>
+          </div>
+
+          <!-- Item 5: Assessment Update (Read) -->
+          <div class="notif-item dashboard-card p-5 border-l-4 border-l-slate-400 opacity-80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition hover:opacity-100" data-category="assessment">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-slate-200 dark:bg-steel/40 text-slate-500 dark:text-slate-300 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                <i class="fa-solid fa-clipboard-check"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.2 text-[10px] font-bold uppercase rounded bg-slate-200 dark:bg-steel text-slate-400">Assessment Graded</span>
+                  <span class="text-xs text-slate-400 font-mono">Nov 04, 2026</span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white">GTAW Stainless Sanitary Tube Purge Evaluation: 91/100</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                  Zero coloration or oxidation on the root side coupon interior. Excellent oxygen-meter reading before arc ignition.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <a href="skill-assessments.html" class="btn-weld btn-secondary-weld text-xs py-1.5 px-3">View Score</a>
+              <button class="btn-toggle-read p-2 text-slate-400 hover:text-slate-200 text-xs" title="Toggle Read Status"><i class="fa-solid fa-envelope-open"></i></button>
+            </div>
+          </div>
+
+          <!-- Item 6: Lab Schedule (Read) -->
+          <div class="notif-item dashboard-card p-5 border-l-4 border-l-slate-400 opacity-80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition hover:opacity-100" data-category="schedule">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-slate-200 dark:bg-steel/40 text-slate-500 dark:text-slate-300 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                <i class="fa-solid fa-stopwatch"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.2 text-[10px] font-bold uppercase rounded bg-slate-200 dark:bg-steel text-slate-400">Lab Hours Verified</span>
+                  <span class="text-xs text-slate-400 font-mono">Nov 01, 2026</span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white">Monthly Lab Hours Milestone: 200 Practical Hours Reached</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                  Congratulations Marcus! You have crossed the 200-hour threshold towards your 300-hour qualification goal.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <a href="lab-hours.html" class="btn-weld btn-secondary-weld text-xs py-1.5 px-3">View Milestone</a>
+              <button class="btn-toggle-read p-2 text-slate-400 hover:text-slate-200 text-xs" title="Toggle Read Status"><i class="fa-solid fa-envelope-open"></i></button>
+            </div>
+          </div>
+
+          <!-- Item 7: Certification Application (Read) -->
+          <div class="notif-item dashboard-card p-5 border-l-4 border-l-slate-400 opacity-80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition hover:opacity-100" data-category="certification">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-slate-200 dark:bg-steel/40 text-slate-500 dark:text-slate-300 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                <i class="fa-solid fa-certificate"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="px-2 py-0.2 text-[10px] font-bold uppercase rounded bg-slate-200 dark:bg-steel text-slate-400">Exam Registration</span>
+                  <span class="text-xs text-slate-400 font-mono">Oct 26, 2026</span>
+                </div>
+                <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white">ASME 6G Final Practical Examination Candidate Docket Approved</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                  Registrar office has verified prerequisite coursework. Practical 6G coupon test scheduled for December 18, 2026 under Independent CWI Supervision.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <a href="certifications.html" class="btn-weld btn-secondary-weld text-xs py-1.5 px-3">Docket Details</a>
+              <button class="btn-toggle-read p-2 text-slate-400 hover:text-slate-200 text-xs" title="Toggle Read Status"><i class="fa-solid fa-envelope-open"></i></button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Notification Preferences Card -->
+        <div class="dashboard-card p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <i class="fa-solid fa-sliders text-orange"></i>
+            <h3 class="font-heading text-base font-bold uppercase text-slate-900 dark:text-white">Student Alert Preferences</h3>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/50 cursor-pointer">
+              <input type="checkbox" checked class="rounded text-orange focus:ring-orange w-4 h-4">
+              <div>
+                <span class="font-bold text-slate-800 dark:text-white block">Email Grade Alerts</span>
+                <span class="text-[11px] text-slate-400">Receive instant CWI coupon rubrics</span>
+              </div>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/50 cursor-pointer">
+              <input type="checkbox" checked class="rounded text-orange focus:ring-orange w-4 h-4">
+              <div>
+                <span class="font-bold text-slate-800 dark:text-white block">SMS Shift Changes</span>
+                <span class="text-[11px] text-slate-400">Alerts for lab schedules and booth moves</span>
+              </div>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/50 cursor-pointer">
+              <input type="checkbox" checked class="rounded text-orange focus:ring-orange w-4 h-4">
+              <div>
+                <span class="font-bold text-slate-800 dark:text-white block">Certification Tracking</span>
+                <span class="text-[11px] text-slate-400">Lab bend test outcomes &amp; WQTR releases</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/direction.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Filter Tabs
+      const filterTabs = document.querySelectorAll('.notif-filter-tab');
+      const notifItems = document.querySelectorAll('.notif-item');
+
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterTabs.forEach(t => {
+            t.classList.remove('active', 'bg-orange', 'text-white');
+            t.classList.add('bg-slate-100', 'dark:bg-navy', 'text-slate-600', 'dark:text-slate-300');
+          });
+          tab.classList.add('active', 'bg-orange', 'text-white');
+          tab.classList.remove('bg-slate-100', 'dark:bg-navy', 'text-slate-600', 'dark:text-slate-300');
+
+          const filter = tab.dataset.filter;
+          notifItems.forEach(item => {
+            if (filter === 'all' || item.dataset.category === filter) {
+              item.style.display = '';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Update Unread Counter
+      function updateCounters() {
+        const unreadItems = document.querySelectorAll('.notif-item.unread');
+        const count = unreadItems.length;
+        const textEl = document.getElementById('unreadCounterText');
+        const badgeEl = document.getElementById('sidebarNotifBadge');
+        if (textEl) {
+          textEl.textContent = count > 0 ? `${count} unread notifications` : 'All notifications caught up!';
+        }
+        if (badgeEl) {
+          badgeEl.textContent = count;
+          if (count === 0) badgeEl.style.display = 'none';
+        }
+      }
+
+      // Mark All Read
+      const btnMarkAll = document.getElementById('btnMarkAllRead');
+      if (btnMarkAll) {
+        btnMarkAll.addEventListener('click', () => {
+          document.querySelectorAll('.notif-item.unread').forEach(item => {
+            item.classList.remove('unread');
+            item.classList.add('opacity-80');
+            const dot = item.querySelector('.unread-dot');
+            if (dot) dot.remove();
+            const icon = item.querySelector('.btn-toggle-read i');
+            if (icon) {
+              icon.classList.remove('fa-envelope');
+              icon.classList.add('fa-envelope-open');
+            }
+          });
+          updateCounters();
+          if (window.WeldValidation) {
+            window.WeldValidation.showToast('All notifications marked as read', 'info');
+          }
+        });
+      }
+
+      // Toggle Single Item Read
+      document.querySelectorAll('.btn-toggle-read').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.notif-item');
+          if (item) {
+            item.classList.toggle('unread');
+            if (item.classList.contains('unread')) {
+              item.classList.remove('opacity-80');
+              const icon = btn.querySelector('i');
+              if (icon) {
+                icon.classList.remove('fa-envelope-open');
+                icon.classList.add('fa-envelope');
+              }
+            } else {
+              item.classList.add('opacity-80');
+              const dot = item.querySelector('.unread-dot');
+              if (dot) dot.remove();
+              const icon = btn.querySelector('i');
+              if (icon) {
+                icon.classList.remove('fa-envelope');
+                icon.classList.add('fa-envelope-open');
+              }
+            }
+            updateCounters();
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

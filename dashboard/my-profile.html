@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Student Profile – WELDPRO Dashboard</title>
+  <meta name="description" content="View and update student credentials, contact info, booth assignments, and safety PPE sizing.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="../assets/logo/favicon.png">
+
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0B1726', DEFAULT: '#142B45', light: '#203E60' },
+            steel: { DEFAULT: '#29465F', dark: '#1C3144', light: '#3D6282' },
+            orange: { DEFAULT: '#F28C28', hover: '#D9771A', light: '#FF9E42' },
+            darkbg: '#101820', darkcard: '#1D2B38', lightbg: '#F4F6F8'
+          },
+          fontFamily: { heading: ['Oswald', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="bg-lightbg dark:bg-darkbg text-slate-800 dark:text-slate-100 font-body transition-colors duration-200">
+
+  <div class="dashboard-layout">
+    
+    <div class="dashboard-backdrop"></div>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="p-5 border-b border-steel/40 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2">
+          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-8 w-auto">
+        </a>
+        <button class="sidebar-close-btn lg:hidden text-slate-400 hover:text-white p-1" aria-label="Close Sidebar">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="p-5 border-b border-steel/30 flex items-center gap-3">
+        <div class="w-11 h-11 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-id-badge"></i></div>
+        <div class="min-w-0 flex-1">
+          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate">Marcus Vance</h4>
+          <span class="text-[11px] font-mono text-orange block user-id-display">WP-2026-8942</span>
+          <span class="inline-block mt-0.5 px-2 py-0.2 text-[9px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">
+            Active • Level 3
+          </span>
+        </div>
+      </div>
+
+      <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
+        <a href="index.html" class="sidebar-nav-link">
+          <i class="fa-solid fa-gauge-high w-5"></i>
+          <span>Overview</span>
+        </a>
+        <a href="my-profile.html" class="sidebar-nav-link active">
+          <i class="fa-solid fa-id-badge text-orange w-5"></i>
+          <span>My Profile</span>
+        </a>
+        <a href="my-programs.html" class="sidebar-nav-link">
+          <i class="fa-solid fa-book-open w-5"></i>
+          <span>My Programs</span>
+        </a>
+        <a href="lab-hours.html" class="sidebar-nav-link">
+          <i class="fa-solid fa-stopwatch w-5"></i>
+          <span>Lab Hours</span>
+          <span class="badge-counter user-hours-completed">214</span>
+        </a>
+        <a href="skill-assessments.html" class="sidebar-nav-link">
+          <i class="fa-solid fa-clipboard-check w-5"></i>
+          <span>Skill Assessments</span>
+        </a>
+        <a href="certifications.html" class="sidebar-nav-link">
+          <i class="fa-solid fa-award w-5"></i>
+          <span>Certifications</span>
+        </a>
+        <a href="attendance.html" class="sidebar-nav-link">
+          <i class="fa-solid fa-calendar-check w-5"></i>
+          <span>Attendance</span>
+        </a>
+        <a href="notifications.html" class="sidebar-nav-link">
+          <i class="fa-solid fa-bell w-5"></i>
+          <span>Notifications</span>
+          <span class="badge-counter">3</span>
+        </a>
+      </nav>
+
+      <div class="p-4 border-t border-steel/30 flex items-center justify-between text-xs text-slate-400">
+        <a href="../index.html" class="hover:text-white flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Public Site</span>
+        </a>
+        <button class="btn-logout-action text-rose-400 hover:text-rose-300 flex items-center gap-1 transition">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      
+      <!-- Topbar -->
+      <header class="dashboard-topbar">
+        <div class="flex items-center gap-3">
+          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange" aria-label="Toggle Navigation">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+          <div>
+            <span class="text-xs text-slate-400 uppercase tracking-wider font-mono hidden sm:inline">Student Portal</span>
+            <h1 class="text-lg sm:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-none">
+              Student Profile &amp; Settings
+            </h1>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button class="theme-toggle-btn w-9 h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme">
+            <i class="fa-solid fa-sun text-yellow-400"></i>
+          </button>
+          <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction">
+            <i class="fa-solid fa-globe text-orange"></i>
+            <span class="dir-label">RTL</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="p-4 sm:p-6 lg:p-8 space-y-6 max-w-4xl">
+        
+        <!-- Success Alert (Hidden by default, triggered by JS) -->
+        <div id="profileSuccessAlert" class="hidden p-4 rounded-lg bg-emerald-500/20 border border-emerald-500 text-emerald-600 dark:text-emerald-400 text-sm flex items-center gap-3">
+          <i class="fa-solid fa-circle-check text-lg"></i>
+          <div>
+            <strong>Profile Updated Successfully!</strong> Changes have been stored to your student record.
+          </div>
+        </div>
+
+        <!-- Profile Form Card -->
+        <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/40 p-6 sm:p-8 shadow-sm">
+          
+          <div class="flex items-center gap-4 pb-6 mb-6 border-b border-slate-100 dark:border-steel/30">
+            <div class="w-16 h-16 rounded-xl bg-orange/15 border-2 border-orange text-orange flex flex-col items-center justify-center flex-shrink-0"><i class="fa-solid fa-id-card text-2xl mb-0.5"></i><span class="text-[8px] font-mono font-bold uppercase">ID BADGE</span></div>
+            <div>
+              <h3 class="user-name-display text-xl font-heading font-bold text-slate-900 dark:text-white uppercase">Marcus Vance</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">Student ID: <span class="user-id-display">WP-2026-8942</span></p>
+              <span class="inline-block mt-1 px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-orange/15 text-orange">
+                ASME Pipe &amp; Pressure Vessels Track
+              </span>
+            </div>
+          </div>
+
+          <form id="studentProfileForm" class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Full Legal Name</label>
+                <input type="text" name="fullName" class="w-full px-3.5 py-2.5 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-orange transition">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Institutional Email (Read Only)</label>
+                <input type="email" name="email" readonly class="w-full px-3.5 py-2.5 rounded border border-slate-200 dark:border-steel/50 bg-slate-100 dark:bg-navy-900/60 text-slate-500 dark:text-slate-400 text-sm cursor-not-allowed">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Contact Phone Number</label>
+                <input type="tel" name="phone" class="w-full px-3.5 py-2.5 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-orange transition">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Emergency Contact (Name &amp; Phone)</label>
+                <input type="text" name="emergencyContact" class="w-full px-3.5 py-2.5 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-orange transition" placeholder="Elena Vance (+1 555-882-9912)">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Assigned Welding Booth</label>
+                <input type="text" name="boothAssigned" class="w-full px-3.5 py-2.5 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-orange transition">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">PPE Equipment Sizes (Locker #14)</label>
+                <input type="text" readonly value="Helmet: L | Jacket: XL | Gloves: 10" class="w-full px-3.5 py-2.5 rounded border border-slate-200 dark:border-steel/50 bg-slate-100 dark:bg-navy-900/60 text-slate-500 dark:text-slate-400 text-sm cursor-not-allowed">
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 dark:border-steel/30 flex items-center justify-end gap-3">
+              <button type="submit" class="btn-weld btn-primary-weld text-xs py-2.5 px-6">
+                Save Profile Changes <i class="fa-solid fa-floppy-disk ml-1"></i>
+              </button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/direction.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

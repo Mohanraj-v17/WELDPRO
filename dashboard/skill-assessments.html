@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Assessments &amp; Rubrics – WELDPRO Dashboard</title>
+  <meta name="description" content="Review welding qualification test scores, coupon bend inspection rubrics, and CWI instructor feedback.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="../assets/logo/favicon.png">
+
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0B1726', DEFAULT: '#142B45', light: '#203E60' },
+            steel: { DEFAULT: '#29465F', dark: '#1C3144', light: '#3D6282' },
+            orange: { DEFAULT: '#F28C28', hover: '#D9771A', light: '#FF9E42' },
+            darkbg: '#101820', darkcard: '#1D2B38', lightbg: '#F4F6F8'
+          },
+          fontFamily: { heading: ['Oswald', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="bg-lightbg dark:bg-darkbg text-slate-800 dark:text-slate-100 font-body transition-colors duration-200">
+
+  <div class="dashboard-layout">
+    <div class="dashboard-backdrop"></div>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="p-5 border-b border-steel/40 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2">
+          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-8 w-auto">
+        </a>
+        <button class="sidebar-close-btn lg:hidden text-slate-400 hover:text-white p-1" aria-label="Close Sidebar"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="p-5 border-b border-steel/30 flex items-center gap-3">
+        <div class="w-11 h-11 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-id-badge"></i></div>
+        <div class="min-w-0 flex-1">
+          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate">Marcus Vance</h4>
+          <span class="text-[11px] font-mono text-orange block user-id-display">WP-2026-8942</span>
+          <span class="inline-block mt-0.5 px-2 py-0.2 text-[9px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">Active • Level 3</span>
+        </div>
+      </div>
+
+      <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
+        <a href="index.html" class="sidebar-nav-link"><i class="fa-solid fa-gauge-high w-5"></i><span>Overview</span></a>
+        <a href="my-profile.html" class="sidebar-nav-link"><i class="fa-solid fa-id-badge w-5"></i><span>My Profile</span></a>
+        <a href="my-programs.html" class="sidebar-nav-link"><i class="fa-solid fa-book-open w-5"></i><span>My Programs</span></a>
+        <a href="lab-hours.html" class="sidebar-nav-link"><i class="fa-solid fa-stopwatch w-5"></i><span>Lab Hours</span><span class="badge-counter user-hours-completed">214</span></a>
+        <a href="skill-assessments.html" class="sidebar-nav-link active"><i class="fa-solid fa-clipboard-check text-orange w-5"></i><span>Skill Assessments</span></a>
+        <a href="certifications.html" class="sidebar-nav-link"><i class="fa-solid fa-award w-5"></i><span>Certifications</span></a>
+        <a href="attendance.html" class="sidebar-nav-link"><i class="fa-solid fa-calendar-check w-5"></i><span>Attendance</span></a>
+        <a href="notifications.html" class="sidebar-nav-link"><i class="fa-solid fa-bell w-5"></i><span>Notifications</span><span class="badge-counter">3</span></a>
+      </nav>
+
+      <div class="p-4 border-t border-steel/30 flex items-center justify-between text-xs text-slate-400">
+        <a href="../index.html" class="hover:text-white flex items-center gap-1.5 transition"><i class="fa-solid fa-arrow-left"></i><span>Public Site</span></a>
+        <button class="btn-logout-action text-rose-400 hover:text-rose-300 flex items-center gap-1 transition"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Log Out</span></button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="flex items-center gap-3">
+          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
+          <div>
+            <span class="text-xs text-slate-400 uppercase tracking-wider font-mono hidden sm:inline">Quality Verification</span>
+            <h1 class="text-lg sm:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-none">Coupon Evaluations &amp; Scores</h1>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="theme-toggle-btn w-9 h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400"></i></button>
+          <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange"></i><span class="dir-label">RTL</span></button>
+        </div>
+      </header>
+
+      <div class="p-4 sm:p-6 lg:p-8 space-y-6">
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex flex-wrap gap-2">
+            <button class="assessment-filter-btn px-3 py-1.5 rounded text-xs font-bold uppercase transition bg-orange-500 text-white" data-filter="all">All Assessments (5)</button>
+            <button class="assessment-filter-btn px-3 py-1.5 rounded text-xs font-bold uppercase transition bg-slate-200 dark:bg-navy-light/50 text-slate-700 dark:text-slate-300" data-filter="passed">Passed (3)</button>
+            <button class="assessment-filter-btn px-3 py-1.5 rounded text-xs font-bold uppercase transition bg-slate-200 dark:bg-navy-light/50 text-slate-700 dark:text-slate-300" data-filter="in-progress">In Progress (1)</button>
+            <button class="assessment-filter-btn px-3 py-1.5 rounded text-xs font-bold uppercase transition bg-slate-200 dark:bg-navy-light/50 text-slate-700 dark:text-slate-300" data-filter="scheduled">Scheduled (1)</button>
+          </div>
+          <span class="text-xs text-slate-400 font-mono">Governing Standards: AWS D1.1 &amp; ASME Sec IX</span>
+        </div>
+
+        <!-- Cards Container (Injected by js/assessments.js) -->
+        <div id="assessmentsCardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dynamically populated -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Rubric Inspection Modal -->
+  <div id="rubricDetailModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+    <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/60 shadow-2xl max-w-xl w-full p-6 relative max-h-[90vh] overflow-y-auto">
+      <div class="flex items-start justify-between pb-3 mb-4 border-b border-slate-100 dark:border-steel/40">
+        <div>
+          <span id="modalRubricCode" class="text-xs font-mono font-bold text-orange uppercase block"></span>
+          <h3 id="modalRubricTitle" class="font-heading font-bold text-xl text-slate-900 dark:text-white uppercase mt-0.5"></h3>
+        </div>
+        <button id="btnCloseRubricModal" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 bg-slate-50 dark:bg-navy-900/50 rounded mb-4 text-xs">
+        <div>
+          <span class="text-slate-400 block uppercase">Final Grade / Result</span>
+          <strong id="modalRubricScore" class="text-base text-slate-900 dark:text-white"></strong>
+        </div>
+        <div>
+          <span class="text-slate-400 block uppercase">Status</span>
+          <strong id="modalRubricStatus" class="text-orange text-base"></strong>
+        </div>
+        <div>
+          <span class="text-slate-400 block uppercase">CWI Evaluator</span>
+          <span id="modalRubricEvaluator" class="font-semibold text-slate-800 dark:text-slate-200"></span>
+        </div>
+        <div>
+          <span class="text-slate-400 block uppercase">Evaluation Date</span>
+          <span id="modalRubricDate" class="font-semibold text-slate-800 dark:text-slate-200"></span>
+        </div>
+      </div>
+
+      <div class="mb-5">
+        <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Detailed Rubric Parameters</h5>
+        <ul id="modalRubricChecklist" class="space-y-1">
+          <!-- Populated by JS -->
+        </ul>
+      </div>
+
+      <div class="p-3 bg-orange/5 border-l-3 border-orange rounded mb-4 text-xs">
+        <strong class="text-slate-900 dark:text-white block mb-1">Inspector Feedback:</strong>
+        <p id="modalRubricFeedback" class="text-slate-600 dark:text-slate-300 italic"></p>
+      </div>
+
+      <div class="p-3 bg-slate-50 dark:bg-navy-900/40 rounded text-xs">
+        <strong class="text-slate-900 dark:text-white block mb-1">Improvement Recommendation:</strong>
+        <p id="modalRubricRecommendation" class="text-slate-600 dark:text-slate-300"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/direction.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/assessments.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

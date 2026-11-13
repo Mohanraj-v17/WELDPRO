@@ -1,0 +1,275 @@
+/* WELDPRO Student Dashboard Stylesheet */
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-light-bg);
+}
+
+/* Sidebar Styles */
+.dashboard-sidebar {
+  width: 280px;
+  background-color: #101820;
+  border-right: 1px solid #1D2B38;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, width 0.3s ease;
+  z-index: 50;
+}
+
+[dir="rtl"] .dashboard-sidebar {
+  border-right: none;
+  border-left: 1px solid #1D2B38;
+}
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.85rem 1.25rem;
+  color: #94A3B8;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+.sidebar-nav-link:hover {
+  color: #FFFFFF;
+  background-color: rgba(41, 70, 95, 0.4);
+}
+
+.sidebar-nav-link.active {
+  color: #FFFFFF;
+  background-color: #1D2B38;
+  border-left: 4px solid var(--color-welding-orange);
+  font-weight: 600;
+}
+
+[dir="rtl"] .sidebar-nav-link.active {
+  border-left: none;
+  border-right: 4px solid var(--color-welding-orange);
+}
+
+.sidebar-nav-link .badge-counter {
+  margin-left: auto;
+  background-color: var(--color-welding-orange);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
+[dir="rtl"] .sidebar-nav-link .badge-counter {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Main Dashboard Body */
+.dashboard-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* Top Navbar */
+.dashboard-topbar {
+  height: 72px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.75rem;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.dark .dashboard-topbar {
+  background-color: #142B45;
+  border-bottom-color: #29465F;
+}
+
+/* Dashboard Topbar Elements Alignment */
+.dashboard-topbar .theme-toggle-btn,
+.dashboard-topbar .dir-toggle-btn,
+.dashboard-topbar .notif-menu-trigger,
+.dashboard-topbar .sidebar-toggle-btn {
+  height: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+}
+
+.dashboard-topbar .dir-toggle-btn {
+  padding-left: 0.65rem !important;
+  padding-right: 0.65rem !important;
+}
+
+/* Stat Cards */
+.stat-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark .stat-card {
+  background: #1D2B38;
+  border-color: #2A3C4D;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(20, 43, 69, 0.15);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--color-secondary-steel);
+}
+
+.stat-card.accent-orange::before {
+  background: var(--color-welding-orange);
+}
+
+.stat-card.accent-navy::before {
+  background: var(--color-primary-navy);
+}
+
+.stat-card.accent-green::before {
+  background: #10B981;
+}
+
+/* Progress Rings and Bars */
+.progress-bar-container {
+  width: 100%;
+  background-color: #E2E8F0;
+  border-radius: 9999px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.dark .progress-bar-container {
+  background-color: #2A3C4D;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #F28C28 0%, #FFB067 100%);
+  border-radius: 9999px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Clean Tables */
+.weld-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.weld-table th {
+  background-color: #F8FAFC;
+  color: #475569;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid #E2E8F0;
+  text-align: left;
+}
+
+[dir="rtl"] .weld-table th {
+  text-align: right;
+}
+
+.dark .weld-table th {
+  background-color: #142B45;
+  color: #94A3B8;
+  border-bottom-color: #2A3C4D;
+}
+
+.weld-table td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.925rem;
+  color: inherit;
+}
+
+.dark .weld-table td {
+  border-bottom-color: #2A3C4D;
+}
+
+.weld-table tr:hover td {
+  background-color: rgba(242, 140, 40, 0.04);
+}
+
+/* Status Badges */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-completed {
+  background-color: #DEF7EC;
+  color: #03543F;
+}
+.dark .status-completed {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34D399;
+}
+
+.status-in-progress {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+.dark .status-in-progress {
+  background-color: rgba(242, 140, 40, 0.2);
+  color: #FBBF24;
+}
+
+.status-pending {
+  background-color: #F1F5F9;
+  color: #475569;
+}
+.dark .status-pending {
+  background-color: rgba(148, 163, 184, 0.2);
+  color: #CBD5E1;
+}
+
+/* Certificate Preview Frame */
+.certificate-frame {
+  border: 12px double #142B45;
+  background: #FCFCFD;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.dark .certificate-frame {
+  background: #1A2836;
+  border-color: #F28C28;
+}

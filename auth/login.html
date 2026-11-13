@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal Login – WELDPRO Trade School</title>
+  <meta name="description" content="Sign in to the WELDPRO Student Dashboard to access logged lab hours, coupon assessment scores, and certification transcripts.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="../assets/logo/favicon.png">
+
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0B1726', DEFAULT: '#142B45', light: '#203E60' },
+            steel: { DEFAULT: '#29465F', dark: '#1C3144', light: '#3D6282' },
+            orange: { DEFAULT: '#F28C28', hover: '#D9771A', light: '#FF9E42' },
+            darkbg: '#101820', darkcard: '#1D2B38', lightbg: '#F4F6F8'
+          },
+          fontFamily: { heading: ['Oswald', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="bg-lightbg dark:bg-darkbg text-slate-800 dark:text-slate-100 min-h-screen flex flex-col justify-between font-body transition-colors duration-200">
+
+  <!-- Header: ONLY Theme and Layout (RTL) Buttons -->
+  <header class="py-4 px-4 sm:px-6 lg:px-8 bg-transparent border-0 shadow-none">
+    <div class="w-full max-w-7xl mx-auto flex items-center justify-end gap-2.5">
+      <!-- Theme Toggle -->
+      <button class="theme-toggle-btn w-10 h-10 rounded-lg border border-slate-300 dark:border-steel bg-slate-100 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme">
+        <i class="fa-solid fa-sun text-yellow-400"></i>
+      </button>
+
+      <!-- Layout Direction (LTR/RTL) Toggle -->
+      <button class="dir-toggle-btn h-10 px-3 rounded-lg border border-slate-300 dark:border-steel bg-slate-100 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1.5" aria-label="Toggle Layout Direction">
+        <i class="fa-solid fa-globe text-orange"></i>
+        <span class="dir-label">RTL</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Login Main Container -->
+  <main class="flex-grow flex items-center justify-center py-12 px-4">
+    <div class="max-w-md w-full bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/50 shadow-2xl p-8 relative overflow-hidden">
+      
+      <!-- Top Accent Bar -->
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange via-orange-light to-steel"></div>
+
+      <!-- Top Center: Logo and Title Aligned -->
+      <div class="text-center mb-6">
+        <a href="../index.html" class="inline-flex items-center justify-center mb-4 group" aria-label="WELDPRO Home">
+          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-11 w-auto mx-auto group-hover:scale-105 transition-transform duration-200">
+        </a>
+        <h1 class="text-2xl font-heading font-bold uppercase text-slate-900 dark:text-white">Student Portal Login</h1>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Access your practical lab log, assessments, and certifications</p>
+      </div>
+
+      <!-- Demo Credentials Notice -->
+      <div class="mb-5 p-3 rounded bg-orange/10 border border-orange/30 text-xs text-slate-700 dark:text-slate-200">
+        <div class="flex items-center gap-1 font-bold text-orange mb-1">
+          <i class="fa-solid fa-circle-info"></i> Demo Student Credentials:
+        </div>
+        <div>Email: <strong class="font-mono text-slate-900 dark:text-white">student@weldpro.edu</strong></div>
+        <div>Password: <strong class="font-mono text-slate-900 dark:text-white">weld123</strong> (or any 6+ chars)</div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Institutional Email</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 pointer-events-none">
+              <i class="fa-solid fa-envelope text-xs"></i>
+            </span>
+            <input type="email" name="email" required value="student@weldpro.edu" class="w-full pl-9 pr-3 py-2.5 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-orange transition" placeholder="student@weldpro.edu">
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300">Password</label>
+            <a href="forgot-password.html" class="text-xs text-orange hover:underline font-medium">Forgot password?</a>
+          </div>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 pointer-events-none">
+              <i class="fa-solid fa-key text-xs"></i>
+            </span>
+            <input type="password" name="password" required value="weld123" class="w-full pl-9 pr-3 py-2.5 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-orange transition" placeholder="••••••••">
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 pt-1">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" name="rememberMe" checked class="rounded border-slate-300 text-orange focus:ring-orange accent-orange">
+            <span>Remember session on this device</span>
+          </label>
+        </div>
+
+        <button type="submit" class="w-full btn-weld btn-primary-weld py-2.5 text-sm font-bold uppercase tracking-wider">
+          Sign In To Portal <i class="fa-solid fa-arrow-right-to-bracket ml-1"></i>
+        </button>
+      </form>
+
+      <div class="mt-6 pt-5 border-t border-slate-200 dark:border-steel/40 text-center text-xs text-slate-500 dark:text-slate-400">
+        New trainee not yet registered? 
+        <a href="register.html" class="text-orange font-bold hover:underline ml-1">Create Student Profile</a>
+      </div>
+
+      <div class="mt-3 text-center text-xs">
+        <a href="../index.html" class="text-slate-500 hover:text-orange transition inline-flex items-center gap-1 font-medium">
+          <i class="fa-solid fa-arrow-left text-[10px]"></i> Return to Public Site
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="py-4 border-t border-slate-200 dark:border-steel/40 text-center text-xs text-slate-500">
+    &copy; <span class="current-year">2026</span> Welding Trade School. Secure Student Authentication Portal (Demo Mode).
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/direction.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

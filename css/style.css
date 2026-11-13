@@ -1,0 +1,388 @@
+/* WELDPRO Industrial Trade School - Primary Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-primary-navy: #142B45;
+  --color-secondary-steel: #29465F;
+  --color-welding-orange: #F28C28;
+  --color-orange-hover: #D9771A;
+  --color-light-bg: #F4F6F8;
+  --color-white: #FFFFFF;
+  --color-dark-bg: #101820;
+  --color-dark-card: #1D2B38;
+  --color-text-main: #142B45;
+  --color-text-muted: #5A6D80;
+  --color-border: #E2E8F0;
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --shadow-industrial: 0 10px 30px -10px rgba(20, 43, 69, 0.15);
+  --shadow-orange-glow: 0 0 25px rgba(242, 140, 40, 0.35);
+}
+
+.dark {
+  --color-light-bg: #101820;
+  --color-white: #1D2B38;
+  --color-text-main: #F4F6F8;
+  --color-text-muted: #94A3B8;
+  --color-border: #2A3C4D;
+  --shadow-industrial: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Base Resets & Typography */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  background-color: var(--color-light-bg);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: clip;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #101820;
+}
+::-webkit-scrollbar-thumb {
+  background: #29465F;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F28C28;
+}
+
+/* Industrial Patterns & Background Textures */
+.industrial-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(41, 70, 95, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(41, 70, 95, 0.08) 1px, transparent 1px);
+}
+.dark .industrial-grid {
+  background-image: 
+    linear-gradient(to right, rgba(242, 140, 40, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(242, 140, 40, 0.06) 1px, transparent 1px);
+}
+
+.steel-plate {
+  background: linear-gradient(135deg, #142B45 0%, #1A3452 50%, #29465F 100%);
+  position: relative;
+}
+
+.steel-plate::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(rgba(242, 140, 40, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Industrial Corner Accents */
+.industrial-box {
+  position: relative;
+  border: 1px solid var(--color-border);
+}
+.industrial-box::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 10px;
+  height: 10px;
+  border-top: 3px solid var(--color-welding-orange);
+  border-left: 3px solid var(--color-welding-orange);
+  pointer-events: none;
+}
+.industrial-box::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 3px solid var(--color-welding-orange);
+  border-right: 3px solid var(--color-welding-orange);
+  pointer-events: none;
+}
+
+/* Button Components */
+.btn-weld {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-primary-weld {
+  background-color: var(--color-welding-orange);
+  color: #FFFFFF;
+  border: 1px solid var(--color-welding-orange);
+  box-shadow: 0 4px 15px rgba(242, 140, 40, 0.3);
+}
+.btn-primary-weld:hover {
+  background-color: var(--color-orange-hover);
+  border-color: var(--color-orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(242, 140, 40, 0.45);
+}
+
+.btn-navy-weld {
+  background-color: var(--color-primary-navy);
+  color: #FFFFFF;
+  border: 1px solid var(--color-secondary-steel);
+}
+.btn-navy-weld:hover {
+  background-color: var(--color-secondary-steel);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.btn-outline-weld {
+  background-color: transparent;
+  color: var(--color-welding-orange);
+  border: 2px solid var(--color-welding-orange);
+}
+.btn-outline-weld:hover {
+  background-color: var(--color-welding-orange);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* Glow effects */
+.glow-orange {
+  box-shadow: 0 0 25px rgba(242, 140, 40, 0.35);
+}
+
+.text-glow-orange {
+  text-shadow: 0 0 15px rgba(242, 140, 40, 0.5);
+}
+
+/* ==========================================================================
+   Navbar Geometric Precision & Universal Baseline Alignment
+   ========================================================================== */
+.main-navbar {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  width: 100% !important;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+}
+
+.main-navbar .container,
+.main-navbar .max-w-7xl {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+/* Symmetrical desktop navigation centering with auto margins and slightly reduced cohesive gap */
+@media (min-width: 1280px) {
+  .main-navbar nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    gap: 0.55rem !important;
+  }
+}
+
+/* Ensure all desktop nav items share identical 40px box, single-line text, and centered baseline */
+.nav-link-item,
+.dropdown-trigger {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 40px !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  text-align: center !important;
+}
+
+.nav-item-dropdown {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 40px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+/* Ensure all navbar control buttons share identical 40px height, centered text and icon alignment */
+.theme-toggle-btn,
+.dir-toggle-btn,
+.nav-auth-btn,
+.nav-login-btn,
+.mobile-menu-toggle {
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
+/* Ensure navbar logo anchor and img share identical 40px vertical center alignment */
+.main-navbar a[aria-label="WELDPRO Home"],
+.main-navbar a[aria-label="WELDPRO Home"] img {
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+}
+
+/* Mega Menu & Standard Dropdown Styles */
+.mega-dropdown-menu,
+.dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.nav-item-dropdown:hover .mega-dropdown-menu,
+.nav-item-dropdown.active .mega-dropdown-menu,
+.nav-item-dropdown:hover .dropdown-menu,
+.nav-item-dropdown.active .dropdown-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+/* Centered Mega Menu */
+.mega-dropdown-menu-center {
+  left: 50% !important;
+  transform: translate(-50%, 8px) !important;
+}
+
+.nav-item-dropdown:hover .mega-dropdown-menu-center,
+.nav-item-dropdown.active .mega-dropdown-menu-center {
+  transform: translate(-50%, 0) !important;
+}
+
+/* Header blur */
+.header-glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Card Hover */
+.industrial-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.industrial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px -10px rgba(20, 43, 69, 0.25);
+  border-color: var(--color-welding-orange) !important;
+}
+.dark .industrial-card:hover {
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* Spark Animation Effect */
+@keyframes sparkPulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.98); }
+  50% { opacity: 0.9; transform: scale(1.02); }
+}
+
+.animate-spark {
+  animation: sparkPulse 3s infinite ease-in-out;
+}
+
+/* Direction (RTL) rules */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .fa-arrow-right {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .fa-chevron-right {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .fa-arrow-left {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .industrial-box::before {
+  left: auto;
+  right: -2px;
+  border-left: none;
+  border-right: 3px solid var(--color-welding-orange);
+}
+
+[dir="rtl"] .industrial-box::after {
+  right: auto;
+  left: -2px;
+  border-right: none;
+  border-left: 3px solid var(--color-welding-orange);
+}
+
+/* Accordion Transition */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease-out;
+}
+.accordion-content.open {
+  max-height: 600px;
+  transition: max-height 0.4s ease-in;
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+  background-color: rgba(16, 24, 32, 0.8);
+  backdrop-filter: blur(4px);
+}

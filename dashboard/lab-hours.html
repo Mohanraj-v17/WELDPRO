@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Lab Hours Tracker – WELDPRO Dashboard</title>
+  <meta name="description" content="Track your practical welding booth hours, process breakdowns, and signed instructor session logs.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="../assets/logo/favicon.png">
+
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0B1726', DEFAULT: '#142B45', light: '#203E60' },
+            steel: { DEFAULT: '#29465F', dark: '#1C3144', light: '#3D6282' },
+            orange: { DEFAULT: '#F28C28', hover: '#D9771A', light: '#FF9E42' },
+            darkbg: '#101820', darkcard: '#1D2B38', lightbg: '#F4F6F8'
+          },
+          fontFamily: { heading: ['Oswald', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="bg-lightbg dark:bg-darkbg text-slate-800 dark:text-slate-100 font-body transition-colors duration-200">
+
+  <div class="dashboard-layout">
+    <div class="dashboard-backdrop"></div>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="p-5 border-b border-steel/40 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2">
+          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-8 w-auto">
+        </a>
+        <button class="sidebar-close-btn lg:hidden text-slate-400 hover:text-white p-1" aria-label="Close Sidebar"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="p-5 border-b border-steel/30 flex items-center gap-3">
+        <div class="w-11 h-11 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-id-badge"></i></div>
+        <div class="min-w-0 flex-1">
+          <h4 class="user-name-display text-sm font-heading font-bold text-white truncate">Marcus Vance</h4>
+          <span class="text-[11px] font-mono text-orange block user-id-display">WP-2026-8942</span>
+          <span class="inline-block mt-0.5 px-2 py-0.2 text-[9px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">Active • Level 3</span>
+        </div>
+      </div>
+
+      <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
+        <a href="index.html" class="sidebar-nav-link"><i class="fa-solid fa-gauge-high w-5"></i><span>Overview</span></a>
+        <a href="my-profile.html" class="sidebar-nav-link"><i class="fa-solid fa-id-badge w-5"></i><span>My Profile</span></a>
+        <a href="my-programs.html" class="sidebar-nav-link"><i class="fa-solid fa-book-open w-5"></i><span>My Programs</span></a>
+        <a href="lab-hours.html" class="sidebar-nav-link active"><i class="fa-solid fa-stopwatch text-orange w-5"></i><span>Lab Hours</span><span class="badge-counter user-hours-completed">214</span></a>
+        <a href="skill-assessments.html" class="sidebar-nav-link"><i class="fa-solid fa-clipboard-check w-5"></i><span>Skill Assessments</span></a>
+        <a href="certifications.html" class="sidebar-nav-link"><i class="fa-solid fa-award w-5"></i><span>Certifications</span></a>
+        <a href="attendance.html" class="sidebar-nav-link"><i class="fa-solid fa-calendar-check w-5"></i><span>Attendance</span></a>
+        <a href="notifications.html" class="sidebar-nav-link"><i class="fa-solid fa-bell w-5"></i><span>Notifications</span><span class="badge-counter">3</span></a>
+      </nav>
+
+      <div class="p-4 border-t border-steel/30 flex items-center justify-between text-xs text-slate-400">
+        <a href="../index.html" class="hover:text-white flex items-center gap-1.5 transition"><i class="fa-solid fa-arrow-left"></i><span>Public Site</span></a>
+        <button class="btn-logout-action text-rose-400 hover:text-rose-300 flex items-center gap-1 transition"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Log Out</span></button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="flex items-center gap-3">
+          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
+          <div>
+            <span class="text-xs text-slate-400 uppercase tracking-wider font-mono hidden sm:inline">Practical Training Log</span>
+            <h1 class="text-lg sm:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-none">Lab Hours &amp; Booth History</h1>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="btnOpenAddSessionModal" class="btn-weld btn-primary-weld text-xs py-2 px-3 sm:px-4">
+            <i class="fa-solid fa-plus mr-1"></i> Log New Session
+          </button>
+          <button class="theme-toggle-btn w-9 h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400"></i></button>
+          <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange"></i><span class="dir-label">RTL</span></button>
+        </div>
+      </header>
+
+      <div class="p-4 sm:p-6 lg:p-8 space-y-6">
+        
+        <!-- Summary Stat Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+          <div class="stat-card accent-orange">
+            <span class="text-xs font-bold uppercase text-slate-400 block mb-1">Total Completed</span>
+            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white">
+              <span id="statCompletedHours">214</span> hrs
+            </div>
+            <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">Verified by CWI Signoffs</span>
+          </div>
+
+          <div class="stat-card accent-navy">
+            <span class="text-xs font-bold uppercase text-slate-400 block mb-1">Total Required</span>
+            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white">
+              <span id="statTotalRequiredHours">300</span> hrs
+            </div>
+            <span class="text-[11px] text-slate-400">Institutional Benchmark</span>
+          </div>
+
+          <div class="stat-card accent-orange">
+            <span class="text-xs font-bold uppercase text-slate-400 block mb-1">Remaining Hours</span>
+            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white">
+              <span id="statRemainingHours">86</span> hrs
+            </div>
+            <span class="text-[11px] text-orange font-semibold">Target finish: Dec 2026</span>
+          </div>
+
+          <div class="stat-card accent-green">
+            <span class="text-xs font-bold uppercase text-slate-400 block mb-1">Completion Progress</span>
+            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white">
+              <span id="statProgressPercent">71%</span>
+            </div>
+            <div class="progress-bar-container mt-2">
+              <div id="statProgressBarFill" class="progress-bar-fill" style="width: 71%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter & Table Controls -->
+        <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/40 p-6 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-slate-100 dark:border-steel/30 gap-4">
+            <h3 class="font-heading font-bold text-base text-slate-900 dark:text-white uppercase">
+              <i class="fa-solid fa-list-check text-orange mr-2"></i> Practical Booth Session History
+            </h3>
+            <div class="flex items-center gap-2">
+              <label class="text-xs text-slate-400 uppercase font-bold">Process Filter:</label>
+              <select id="filterProcessSelect" class="px-3 py-1.5 rounded border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:border-orange">
+                <option value="ALL">All Welding Processes</option>
+                <option value="Pipe">Pipe Welding (5G/6G)</option>
+                <option value="TIG">TIG (GTAW)</option>
+                <option value="MIG">MIG (GMAW)</option>
+                <option value="SMAW">SMAW Stick</option>
+                <option value="Structural">Structural (FCAW)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="table-responsive-wrapper">
+            <table class="weld-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Process</th>
+                  <th>Booth #</th>
+                  <th>Hours</th>
+                  <th>Inspector</th>
+                  <th>Status</th>
+                  <th>Session Notes</th>
+                </tr>
+              </thead>
+              <tbody id="labSessionsTableBody">
+                <!-- Injected dynamically by js/lab-hours.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Add New Session Log -->
+  <div id="addSessionModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+    <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/60 shadow-2xl max-w-lg w-full p-6 relative">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100 dark:border-steel/40">
+        <h4 class="font-heading font-bold text-lg text-slate-900 dark:text-white uppercase">
+          <i class="fa-solid fa-fire text-orange mr-2"></i> Log New Practical Lab Session
+        </h4>
+        <button id="btnCloseSessionModal" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <form id="addSessionForm" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Session Date</label>
+            <input type="date" name="sessionDate" required class="w-full px-3 py-2 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Booth Assigned</label>
+            <input type="text" name="sessionBooth" value="Booth 14" required class="w-full px-3 py-2 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Welding Process</label>
+            <select name="sessionProcess" required class="w-full px-3 py-2 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs">
+              <option value="Pipe Welding (6G)">Pipe Welding (6G)</option>
+              <option value="TIG Welding (GTAW)">TIG Welding (GTAW)</option>
+              <option value="MIG Welding (GMAW)">MIG Welding (GMAW)</option>
+              <option value="Structural (FCAW)">Structural (FCAW)</option>
+              <option value="SMAW Stick">SMAW Stick</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Hours Logged</label>
+            <input type="number" step="0.5" name="sessionHours" value="4.0" required class="w-full px-3 py-2 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Supervising CWI Inspector</label>
+          <select name="sessionInstructor" required class="w-full px-3 py-2 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs">
+            <option value="J. Miller, CWI">James Miller, CWI</option>
+            <option value="R. Davis, AWS CWI">Robert Davis, AWS CWI</option>
+            <option value="S. Patel, CWI">Sanjay Patel, CWI</option>
+            <option value="D. Kovacs, CSW">D. Kovacs, CSW</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-1">Coupon Joint Notes &amp; Observations</label>
+          <textarea name="sessionNotes" rows="2" class="w-full px-3 py-2 rounded border border-slate-300 dark:border-steel bg-slate-50 dark:bg-navy-900 text-xs" placeholder="e.g. 6G Schedule 80 open root, clean tie-in at 6 o'clock."></textarea>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100 dark:border-steel/40 flex items-center justify-end gap-3">
+          <button type="button" id="btnCancelSessionModal" class="px-4 py-2 rounded text-xs font-bold uppercase text-slate-500 hover:text-slate-700">Cancel</button>
+          <button type="submit" class="btn-weld btn-primary-weld text-xs py-2 px-5">Submit Session Log</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/direction.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/lab-hours.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

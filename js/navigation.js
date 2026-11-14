@@ -83,7 +83,25 @@
   // 2. Compute Site Root Base URL
   function getSiteRoot(currentHref) {
     try {
-      const url = new URL(currentHref || window.location.href);
+      const href = currentHref || (typeof window !== 'undefined' && window.location ? window.location.href : 'http://127.0.0.1:5500/');
+      const url = new URL(href);
+      if (url.protocol === 'file:') {
+        let pathname = url.pathname.replace(/\\/g, '/');
+        if (pathname.endsWith('.html')) {
+          pathname = pathname.substring(0, pathname.lastIndexOf('/') + 1);
+        } else if (!pathname.endsWith('/')) {
+          pathname += '/';
+        }
+        const subfolders = ['programs/', 'facilities/', 'dashboard/', 'auth/'];
+        for (const sub of subfolders) {
+          if (pathname.endsWith(sub)) {
+            pathname = pathname.substring(0, pathname.length - sub.length);
+            break;
+          }
+        }
+        return 'file://' + pathname;
+      }
+
       let pathname = url.pathname.replace(/\\/g, '/');
       const segs = pathname.split('/').filter(Boolean);
       if (!segs.length) return url.origin + '/';

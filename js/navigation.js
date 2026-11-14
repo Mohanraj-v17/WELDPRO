@@ -80,7 +80,7 @@
     }, 100);
   }
 
-  // 2. Compute Site Root Base URL
+  // 2. Compute Site Root Base URL (Works flawlessly on Vercel, cleanUrls, localhost, & file://)
   function getSiteRoot(currentHref) {
     try {
       const href = currentHref || (typeof window !== 'undefined' && window.location ? window.location.href : 'http://127.0.0.1:5500/');
@@ -102,12 +102,22 @@
         return 'file://' + pathname;
       }
 
+      // HTTP / HTTPS (Vercel, custom domain, localhost)
       let pathname = url.pathname.replace(/\\/g, '/');
       const segs = pathname.split('/').filter(Boolean);
       if (!segs.length) return url.origin + '/';
 
+      const knownPages = new Set([
+        'index', 'home-2', 'about', 'contact', 'instructors', 'programs', 'facilities',
+        'mig-welding', 'tig-welding', 'smaw-welding', 'pipe-welding', 'structural-welding', 'flux-cored-welding',
+        'welding-lab', 'equipment', 'safety-training',
+        'login', 'register', 'forgot-password', 'reset-password',
+        'my-profile', 'my-programs', 'lab-hours', 'skill-assessments', 'certifications', 'attendance', 'notifications'
+      ]);
+
       const last = segs[segs.length - 1];
-      if (last.endsWith('.html')) {
+      const lastWithoutExt = last.replace(/\.html$/i, '');
+      if (last.endsWith('.html') || knownPages.has(lastWithoutExt)) {
         segs.pop();
       }
 
@@ -143,34 +153,44 @@
       let filename = last.endsWith('.html') ? last : (last === '' ? 'index.html' : last + '.html');
       const dirSegs = segs.slice(0, -1);
 
+      // 1. Root-level pages MUST take priority so links like "about.html" clicked from
+      // "/programs/smaw-welding.html" resolve to "about.html" at site root, NEVER "programs/about.html"!
+      if (ROOT_FILES.has(filename)) {
+        if (filename === 'index.html' && dirSegs.includes('dashboard')) {
+          return 'dashboard/index.html';
+        }
+        return filename;
+      }
+
+      // 2. Specific domain set matching: guaranteed canonical routing regardless of origin directory
+      if (AUTH_FILES.has(filename)) {
+        return 'auth/' + filename;
+      }
+
+      if (FACILITY_FILES.has(filename)) {
+        return 'facilities/' + filename;
+      }
+
+      if (PROGRAM_FILES.has(filename)) {
+        return 'programs/' + filename;
+      }
+
+      if (DASHBOARD_FILES.has(filename)) {
+        return 'dashboard/' + filename;
+      }
+
+      // 3. Directory segment fallbacks for unknown or dynamic routes
       if (dirSegs.includes('dashboard')) {
         return 'dashboard/' + filename;
       }
       if (dirSegs.includes('auth')) {
         return 'auth/' + filename;
       }
-      if (dirSegs.includes('programs')) {
-        return 'programs/' + filename;
-      }
       if (dirSegs.includes('facilities')) {
         return 'facilities/' + filename;
       }
-
-      // Root level or no directory segment
-      if (ROOT_FILES.has(filename)) {
-        return filename;
-      }
-      if (PROGRAM_FILES.has(filename)) {
+      if (dirSegs.includes('programs')) {
         return 'programs/' + filename;
-      }
-      if (FACILITY_FILES.has(filename)) {
-        return 'facilities/' + filename;
-      }
-      if (DASHBOARD_FILES.has(filename) && filename !== 'index.html') {
-        return 'dashboard/' + filename;
-      }
-      if (AUTH_FILES.has(filename)) {
-        return 'auth/' + filename;
       }
 
       return filename;

@@ -1,9 +1,24 @@
 /**
  * WELDPRO Direction Manager (LTR / RTL)
- * Controls document.documentElement.dir and persists in localStorage
+ * Controls document.documentElement.dir with localStorage persistence.
+ * Completely idempotent with robust event delegation to prevent duplicate toggles.
  */
 (function() {
   const DIR_KEY = 'weldpro-direction';
+
+  function getStoredDir() {
+    try {
+      return localStorage.getItem(DIR_KEY);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function setStoredDir(dir) {
+    try {
+      localStorage.setItem(DIR_KEY, dir);
+    } catch (e) {}
+  }
 
   function applyDirection(dir) {
     const validDir = dir === 'rtl' ? 'rtl' : 'ltr';
@@ -19,16 +34,18 @@
       btn.setAttribute('aria-label', `Switch to ${validDir === 'rtl' ? 'LTR' : 'RTL'}`);
     });
 
-    window.dispatchEvent(new CustomEvent('weldpro-dir-changed', { detail: { dir: validDir } }));
+    try {
+      window.dispatchEvent(new CustomEvent('weldpro-dir-changed', { detail: { dir: validDir } }));
+    } catch (e) {}
   }
 
-  const savedDir = localStorage.getItem(DIR_KEY) || 'ltr';
+  const savedDir = getStoredDir() || 'ltr';
   applyDirection(savedDir);
 
   window.WeldDirection = {
     get: () => document.documentElement.getAttribute('dir') || 'ltr',
     set: (dir) => {
-      localStorage.setItem(DIR_KEY, dir);
+      setStoredDir(dir);
       applyDirection(dir);
     },
     toggle: () => {
@@ -38,16 +55,22 @@
     },
     applyDirection: applyDirection,
     initButtons: () => {
-      document.querySelectorAll('.dir-toggle-btn').forEach(btn => {
-        btn.removeEventListener('click', window.WeldDirection.toggle);
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.WeldDirection.toggle();
-        });
-      });
       applyDirection(window.WeldDirection.get());
     }
   };
+
+  // Global idempotent click handler: exactly one click = exactly one toggle!
+  if (!window.__weldDirDelegated) {
+    window.__weldDirDelegated = true;
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dir-toggle-btn');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.WeldDirection.toggle();
+      }
+    });
+  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', window.WeldDirection.initButtons);

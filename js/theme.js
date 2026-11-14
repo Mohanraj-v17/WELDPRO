@@ -1,23 +1,40 @@
 /**
  * WELDPRO Theme Manager
- * Dark / Light Mode with localStorage persistence & no-flash execution
+ * Dark / Light Mode with localStorage persistence & zero-flash execution.
+ * Completely idempotent with robust event delegation to prevent duplicate toggles.
  */
 (function() {
   const THEME_KEY = 'weldpro-theme';
 
+  function getStoredTheme() {
+    try {
+      return localStorage.getItem(THEME_KEY);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function setStoredTheme(theme) {
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch (e) {}
+  }
+
   function applyTheme(theme) {
-    if (theme === 'dark') {
+    const isDark = theme === 'dark';
+    if (isDark) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-    // Update all theme toggle buttons on the page
+
+    // Update all theme toggle buttons across the DOM (desktop navbar, mobile drawer, auth, dashboard)
     const toggles = document.querySelectorAll('.theme-toggle-btn');
     toggles.forEach(btn => {
       const icon = btn.querySelector('i');
       const label = btn.querySelector('.theme-label');
       if (icon) {
-        if (theme === 'dark') {
+        if (isDark) {
           icon.className = 'fa-solid fa-sun text-yellow-400';
           btn.setAttribute('title', 'Switch to Light Mode');
           btn.setAttribute('aria-label', 'Switch to Light Mode');
@@ -31,24 +48,28 @@
       }
     });
 
-    // Swap logo assets for dark/light contrast
+    // Safely swap logo assets for dark/light contrast
     const logos = document.querySelectorAll('img[src*="weldpro-logo"]');
     logos.forEach(img => {
-      // Keep white logo only if inside an element that is permanently dark (like sidebar on desktop)
-      if (img.closest('.dashboard-sidebar')) {
-        img.src = img.src.replace('weldpro-logo-light.svg', 'weldpro-logo.svg');
-      } else if (theme === 'light') {
-        img.src = img.src.replace('weldpro-logo.svg', 'weldpro-logo-light.svg');
+      const rawSrc = img.getAttribute('src') || '';
+      const isSidebar = Boolean(img.closest('.dashboard-sidebar'));
+      const dirIndex = rawSrc.lastIndexOf('/');
+      const prefix = dirIndex !== -1 ? rawSrc.substring(0, dirIndex + 1) : '';
+
+      if (isSidebar || isDark) {
+        img.src = prefix + 'weldpro-logo.svg';
       } else {
-        img.src = img.src.replace('weldpro-logo-light.svg', 'weldpro-logo.svg');
+        img.src = prefix + 'weldpro-logo-light.svg';
       }
     });
 
-    window.dispatchEvent(new CustomEvent('weldpro-theme-changed', { detail: { theme } }));
+    try {
+      window.dispatchEvent(new CustomEvent('weldpro-theme-changed', { detail: { theme: isDark ? 'dark' : 'light' } }));
+    } catch (e) {}
   }
 
   // Determine initial theme
-  const savedTheme = localStorage.getItem(THEME_KEY);
+  const savedTheme = getStoredTheme();
   const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
 
@@ -58,27 +79,34 @@
   window.WeldTheme = {
     get: () => document.documentElement.classList.contains('dark') ? 'dark' : 'light',
     set: (theme) => {
-      localStorage.setItem(THEME_KEY, theme);
+      setStoredTheme(theme);
       applyTheme(theme);
     },
     toggle: () => {
-      const nextTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+      const current = window.WeldTheme.get();
+      const nextTheme = current === 'dark' ? 'light' : 'dark';
       window.WeldTheme.set(nextTheme);
     },
     applyTheme: applyTheme,
     initButtons: () => {
-      document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-        btn.removeEventListener('click', window.WeldTheme.toggle);
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.WeldTheme.toggle();
-        });
-      });
       applyTheme(window.WeldTheme.get());
     }
   };
 
-  // Re-sync button states when DOM is ready
+  // Global idempotent click handler: exactly one click = exactly one toggle!
+  if (!window.__weldThemeDelegated) {
+    window.__weldThemeDelegated = true;
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.theme-toggle-btn');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.WeldTheme.toggle();
+      }
+    });
+  }
+
+  // Sync button states on DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', window.WeldTheme.initButtons);
   } else {

@@ -2,6 +2,7 @@
  * WELDPRO Mega Menu & Dropdown Interaction Manager
  * Rock-solid hover grace periods, click-to-pin, touch support,
  * and seamless sub-link interaction across all viewports.
+ * Idempotent: Never stacks duplicate event listeners.
  */
 (function() {
   let closeTimers = new Map();
@@ -14,6 +15,10 @@
     const dropdownItems = document.querySelectorAll('.nav-item-dropdown');
 
     dropdownItems.forEach(item => {
+      // Prevent attaching duplicate listeners to the same dropdown item
+      if (item.dataset.megaBound === 'true') return;
+      item.dataset.megaBound = 'true';
+
       const trigger = item.querySelector('.dropdown-trigger');
       const menu = item.querySelector('.mega-dropdown-menu, .dropdown-menu');
 
@@ -52,11 +57,10 @@
         closeTimers.set(item, timer);
       }
 
-      // Attach mouse events to both container and menu
+      // Attach mouse events to container and menu
       item.addEventListener('mouseenter', onMouseEnter);
       item.addEventListener('mouseleave', onMouseLeave);
 
-      // Keep menu open while cursor is anywhere inside the dropdown menu
       menu.addEventListener('mouseenter', () => {
         if (closeTimers.has(item)) {
           clearTimeout(closeTimers.get(item));
@@ -111,33 +115,11 @@
       });
     });
 
-    // 5. Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.nav-item-dropdown')) {
-        dropdownItems.forEach(item => {
-          item.classList.remove('active', 'is-open');
-          delete item.dataset.pinned;
-        });
-      }
-    });
-
-    // 6. Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        dropdownItems.forEach(item => {
-          item.classList.remove('active', 'is-open');
-          delete item.dataset.pinned;
-        });
-      }
-    });
-
-    // 7. Mobile Menu Drawer Accordions
-    const mobileDropdownTriggers = document.querySelectorAll('.mobile-dropdown-toggle');
-    mobileDropdownTriggers.forEach(btn => {
-      btn.replaceWith(btn.cloneNode(true)); // remove stale listeners
-    });
-
+    // 5. Mobile Menu Drawer Accordions
     document.querySelectorAll('.mobile-dropdown-toggle').forEach(btn => {
+      if (btn.dataset.accordionBound === 'true') return;
+      btn.dataset.accordionBound = 'true';
+
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -157,6 +139,31 @@
           }
         }
       });
+    });
+  }
+
+  // Global document-level listeners (registered ONCE)
+  if (!window.__weldMegaMenuGlobalBound) {
+    window.__weldMegaMenuGlobalBound = true;
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item-dropdown')) {
+        document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+          item.classList.remove('active', 'is-open');
+          delete item.dataset.pinned;
+        });
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+          item.classList.remove('active', 'is-open');
+          delete item.dataset.pinned;
+        });
+      }
     });
   }
 

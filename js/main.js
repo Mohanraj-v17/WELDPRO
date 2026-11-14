@@ -105,10 +105,36 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function initContactFormPrefill() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const instructor = urlParams.get('instructor');
+    if (instructor) {
+      const categorySelect = document.querySelector('select[name="contactCategory"]');
+      const messageTextarea = document.querySelector('textarea[name="contactMessage"]');
+      if (categorySelect) {
+        categorySelect.value = 'Speak With An Instructor / Faculty';
+      }
+      if (messageTextarea && !messageTextarea.value.trim()) {
+        messageTextarea.value = `Hello, I would like to schedule an in-booth consultation with instructor ${instructor} regarding curriculum specializations and welding test coupon qualifications.`;
+      }
+    }
+  }
+
+  function reinitAll() {
     initCounters();
     initFAQAccordions();
     initCertificateModal();
     initFooterYear();
-  });
+    initContactFormPrefill();
+  }
+
+  window.WeldMain = {
+    initCounters,
+    initFAQAccordions,
+    initCertificateModal,
+    initFooterYear,
+    reinitAll
+  };
+
+  document.addEventListener('DOMContentLoaded', reinitAll);
 })();

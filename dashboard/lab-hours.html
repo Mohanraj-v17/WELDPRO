@@ -37,35 +37,40 @@
   <div class="dashboard-layout">
     <div class="dashboard-backdrop"></div>
 
-    <!-- Sidebar -->
+    <!-- 1. DARK INDUSTRIAL SIDEBAR -->
     <aside class="dashboard-sidebar">
+      
+      <!-- Sidebar Brand Header -->
       <div class="p-5 border-b border-steel/40 flex items-center justify-between">
         <a href="../index.html" class="flex items-center gap-2">
-          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-8 w-auto">
+          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-10 w-auto">
         </a>
-        <button class="sidebar-close-btn lg:hidden text-slate-400 hover:text-white p-1" aria-label="Close Sidebar"><i class="fa-solid fa-xmark text-lg"></i></button>
+        <button class="sidebar-close-btn lg:hidden text-slate-400 hover:text-white p-1" aria-label="Close Sidebar">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
       </div>
 
+      <!-- Trainee Profile Snippet -->
       <div class="p-5 border-b border-steel/30 flex items-center gap-3">
         <div class="w-11 h-11 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-lg flex-shrink-0"><i class="fa-solid fa-id-badge"></i></div>
         <div class="min-w-0 flex-1">
           <h4 class="user-name-display text-sm font-heading font-bold text-white truncate sidebar-responsive-name">Marcus Vance</h4>
           <span class="text-[11px] font-mono text-orange block user-id-display">WP-2026-8942</span>
-          <span class="inline-block mt-0.5 px-2 py-0.2 text-[9px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">Active • Level 3</span>
+          <span class="inline-block mt-0.5 px-2 py-0.2 text-[9px] font-bold uppercase rounded bg-emerald-500/20 text-emerald-400">
+            Active • Level 3
+          </span>
         </div>
       </div>
 
       <!-- Mobile Quick Controls (Active <= 1240px) -->
       <div class="sidebar-mobile-controls p-3 mx-3 my-2 rounded-lg bg-navy/60 border border-steel/40 flex items-center justify-around gap-2">
-        <div class="dashboard-topbar-controls flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
-          <button class="theme-toggle-btn w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center hover:border-orange transition text-yellow-400" aria-label="Toggle Theme" title="Toggle Theme">
+        <button class="theme-toggle-btn w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center hover:border-orange transition text-yellow-400" aria-label="Toggle Theme" title="Toggle Theme">
           <i class="fa-solid fa-sun text-sm"></i>
         </button>
         <button class="dir-toggle-btn px-2.5 py-1.5 rounded-md border border-steel bg-navy text-xs font-bold text-slate-200 hover:border-orange transition flex items-center gap-1.5" aria-label="Toggle Direction" title="Toggle RTL">
           <i class="fa-solid fa-globe text-orange text-xs"></i>
           <span class="dir-label text-xs">RTL</span>
         </button>
-        </div>
         <a href="notifications.html" class="w-9 h-9 rounded-md border border-steel bg-navy flex items-center justify-center text-slate-200 hover:text-orange hover:border-orange transition relative" aria-label="Notifications" title="Notifications">
           <i class="fa-solid fa-bell text-sm"></i>
           <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange text-white rounded-full text-[10px] font-bold flex items-center justify-center">3</span>
@@ -75,42 +80,136 @@
         </a>
       </div>
 
+      <!-- Sidebar Navigation Links -->
       <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
-        <a href="index.html" class="sidebar-nav-link"><i class="fa-solid fa-gauge-high w-5"></i><span>Overview</span></a>
-        <a href="my-profile.html" class="sidebar-nav-link"><i class="fa-solid fa-id-badge w-5"></i><span>My Profile</span></a>
-        <a href="my-programs.html" class="sidebar-nav-link"><i class="fa-solid fa-book-open w-5"></i><span>My Programs</span></a>
-        <a href="lab-hours.html" class="sidebar-nav-link active"><i class="fa-solid fa-stopwatch text-orange w-5"></i><span>Lab Hours</span><span class="badge-counter user-hours-completed">214</span></a>
-        <a href="skill-assessments.html" class="sidebar-nav-link"><i class="fa-solid fa-clipboard-check w-5"></i><span>Skill Assessments</span></a>
-        <a href="certifications.html" class="sidebar-nav-link"><i class="fa-solid fa-award w-5"></i><span>Certifications</span></a>
-        <a href="attendance.html" class="sidebar-nav-link"><i class="fa-solid fa-calendar-check w-5"></i><span>Attendance</span></a>
-        <a href="notifications.html" class="sidebar-nav-link"><i class="fa-solid fa-bell w-5"></i><span>Notifications</span><span class="badge-counter">3</span></a>
+        <a href="index.html" class="sidebar-nav-link ">
+          <i class="fa-solid fa-gauge-high  w-5"></i>
+          <span>Student Portal</span>
+        </a>
+        <a href="my-profile.html" class="sidebar-nav-link ">
+          <i class="fa-solid fa-id-badge  w-5"></i>
+          <span>My Profile</span>
+        </a>
+        <a href="my-programs.html" class="sidebar-nav-link ">
+          <i class="fa-solid fa-book-open  w-5"></i>
+          <span>My Programs</span>
+        </a>
+        <a href="lab-hours.html" class="sidebar-nav-link active">
+          <i class="fa-solid fa-stopwatch text-orange w-5"></i>
+          <span>Lab Hours</span>
+          <span class="badge-counter user-hours-completed">214</span>
+        </a>
+        <a href="skill-assessments.html" class="sidebar-nav-link ">
+          <i class="fa-solid fa-clipboard-check  w-5"></i>
+          <span>Skill Assessments</span>
+        </a>
+        <a href="certifications.html" class="sidebar-nav-link ">
+          <i class="fa-solid fa-award  w-5"></i>
+          <span>Certifications</span>
+        </a>
+        <a href="attendance.html" class="sidebar-nav-link ">
+          <i class="fa-solid fa-calendar-check  w-5"></i>
+          <span>Attendance</span>
+        </a>
+        <a href="notifications.html" class="sidebar-nav-link ">
+          <i class="fa-solid fa-bell  w-5"></i>
+          <span>Notifications</span>
+          <span class="badge-counter">3</span>
+        </a>
       </nav>
 
+      <!-- Sidebar Footer -->
       <div class="p-4 border-t border-steel/30 flex items-center justify-between text-xs text-slate-400">
-        <a href="../index.html" class="hover:text-white flex items-center gap-1.5 transition"><i class="fa-solid fa-arrow-left"></i><span>Public Site</span></a>
-        <button class="btn-logout-action text-rose-400 hover:text-rose-300 flex items-center gap-1 transition"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Log Out</span></button>
+        <a href="../index.html" class="hover:text-white flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Public Site</span>
+        </a>
+        <button class="btn-logout-action text-rose-400 hover:text-rose-300 flex items-center gap-1 transition">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Log Out</span>
+        </button>
       </div>
+
     </aside>
 
-    <!-- Main Content -->
+    <!-- 2. MAIN DASHBOARD CONTENT AREA -->
     <div class="dashboard-main">
+      
+      <!-- Topbar Header -->
       <header class="dashboard-topbar">
         <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 mr-2">
-          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange flex-shrink-0" aria-label="Toggle Navigation"><i class="fa-solid fa-bars text-lg"></i></button>
+          <button class="sidebar-toggle-btn lg:hidden p-2 rounded border border-slate-300 dark:border-steel text-slate-700 dark:text-slate-200 hover:text-orange flex-shrink-0" aria-label="Toggle Navigation">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
           <div class="min-w-0 flex-1">
-            <span class="text-[10px] sm:text-xs text-orange uppercase tracking-wider font-mono font-bold flex items-center gap-1.5"><i class="fa-solid fa-stopwatch"></i> Practical Training Log</span>
-            <h1 class="text-[13px] sm:text-base md:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-snug sm:leading-tight">Lab Hours &amp; Booth History</h1>
+            <span class="text-[10px] sm:text-xs text-orange uppercase tracking-wider font-mono font-bold flex items-center gap-1.5">
+              <i class="fa-solid fa-stopwatch"></i> Practical Shop Hours
+            </span>
+            <h1 class="text-[13px] sm:text-base md:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-snug sm:leading-tight truncate">
+              Booth Time &amp; Lab Records
+            </h1>
           </div>
         </div>
+
         <div class="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
-          <button id="btnOpenAddSessionModal" class="btn-weld btn-primary-weld text-xs py-1.5 sm:py-2 px-2.5 sm:px-4">
-            <i class="fa-solid fa-plus sm:mr-1"></i>
-            <span class="hidden sm:inline">Log New Session</span>
-            <span class="sm:hidden">Log</span>
-          </button>
+          <button id="btnLogHours" class="btn-weld btn-primary-weld text-xs py-1.5 sm:py-2 px-2.5 sm:px-3.5"><i class="fa-solid fa-plus sm:mr-1.5"></i><span class="hidden sm:inline">Log Booth Time</span><span class="sm:hidden">Log</span></button>
           <div class="dashboard-topbar-controls flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
-            <button class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme"><i class="fa-solid fa-sun text-yellow-400 text-xs sm:text-sm"></i></button>
-            <button class="dir-toggle-btn px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction"><i class="fa-solid fa-globe text-orange text-xs"></i><span class="dir-label hidden xs:inline sm:inline">RTL</span></button>
+            
+            <!-- Theme Toggle -->
+            <button class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme">
+              <i class="fa-solid fa-sun text-yellow-400 text-xs sm:text-sm"></i>
+            </button>
+
+            <!-- RTL Toggle -->
+            <button class="dir-toggle-btn px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction">
+              <i class="fa-solid fa-globe text-orange text-xs"></i>
+              <span class="dir-label hidden xs:inline sm:inline">RTL</span>
+            </button>
+
+            <!-- Notification Menu -->
+            <div class="relative notif-menu-wrapper">
+              <button class="notif-menu-trigger w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-orange transition relative" aria-label="View Notifications">
+                <i class="fa-solid fa-bell text-xs sm:text-sm"></i>
+                <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange text-white rounded-full text-[10px] font-bold flex items-center justify-center">3</span>
+              </button>
+              <div class="notif-menu-dropdown hidden absolute right-0 mt-2 w-[calc(100vw-2rem)] max-w-xs sm:w-80 bg-white dark:bg-darkcard rounded-lg shadow-2xl border border-slate-200 dark:border-steel/60 p-3 z-50">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 dark:border-steel/40 text-xs font-bold uppercase">
+                  <span>Recent Updates</span>
+                  <a href="notifications.html" class="text-orange hover:underline text-[11px]">View All</a>
+                </div>
+                <div class="space-y-2 text-xs">
+                  <a href="skill-assessments.html" class="block p-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 transition">
+                    <span class="font-bold text-slate-900 dark:text-white block">Assessment Passed (94/100)</span>
+                    <span class="text-slate-500">TIG 6G 2" Pipe Joint verified by S. Patel, CWI.</span>
+                  </a>
+                  <a href="lab-hours.html" class="block p-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 transition">
+                    <span class="font-bold text-slate-900 dark:text-white block">Lab Session Logged (4.5 hrs)</span>
+                    <span class="text-slate-500">Booth #14 heavy pipe joint signed off.</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Menu -->
+            <div class="relative profile-menu-wrapper">
+              <button class="profile-menu-trigger flex items-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-navy transition">
+                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-xs flex-shrink-0"><i class="fa-solid fa-user"></i></div>
+                <i class="fa-solid fa-chevron-down text-[9px] text-slate-400"></i>
+              </button>
+              <div class="profile-menu-dropdown hidden absolute right-0 mt-2 w-48 max-w-[calc(100vw-2rem)] bg-white dark:bg-darkcard rounded-lg shadow-2xl border border-slate-200 dark:border-steel/60 p-2 z-50 text-xs">
+                <a href="my-profile.html" class="block px-3 py-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 text-slate-700 dark:text-slate-200">
+                  <i class="fa-solid fa-user mr-2 text-orange"></i> My Profile
+                </a>
+                <a href="certifications.html" class="block px-3 py-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 text-slate-700 dark:text-slate-200">
+                  <i class="fa-solid fa-award mr-2 text-orange"></i> My Credentials
+                </a>
+                <div class="border-t border-slate-100 dark:border-steel/40 my-1"></div>
+                <button class="btn-logout-action w-full text-left px-3 py-2 rounded text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20">
+                  <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Log Out
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </header>
@@ -118,7 +217,7 @@
       <div class="p-4 sm:p-6 lg:p-8 space-y-6">
         
         <!-- Summary Stat Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <div class="stat-card accent-orange">
             <span class="text-xs font-bold uppercase text-slate-400 block mb-1">Total Completed</span>
             <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white">
@@ -174,6 +273,13 @@
           </div>
 
           <!-- Table -->
+          <div class="sm:hidden flex items-center justify-between px-3 py-2.5 bg-slate-100 dark:bg-navy-900 border border-slate-200 dark:border-steel/40 text-xs text-slate-600 dark:text-slate-300 font-mono rounded-lg mb-3">
+            <span class="flex items-center gap-1.5 font-bold text-orange">
+              <i class="fa-solid fa-arrows-left-right text-sm"></i>
+              <span>Horizontal Scroll</span>
+            </span>
+            <span class="text-[11px] text-slate-400">Swipe to view full 7 columns &rarr;</span>
+          </div>
           <div class="table-responsive-wrapper">
             <table class="weld-table">
               <thead>

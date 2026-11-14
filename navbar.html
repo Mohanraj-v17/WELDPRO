@@ -15,7 +15,7 @@
     <nav class="hidden xl:flex items-center justify-center gap-1.5 xl:gap-2.5 mx-auto">
       
       <!-- Home Dropdown -->
-      <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0">
+      <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0" data-dropdown="home">
         <button class="dropdown-trigger nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange flex items-center gap-1 whitespace-nowrap flex-shrink-0">
           Home <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
         </button>
@@ -33,7 +33,7 @@
       <a href="about.html" class="nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange whitespace-nowrap flex-shrink-0">About Us</a>
 
       <!-- Programs Mega Menu (Centered to container/screen) -->
-      <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0">
+      <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0" data-dropdown="programs">
         <button class="dropdown-trigger nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange flex items-center gap-1 whitespace-nowrap flex-shrink-0">
           Programs <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
         </button>
@@ -105,7 +105,7 @@
       </div>
 
       <!-- Facilities Dropdown (With Related Symbols & Descriptions) -->
-      <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0">
+      <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0" data-dropdown="facilities">
         <button class="dropdown-trigger nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange flex items-center gap-1 whitespace-nowrap flex-shrink-0">
           Facilities <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
         </button>
@@ -156,7 +156,7 @@
       <a href="contact.html" class="nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange whitespace-nowrap flex-shrink-0">Contact</a>
 
       <!-- Dashboard Dropdown (Student Portal Only) -->
-      <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0">
+      <div class="nav-item-dropdown relative whitespace-nowrap flex-shrink-0" data-dropdown="dashboard">
         <button class="dropdown-trigger nav-link-item px-3 py-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-200 hover:text-orange flex items-center gap-1 whitespace-nowrap flex-shrink-0">
           Dashboard <i class="fa-solid fa-chevron-down text-xs transition-transform"></i>
         </button>
@@ -259,86 +259,112 @@
 
   <!-- Navigation Links & Accordions -->
   <div class="py-5 space-y-2 flex-1">
-    
-    <!-- Home Accordion -->
+    <!-- 1. Home Accordion -->
     <div>
-      <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
-        <span class="flex items-center gap-2.5"><i class="fa-solid fa-house text-orange"></i> Home</span>
+      <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-lg uppercase text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard transition" data-mobile-dropdown="home">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-house text-orange w-6 text-center text-base flex-shrink-0"></i>
+          <span>Home</span>
+        </span>
         <i class="mobile-toggle-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
       </button>
-      <div class="hidden pl-4 py-2 space-y-1.5 border-l-2 border-orange/40 ml-4 mt-1">
-        <a href="index.html" class="block py-1.5 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-orange">Home 1 (Industrial)</a>
-        <a href="home-2.html" class="block py-1.5 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-orange">Home 2 (Editorial)</a>
+      <div class="hidden pl-6 py-2 space-y-1.5 border-l-2 border-orange/40 ml-5 mt-1">
+        <a href="index.html" class="mobile-sub-link block py-2 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="index.html">Home 1 (Industrial)</a>
+        <a href="home-2.html" class="mobile-sub-link block py-2 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="home-2.html">Home 2 (Editorial)</a>
       </div>
     </div>
 
-    <!-- About Us -->
-    <a href="about.html" class="block py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
-      <i class="fa-solid fa-circle-info text-orange mr-2"></i> About Us
-    </a>
-
-    <!-- Programs Accordion -->
+    <!-- 2. About Us -->
     <div>
-      <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
-        <span class="flex items-center gap-2.5"><i class="fa-solid fa-fire text-orange"></i> Programs</span>
+      <a href="about.html" class="mobile-nav-link w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-lg uppercase text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard transition" data-key="about.html">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-circle-info text-orange w-6 text-center text-base flex-shrink-0"></i>
+          <span>About Us</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- 3. Programs Accordion -->
+    <div>
+      <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-lg uppercase text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard transition" data-mobile-dropdown="programs">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-fire text-orange w-6 text-center text-base flex-shrink-0"></i>
+          <span>Programs</span>
+        </span>
         <i class="mobile-toggle-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
       </button>
-      <div class="hidden pl-4 py-2 space-y-2 border-l-2 border-orange/40 ml-4 mt-1">
-        <a href="programs.html" class="block py-1.5 px-3 text-xs font-bold uppercase text-orange">All Programs Overview &rarr;</a>
-        <a href="programs/smaw-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-bolt text-xs text-orange"></i> SMAW (Stick)</a>
-        <a href="programs/mig-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-arrows-spin text-xs text-orange"></i> MIG (GMAW)</a>
-        <a href="programs/tig-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-wand-magic-sparkles text-xs text-orange"></i> TIG (GTAW)</a>
-        <a href="programs/flux-cored-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-layer-group text-xs text-orange"></i> Flux-Cored (FCAW)</a>
-        <a href="programs/pipe-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-circle-notch text-xs text-orange"></i> Pipe (5G/6G)</a>
-        <a href="programs/structural-welding.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-cubes-stacked text-xs text-orange"></i> Structural Steel</a>
+      <div class="hidden pl-6 py-2 space-y-1.5 border-l-2 border-orange/40 ml-5 mt-1">
+        <a href="programs.html" class="mobile-sub-link block py-2 px-3 text-xs font-bold uppercase text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="programs.html">All Programs Overview &rarr;</a>
+        <a href="programs/smaw-welding.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="programs/smaw-welding.html"><i class="fa-solid fa-bolt text-xs text-orange w-4 text-center"></i> SMAW (Stick)</a>
+        <a href="programs/mig-welding.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="programs/mig-welding.html"><i class="fa-solid fa-arrows-spin text-xs text-orange w-4 text-center"></i> MIG (GMAW)</a>
+        <a href="programs/tig-welding.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="programs/tig-welding.html"><i class="fa-solid fa-wand-magic-sparkles text-xs text-orange w-4 text-center"></i> TIG (GTAW)</a>
+        <a href="programs/flux-cored-welding.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="programs/flux-cored-welding.html"><i class="fa-solid fa-layer-group text-xs text-orange w-4 text-center"></i> Flux-Cored (FCAW)</a>
+        <a href="programs/pipe-welding.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="programs/pipe-welding.html"><i class="fa-solid fa-circle-notch text-xs text-orange w-4 text-center"></i> Pipe (5G/6G)</a>
+        <a href="programs/structural-welding.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="programs/structural-welding.html"><i class="fa-solid fa-cubes-stacked text-xs text-orange w-4 text-center"></i> Structural Steel</a>
       </div>
     </div>
 
-    <!-- Facilities Accordion (With Symbols) -->
+    <!-- 4. Facilities Accordion -->
     <div>
-      <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
-        <span class="flex items-center gap-2.5"><i class="fa-solid fa-industry text-orange"></i> Facilities</span>
+      <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-lg uppercase text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard transition" data-mobile-dropdown="facilities">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-industry text-orange w-6 text-center text-base flex-shrink-0"></i>
+          <span>Facilities</span>
+        </span>
         <i class="mobile-toggle-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
       </button>
-      <div class="hidden pl-4 py-2 space-y-2 border-l-2 border-orange/40 ml-4 mt-1">
-        <a href="facilities.html" class="flex items-center gap-2 py-1 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-building-columns text-orange"></i> Overview</a>
-        <a href="facilities/welding-lab.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-fire-burner text-orange"></i> Welding Lab (40 Booths)</a>
-        <a href="facilities/equipment.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-gears text-orange"></i> Equipment &amp; Technology</a>
-        <a href="facilities/safety-training.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange"><i class="fa-solid fa-shield-halved text-orange"></i> Safety Training Bay</a>
+      <div class="hidden pl-6 py-2 space-y-1.5 border-l-2 border-orange/40 ml-5 mt-1">
+        <a href="facilities.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="facilities.html"><i class="fa-solid fa-building-columns text-orange w-4 text-center"></i> Overview</a>
+        <a href="facilities/welding-lab.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="facilities/welding-lab.html"><i class="fa-solid fa-fire-burner text-orange w-4 text-center"></i> Welding Lab (40 Booths)</a>
+        <a href="facilities/equipment.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="facilities/equipment.html"><i class="fa-solid fa-gears text-orange w-4 text-center"></i> Equipment &amp; Technology</a>
+        <a href="facilities/safety-training.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="facilities/safety-training.html"><i class="fa-solid fa-shield-halved text-orange w-4 text-center"></i> Safety Training Bay</a>
       </div>
     </div>
 
-    <!-- Instructors -->
-    <a href="instructors.html" class="block py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
-      <i class="fa-solid fa-user-tie text-orange mr-2"></i> Instructors
-    </a>
+    <!-- 5. Instructors -->
+    <div>
+      <a href="instructors.html" class="mobile-nav-link w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-lg uppercase text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard transition" data-key="instructors.html">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-user-tie text-orange w-6 text-center text-base flex-shrink-0"></i>
+          <span>Instructors</span>
+        </span>
+      </a>
+    </div>
 
-    <!-- Contact -->
-    <a href="contact.html" class="block py-2.5 px-3 rounded-lg font-heading text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard text-lg uppercase">
-      <i class="fa-solid fa-headset text-orange mr-2"></i> Contact
-    </a>
+    <!-- 6. Contact -->
+    <div>
+      <a href="contact.html" class="mobile-nav-link w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-lg uppercase text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-darkcard transition" data-key="contact.html">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-headset text-orange w-6 text-center text-base flex-shrink-0"></i>
+          <span>Contact</span>
+        </span>
+      </a>
+    </div>
 
-    <!-- Dashboard Accordion (Student Portal) -->
-      <div>
-        <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-orange hover:bg-orange/10 text-lg uppercase">
-          <span class="flex items-center gap-2.5"><i class="fa-solid fa-gauge-high"></i> Dashboard</span>
-          <i class="mobile-toggle-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
-        </button>
-        <div class="hidden pl-4 py-2 space-y-1.5 border-l-2 border-orange/40 ml-4 mt-1">
-          <a href="dashboard/index.html" class="flex items-center gap-2 py-1.5 px-3 text-sm font-bold text-orange hover:underline">
-            <i class="fa-solid fa-id-card-clip"></i> Student Portal Overview
-          </a>
-          <a href="dashboard/lab-hours.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange">
-            <i class="fa-solid fa-stopwatch text-orange text-xs"></i> Lab &amp; Booth Hours
-          </a>
-          <a href="dashboard/skill-assessments.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange">
-            <i class="fa-solid fa-clipboard-check text-orange text-xs"></i> Skill Assessments
-          </a>
-          <a href="dashboard/certifications.html" class="flex items-center gap-2 py-1 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange">
-            <i class="fa-solid fa-award text-orange text-xs"></i> AWS Certifications
-          </a>
-        </div>
+    <!-- 7. Dashboard Accordion -->
+    <div>
+      <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-heading text-lg uppercase text-orange hover:bg-orange/10 transition" data-mobile-dropdown="dashboard">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-gauge-high text-orange w-6 text-center text-base flex-shrink-0"></i>
+          <span>Dashboard</span>
+        </span>
+        <i class="mobile-toggle-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+      </button>
+      <div class="hidden pl-6 py-2 space-y-1.5 border-l-2 border-orange/40 ml-5 mt-1">
+        <a href="dashboard/index.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm font-bold text-orange hover:underline hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="dashboard/index.html">
+          <i class="fa-solid fa-id-card-clip w-4 text-center"></i> Student Portal Overview
+        </a>
+        <a href="dashboard/lab-hours.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="dashboard/lab-hours.html">
+          <i class="fa-solid fa-stopwatch text-orange text-xs w-4 text-center"></i> Lab &amp; Booth Hours
+        </a>
+        <a href="dashboard/skill-assessments.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="dashboard/skill-assessments.html">
+          <i class="fa-solid fa-clipboard-check text-orange text-xs w-4 text-center"></i> Skill Assessments
+        </a>
+        <a href="dashboard/certifications.html" class="mobile-sub-link flex items-center gap-2 py-1.5 px-3 text-sm text-slate-700 dark:text-slate-300 hover:text-orange hover:bg-slate-100/50 dark:hover:bg-darkcard/50 rounded transition" data-key="dashboard/certifications.html">
+          <i class="fa-solid fa-award text-orange text-xs w-4 text-center"></i> AWS Certifications
+        </a>
       </div>
+    </div>
 
   </div>
 

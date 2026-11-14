@@ -36,6 +36,7 @@
       const next = current === 'rtl' ? 'ltr' : 'rtl';
       window.WeldDirection.set(next);
     },
+    applyDirection: applyDirection,
     initButtons: () => {
       document.querySelectorAll('.dir-toggle-btn').forEach(btn => {
         btn.removeEventListener('click', window.WeldDirection.toggle);

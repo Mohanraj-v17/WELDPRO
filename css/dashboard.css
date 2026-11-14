@@ -351,44 +351,129 @@ body.sidebar-locked {
   }
 }
 
-/* 4. Fluid Responsive Tables */
+/* 4. Fluid Responsive Industrial Tables (Strict Non-Wrapping Alignment) */
 .table-responsive-wrapper,
+.table-container-responsive,
+.dashboard-card .overflow-x-auto,
 .dashboard-main .overflow-x-auto {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  scroll-behavior: smooth !important;
+  display: block !important;
   border-radius: 0.5rem;
 }
 
 .table-responsive-wrapper table,
-.dashboard-main .overflow-x-auto table {
-  min-width: 540px;
+.dashboard-main table,
+.dashboard-card table,
+.table-industrial,
+.weld-table,
+#attendanceTable {
+  min-width: 820px !important;
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+.table-industrial th,
+.weld-table th,
+#attendanceTable th,
+.dashboard-main table th {
+  background-color: #F8FAFC !important;
+  color: #475569 !important;
+  font-family: var(--font-heading), 'Oswald', sans-serif !important;
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  padding: 0.85rem 1.1rem !important;
+  border-bottom: 2px solid #E2E8F0 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+}
+
+[dir="rtl"] .table-industrial th,
+[dir="rtl"] .weld-table th,
+[dir="rtl"] #attendanceTable th,
+[dir="rtl"] .dashboard-main table th {
+  text-align: right !important;
+}
+
+.dark .table-industrial th,
+.dark .weld-table th,
+.dark #attendanceTable th,
+.dark .dashboard-main table th {
+  background-color: #142B45 !important;
+  color: #94A3B8 !important;
+  border-bottom-color: #29465F !important;
+}
+
+.table-industrial td,
+.weld-table td,
+#attendanceTable td,
+.dashboard-main table td {
+  padding: 0.85rem 1.1rem !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  font-size: 0.875rem !important;
+  color: inherit !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+}
+
+.dark .table-industrial td,
+.dark .weld-table td,
+.dark #attendanceTable td,
+.dark .dashboard-main table td {
+  border-bottom-color: #29465F !important;
+}
+
+.table-industrial tr:hover td,
+.weld-table tr:hover td,
+#attendanceTable tr:hover td,
+.dashboard-main table tr:hover td {
+  background-color: rgba(242, 140, 40, 0.04) !important;
+}
+
+.dark .table-industrial tr:hover td,
+.dark .weld-table tr:hover td,
+.dark #attendanceTable tr:hover td,
+.dark .dashboard-main table tr:hover td {
+  background-color: rgba(242, 140, 40, 0.08) !important;
 }
 
 @media (max-width: 640px) {
-  .weld-table th,
-  .dashboard-main table th {
-    padding: 0.65rem 0.75rem !important;
-    font-size: 0.75rem !important;
-    white-space: nowrap;
+  .dashboard-topbar {
+    padding: 0 0.875rem !important;
+    height: 64px !important;
   }
+  .table-industrial th,
+  .weld-table th,
+  #attendanceTable th,
+  .dashboard-main table th {
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.75rem !important;
+    white-space: nowrap !important;
+  }
+  .table-industrial td,
   .weld-table td,
+  #attendanceTable td,
   .dashboard-main table td {
-    padding: 0.75rem 0.75rem !important;
-    font-size: 0.8rem !important;
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.8125rem !important;
+    white-space: nowrap !important;
   }
 }
 
 /* 5. Attendance Calendar Responsiveness */
 @media (max-width: 640px) {
   .attendance-calendar-grid {
-    gap: 0.25rem !important;
+    gap: 3px !important;
   }
   .attendance-calendar-grid > div {
-    padding: 0.35rem 0.15rem !important;
-    min-height: 48px !important;
+    padding: 4px 2px !important;
+    min-height: 44px !important;
+    border-radius: 4px !important;
   }
 }
 
@@ -398,8 +483,45 @@ body.sidebar-locked {
   }
   .attendance-calendar-grid > div {
     padding: 3px 1px !important;
-    min-height: 42px !important;
+    min-height: 38px !important;
   }
+}
+
+/* Notification Navigation Links & Filter Tabs Borders */
+.notif-filter-tab {
+  border: 1px solid #CBD5E1 !important;
+  transition: all 0.2s ease !important;
+}
+.dark .notif-filter-tab {
+  border-color: #29465F !important;
+}
+.notif-filter-tab.active {
+  border-color: #F28C28 !important;
+  background-color: #F28C28 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(242, 140, 40, 0.3) !important;
+}
+.notif-filter-tab:hover:not(.active) {
+  border-color: #F28C28 !important;
+  color: #F28C28 !important;
+}
+
+/* Notification Action Navigation Links with Explicit Borders */
+.notif-item .btn-weld {
+  border: 1px solid #CBD5E1 !important;
+  border-radius: 0.5rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+.dark .notif-item .btn-weld {
+  border-color: #29465F !important;
+}
+.notif-item .btn-primary-weld {
+  border-color: #F28C28 !important;
+}
+.notif-item .btn-secondary-weld:hover {
+  border-color: #F28C28 !important;
+  color: #F28C28 !important;
 }
 
 /* 6. Modal Dialogs Mobile Protection */

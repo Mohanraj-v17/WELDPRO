@@ -281,14 +281,33 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s ease;
   pointer-events: none;
+  z-index: 9999 !important;
+}
+
+/* Invisible Hover Bridge: Seamlessly bridges any gap between nav button and menu */
+.mega-dropdown-menu::before,
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background: transparent;
+  pointer-events: auto !important;
+  z-index: 100;
 }
 
 .nav-item-dropdown:hover .mega-dropdown-menu,
 .nav-item-dropdown.active .mega-dropdown-menu,
+.nav-item-dropdown.is-open .mega-dropdown-menu,
+.nav-item-dropdown:focus-within .mega-dropdown-menu,
 .nav-item-dropdown:hover .dropdown-menu,
-.nav-item-dropdown.active .dropdown-menu {
+.nav-item-dropdown.active .dropdown-menu,
+.nav-item-dropdown.is-open .dropdown-menu,
+.nav-item-dropdown:focus-within .dropdown-menu {
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateY(0) !important;
@@ -302,8 +321,142 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 .nav-item-dropdown:hover .mega-dropdown-menu-center,
-.nav-item-dropdown.active .mega-dropdown-menu-center {
+.nav-item-dropdown.active .mega-dropdown-menu-center,
+.nav-item-dropdown.is-open .mega-dropdown-menu-center,
+.nav-item-dropdown:focus-within .mega-dropdown-menu-center {
   transform: translate(-50%, 0) !important;
+}
+
+/* Dropdown Indicators & Animated Chevrons */
+.nav-item-dropdown .dropdown-trigger .fa-chevron-down {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+  transform-origin: center center;
+  font-size: 0.65rem !important;
+  margin-left: 0.25rem;
+}
+
+/* Hover & Active Open State: Rotate Chevron 180 degrees and color Orange */
+.nav-item-dropdown:hover .dropdown-trigger .fa-chevron-down,
+.nav-item-dropdown.active .dropdown-trigger .fa-chevron-down,
+.nav-item-dropdown.is-open .dropdown-trigger .fa-chevron-down,
+.nav-item-dropdown:focus-within .dropdown-trigger .fa-chevron-down {
+  transform: rotate(180deg) !important;
+  color: var(--color-welding-orange) !important;
+}
+
+/* Active Dropdown Parent Category Indicator (Desktop) */
+.nav-item-dropdown.is-current-category .dropdown-trigger,
+.nav-link-item.is-active-nav {
+  color: #F28C28 !important;
+  font-weight: 700 !important;
+  position: relative !important;
+}
+
+.nav-item-dropdown.is-current-category .dropdown-trigger *,
+.nav-link-item.is-active-nav * {
+  color: #F28C28 !important;
+}
+
+.nav-item-dropdown.is-current-category .dropdown-trigger::after,
+.nav-link-item.is-active-nav::after {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0.75rem !important;
+  right: 0.75rem !important;
+  height: 3px !important;
+  background-color: #F28C28 !important;
+  border-radius: 9999px !important;
+  z-index: 10 !important;
+  box-shadow: 0 1px 4px rgba(242, 140, 40, 0.4) !important;
+}
+
+/* Active Item Inside Desktop Mega / Dropdown Menus */
+.mega-dropdown-menu a.is-active-link {
+  background-color: rgba(242, 140, 40, 0.12) !important;
+  color: #F28C28 !important;
+  font-weight: 700 !important;
+  border-left: 3px solid #F28C28 !important;
+}
+
+.mega-dropdown-menu a.is-active-link * {
+  color: #F28C28 !important;
+}
+
+[dir="rtl"] .mega-dropdown-menu a.is-active-link {
+  border-left: none !important;
+  border-right: 3px solid #F28C28 !important;
+}
+
+/* Force-closed Dropdown: Instantly disappears on touch/click of sub-link */
+.nav-item-dropdown.force-closed .mega-dropdown-menu,
+.nav-item-dropdown.force-closed .dropdown-menu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(8px) !important;
+  pointer-events: none !important;
+  transition: none !important;
+}
+
+/* Mobile Drawer Unified Top-level Active Indicator (Accordion buttons & Direct links) */
+.mobile-menu-drawer .mobile-dropdown-toggle.is-current-category,
+.mobile-menu-drawer .mobile-nav-link.is-active-nav,
+.mobile-menu-drawer a.is-active-nav {
+  background-color: rgba(242, 140, 40, 0.15) !important;
+  color: #F28C28 !important;
+  font-weight: 700 !important;
+  border-left: 4px solid #F28C28 !important;
+  border-radius: 0.5rem !important;
+}
+
+.mobile-menu-drawer .mobile-dropdown-toggle.is-current-category *,
+.mobile-menu-drawer .mobile-nav-link.is-active-nav *,
+.mobile-menu-drawer a.is-active-nav * {
+  color: #F28C28 !important;
+}
+
+[dir="rtl"] .mobile-menu-drawer .mobile-dropdown-toggle.is-current-category,
+[dir="rtl"] .mobile-menu-drawer .mobile-nav-link.is-active-nav,
+[dir="rtl"] .mobile-menu-drawer a.is-active-nav {
+  border-left: none !important;
+  border-right: 4px solid #F28C28 !important;
+}
+
+/* Mobile Drawer Sub-link Active Indicator */
+.mobile-menu-drawer .mobile-sub-link.is-active-link,
+.mobile-menu-drawer div div a.is-active-link {
+  background-color: rgba(242, 140, 40, 0.14) !important;
+  color: #F28C28 !important;
+  font-weight: 700 !important;
+  border-left: 3px solid #F28C28 !important;
+  border-radius: 0.375rem !important;
+  padding-left: 0.75rem !important;
+}
+
+.mobile-menu-drawer .mobile-sub-link.is-active-link *,
+.mobile-menu-drawer div div a.is-active-link * {
+  color: #F28C28 !important;
+}
+
+[dir="rtl"] .mobile-menu-drawer .mobile-sub-link.is-active-link,
+[dir="rtl"] .mobile-menu-drawer div div a.is-active-link {
+  border-left: none !important;
+  border-right: 3px solid #F28C28 !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.75rem !important;
+}
+
+/* Mobile Drawer Accordion Chevron Transition */
+.mobile-dropdown-toggle .mobile-toggle-icon {
+  transition: transform 0.25s ease, color 0.2s ease;
+  transform-origin: center center;
+}
+
+.mobile-dropdown-toggle.is-open .mobile-toggle-icon,
+.mobile-dropdown-toggle.is-current-category .mobile-toggle-icon {
+  transform: rotate(180deg) !important;
+  color: #F28C28 !important;
 }
 
 /* Header blur */

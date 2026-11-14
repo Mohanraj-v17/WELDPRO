@@ -31,10 +31,11 @@
       }
     });
 
-    // Swap logo assets for dark/light contrast (except in dark footer)
+    // Swap logo assets for dark/light contrast
     const logos = document.querySelectorAll('img[src*="weldpro-logo"]');
     logos.forEach(img => {
-      if (img.closest('footer') || img.closest('.bg-navy-900')) {
+      // Keep white logo only if inside an element that is permanently dark (like sidebar on desktop)
+      if (img.closest('.dashboard-sidebar')) {
         img.src = img.src.replace('weldpro-logo-light.svg', 'weldpro-logo.svg');
       } else if (theme === 'light') {
         img.src = img.src.replace('weldpro-logo.svg', 'weldpro-logo-light.svg');
@@ -64,6 +65,7 @@
       const nextTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
       window.WeldTheme.set(nextTheme);
     },
+    applyTheme: applyTheme,
     initButtons: () => {
       document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
         btn.removeEventListener('click', window.WeldTheme.toggle);

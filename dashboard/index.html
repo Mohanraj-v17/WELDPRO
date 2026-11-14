@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Portal – Complete Student Details &amp; Records | WELDPRO</title>
-  <meta name="description" content="WELDPRO Student Portal: Comprehensive student profile, enrolled welding programs, booth hours, CWI skill assessments, and official certifications.">
+  <title>Student Portal – Overview &amp; Training Dossier | WELDPRO</title>
+  <meta name="description" content="WELDPRO Student Training Portal. Real-time booth hours, certified qualifications, and industrial welding records.">
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
   <link rel="alternate icon" type="image/png" href="../assets/logo/favicon.png">
 
-  
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -45,7 +44,7 @@
       <!-- Sidebar Brand Header -->
       <div class="p-5 border-b border-steel/40 flex items-center justify-between">
         <a href="../index.html" class="flex items-center gap-2">
-          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-8 w-auto">
+          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-10 w-auto">
         </a>
         <button class="sidebar-close-btn lg:hidden text-slate-400 hover:text-white p-1" aria-label="Close Sidebar">
           <i class="fa-solid fa-xmark text-lg"></i>
@@ -148,712 +147,381 @@
               <i class="fa-solid fa-id-card-clip"></i> Student Portal
             </span>
             <h1 class="text-[13px] sm:text-base md:text-xl font-heading font-bold text-slate-900 dark:text-white uppercase leading-snug sm:leading-tight">
-              Student Profile &amp; Complete Training Dossier
+              Student Profile &amp; Training Dossier
             </h1>
           </div>
         </div>
 
-        <div class="dashboard-topbar-controls flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
+        <div class="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
           
-          <!-- Theme Toggle -->
-          <button class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme">
-            <i class="fa-solid fa-sun text-yellow-400 text-xs sm:text-sm"></i>
-          </button>
-
-          <!-- RTL Toggle -->
-          <button class="dir-toggle-btn px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction">
-            <i class="fa-solid fa-globe text-orange text-xs"></i>
-            <span class="dir-label hidden xs:inline sm:inline">RTL</span>
-          </button>
-
-          <!-- Notification Menu -->
-          <div class="relative notif-menu-wrapper">
-            <button class="notif-menu-trigger w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-orange transition relative" aria-label="View Notifications">
-              <i class="fa-solid fa-bell text-xs sm:text-sm"></i>
-              <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange text-white rounded-full text-[10px] font-bold flex items-center justify-center">3</span>
+          <div class="dashboard-topbar-controls flex items-center gap-1.5 sm:gap-2.5 md:gap-3 flex-shrink-0">
+            
+            <!-- Theme Toggle -->
+            <button class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center hover:border-orange transition" aria-label="Toggle Theme">
+              <i class="fa-solid fa-sun text-yellow-400 text-xs sm:text-sm"></i>
             </button>
-            <div class="notif-menu-dropdown hidden absolute right-0 mt-2 w-[calc(100vw-2rem)] max-w-xs sm:w-80 bg-white dark:bg-darkcard rounded-lg shadow-2xl border border-slate-200 dark:border-steel/60 p-3 z-50">
-              <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 dark:border-steel/40 text-xs font-bold uppercase">
-                <span>Recent Updates</span>
-                <a href="notifications.html" class="text-orange hover:underline text-[11px]">View All</a>
-              </div>
-              <div class="space-y-2 text-xs">
-                <a href="skill-assessments.html" class="block p-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 transition">
-                  <span class="font-bold text-slate-900 dark:text-white block">Assessment Passed (94/100)</span>
-                  <span class="text-slate-500">TIG 6G 2" Pipe Joint verified by S. Patel, CWI.</span>
-                </a>
-                <a href="lab-hours.html" class="block p-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 transition">
-                  <span class="font-bold text-slate-900 dark:text-white block">Lab Session Logged (4.5 hrs)</span>
-                  <span class="text-slate-500">Booth #14 heavy pipe joint signed off.</span>
-                </a>
-              </div>
-            </div>
-          </div>
 
-          <!-- Profile Menu -->
-          <div class="relative profile-menu-wrapper">
-            <button class="profile-menu-trigger flex items-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-navy transition">
-              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-xs flex-shrink-0"><i class="fa-solid fa-user"></i></div>
-              <i class="fa-solid fa-chevron-down text-[9px] text-slate-400"></i>
+            <!-- RTL Toggle -->
+            <button class="dir-toggle-btn px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-orange transition flex items-center gap-1" aria-label="Toggle Direction">
+              <i class="fa-solid fa-globe text-orange text-xs"></i>
+              <span class="dir-label hidden xs:inline sm:inline">RTL</span>
             </button>
-            <div class="profile-menu-dropdown hidden absolute right-0 mt-2 w-48 max-w-[calc(100vw-2rem)] bg-white dark:bg-darkcard rounded-lg shadow-2xl border border-slate-200 dark:border-steel/60 p-2 z-50 text-xs">
-              <a href="my-profile.html" class="block px-3 py-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 text-slate-700 dark:text-slate-200">
-                <i class="fa-solid fa-user mr-2 text-orange"></i> My Profile
-              </a>
-              <a href="certifications.html" class="block px-3 py-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 text-slate-700 dark:text-slate-200">
-                <i class="fa-solid fa-award mr-2 text-orange"></i> My Credentials
-              </a>
-              <div class="border-t border-slate-100 dark:border-steel/40 my-1"></div>
-              <button class="btn-logout-action w-full text-left px-3 py-2 rounded text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20">
-                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Log Out
+
+            <!-- Notification Menu -->
+            <div class="relative notif-menu-wrapper">
+              <button class="notif-menu-trigger w-8 h-8 sm:w-9 sm:h-9 rounded-md border border-slate-200 dark:border-steel bg-slate-50 dark:bg-navy flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-orange transition relative" aria-label="View Notifications">
+                <i class="fa-solid fa-bell text-xs sm:text-sm"></i>
+                <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange text-white rounded-full text-[10px] font-bold flex items-center justify-center">3</span>
               </button>
+              <div class="notif-menu-dropdown hidden absolute right-0 mt-2 w-[calc(100vw-2rem)] max-w-xs sm:w-80 bg-white dark:bg-darkcard rounded-lg shadow-2xl border border-slate-200 dark:border-steel/60 p-3 z-50">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 dark:border-steel/40 text-xs font-bold uppercase">
+                  <span>Recent Updates</span>
+                  <a href="notifications.html" class="text-orange hover:underline text-[11px]">View All</a>
+                </div>
+                <div class="space-y-2 text-xs">
+                  <a href="skill-assessments.html" class="block p-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 transition">
+                    <span class="font-bold text-slate-900 dark:text-white block">Assessment Passed (94/100)</span>
+                    <span class="text-slate-500">TIG 6G 2" Pipe Joint verified by S. Patel, CWI.</span>
+                  </a>
+                  <a href="lab-hours.html" class="block p-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 transition">
+                    <span class="font-bold text-slate-900 dark:text-white block">Lab Session Logged (4.5 hrs)</span>
+                    <span class="text-slate-500">Booth #14 heavy pipe joint signed off.</span>
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
 
+            <!-- Profile Menu -->
+            <div class="relative profile-menu-wrapper">
+              <button class="profile-menu-trigger flex items-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-navy transition">
+                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-orange/20 border border-orange text-orange flex items-center justify-center text-xs flex-shrink-0"><i class="fa-solid fa-user"></i></div>
+                <i class="fa-solid fa-chevron-down text-[9px] text-slate-400"></i>
+              </button>
+              <div class="profile-menu-dropdown hidden absolute right-0 mt-2 w-48 max-w-[calc(100vw-2rem)] bg-white dark:bg-darkcard rounded-lg shadow-2xl border border-slate-200 dark:border-steel/60 p-2 z-50 text-xs">
+                <a href="my-profile.html" class="block px-3 py-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 text-slate-700 dark:text-slate-200">
+                  <i class="fa-solid fa-user mr-2 text-orange"></i> My Profile
+                </a>
+                <a href="certifications.html" class="block px-3 py-2 rounded hover:bg-slate-50 dark:hover:bg-navy-900 text-slate-700 dark:text-slate-200">
+                  <i class="fa-solid fa-award mr-2 text-orange"></i> My Credentials
+                </a>
+                <div class="border-t border-slate-100 dark:border-steel/40 my-1"></div>
+                <button class="btn-logout-action w-full text-left px-3 py-2 rounded text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20">
+                  <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Log Out
+                </button>
+              </div>
+            </div>
+
+          </div>
         </div>
       </header>
 
-      <!-- Dashboard Body Content -->
-      <div class="p-4 sm:p-6 lg:p-8 space-y-6">
+      <!-- STREAMLINED, INTUITIVE, HIGHLY RESPONSIVE MAIN OVERVIEW -->
+      <div class="p-4 sm:p-6 lg:p-8 space-y-6 max-w-7xl">
         
-        <!-- 1. MASTER STUDENT HERO & WELCOME BANNER -->
-        <div class="p-4 sm:p-6 rounded-lg bg-gradient-to-r from-navy-900 via-navy to-steel text-white border border-steel/40 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6 relative overflow-hidden">
-          <div class="flex items-start gap-3 sm:gap-5 relative z-10 min-w-0">
-            <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-orange/20 border-2 border-orange text-orange flex flex-col items-center justify-center flex-shrink-0 shadow-lg">
-              <i class="fa-solid fa-id-card text-lg sm:text-2xl mb-0.5"></i>
-              <span class="text-[7px] sm:text-[9px] font-mono font-bold uppercase tracking-wider">TRAINEE</span>
-            </div>
-            <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
-                <span class="px-2 sm:px-2.5 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider bg-orange text-white">
-                  Active Trainee • Level 3
-                </span>
-                <span class="px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                  <i class="fa-solid fa-shield-halved mr-1"></i> OSHA-10 Verified
-                </span>
-                <span class="text-[11px] sm:text-xs font-mono text-slate-300">ID: <strong class="user-id-display text-white">WP-2026-8942</strong></span>
+        <!-- 1. Trainee Welcome Dossier Banner -->
+        <div class="relative overflow-hidden rounded-xl border border-steel/50 bg-gradient-to-r from-navy-900 via-darkcard to-navy p-5 sm:p-7 shadow-lg">
+          <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-orange/20 border border-orange text-orange flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 shadow-inner">
+                <i class="fa-solid fa-id-badge"></i>
               </div>
-              <h2 class="text-xl sm:text-2xl md:text-3xl font-heading font-bold uppercase tracking-wide">
-                <span class="user-name-display text-white">Marcus Vance</span>
-              </h2>
-              <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl font-light leading-relaxed">
-                Specialization: <strong class="user-program-display text-orange">Advanced Pipe &amp; Pressure Vessel Welding</strong>. Stationed at <strong class="text-white">Booth #14 (Heavy Industrial 6G Rig)</strong> under Primary Mentor <strong class="text-white">J. Miller, CWI</strong>.
-              </p>
-            </div>
-          </div>
-
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 relative z-10 flex-shrink-0 w-full md:w-auto">
-            <button onclick="window.print()" class="btn-weld bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs py-2 px-3.5 rounded text-center justify-center">
-              <i class="fa-solid fa-print mr-1.5"></i> Print Trainee Dossier
-            </button>
-            <a href="lab-hours.html" class="btn-weld btn-primary-weld text-xs py-2 px-4 shadow text-center justify-center">
-              <i class="fa-solid fa-plus mr-1.5"></i> Log Lab Session
-            </a>
-          </div>
-        </div>
-
-        <!-- 2. FOUR HIGH-LEVEL KEY METRIC CARDS -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          
-          <!-- Card 1: Completed Lab Hours -->
-          <div class="stat-card accent-orange">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Completed Booth Hours</span>
-              <span class="w-8 h-8 rounded-full bg-orange/15 text-orange flex items-center justify-center text-sm">
-                <i class="fa-solid fa-stopwatch"></i>
-              </span>
-            </div>
-            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white mb-2">
-              <span class="user-hours-completed">214</span> <span class="text-sm font-normal text-slate-400">/ 300 hrs</span>
-            </div>
-            <div class="progress-bar-container mb-2">
-              <div class="progress-bar-fill" style="width: 71%;"></div>
-            </div>
-            <span class="text-[11px] text-slate-500 dark:text-slate-400">71% practical shop requirements logged</span>
-          </div>
-
-          <!-- Card 2: Remaining Hours -->
-          <div class="stat-card accent-navy">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Remaining Lab Hours</span>
-              <span class="w-8 h-8 rounded-full bg-steel/20 text-steel-light flex items-center justify-center text-sm">
-                <i class="fa-solid fa-hourglass-half"></i>
-              </span>
-            </div>
-            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white mb-2">
-              <span class="user-hours-remaining">86</span> <span class="text-sm font-normal text-slate-400">hrs</span>
-            </div>
-            <div class="text-[11px] text-slate-500 dark:text-slate-400">Estimated graduation: Dec 20, 2026 (4 wks)</div>
-          </div>
-
-          <!-- Card 3: Skills Assessments -->
-          <div class="stat-card accent-green">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Bend Test Coupons</span>
-              <span class="w-8 h-8 rounded-full bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-sm">
-                <i class="fa-solid fa-circle-check"></i>
-              </span>
-            </div>
-            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white mb-2">
-              8 <span class="text-sm font-normal text-slate-400">/ 10 Passed</span>
-            </div>
-            <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">ASME Section IX 6G Scheduled Dec 12</span>
-          </div>
-
-          <!-- Card 4: Official Credentials -->
-          <div class="stat-card accent-orange">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Verified Credentials</span>
-              <span class="w-8 h-8 rounded-full bg-orange/15 text-orange flex items-center justify-center text-sm">
-                <i class="fa-solid fa-award"></i>
-              </span>
-            </div>
-            <div class="text-3xl font-heading font-bold text-slate-900 dark:text-white mb-2">
-              2 <span class="text-sm font-normal text-slate-400">Certifications</span>
-            </div>
-            <span class="text-[11px] text-slate-500 dark:text-slate-400">AWS D1.1 (3G/4G Plate) &amp; OSHA-10</span>
-          </div>
-
-        </div>
-
-        <!-- 3. COMPREHENSIVE STUDENT DETAILS & ACADEMIC DOSSIER SECTION -->
-        <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/40 p-6 shadow-sm">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-6 border-b border-slate-100 dark:border-steel/30 gap-2">
-            <div>
-              <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange">Student Information System</span>
-              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white uppercase">
-                <i class="fa-solid fa-address-card text-orange mr-2"></i> Complete Student Details &amp; Records
-              </h3>
-            </div>
-            <a href="my-profile.html" class="btn-weld btn-outline-weld text-xs py-1.5 px-3 self-start sm:self-auto">
-              <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Profile Details
-            </a>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <!-- Column 1: Personal & Contact Information -->
-            <div class="p-4 rounded-lg bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-steel/30 space-y-3">
-              <div class="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-steel/40 text-xs font-heading font-bold uppercase text-slate-900 dark:text-white">
-                <i class="fa-solid fa-user text-orange"></i> Personal &amp; Contact Details
-              </div>
-              <div class="text-xs space-y-2">
-                <div>
-                  <span class="text-slate-400 block font-mono">Full Legal Name:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white user-name-display">Marcus Vance</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Institutional Email:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white user-email-display">student@weldpro.edu</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Primary Phone:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white user-phone-display">+1 (555) 234-8921</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Emergency Contact:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">Elena Vance (+1 555-882-9912 – Spouse)</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Home Address:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">4820 S. Ironwood St., Industrial Park, Chicago, IL</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Column 2: Academic Program & Cohort Details -->
-            <div class="p-4 rounded-lg bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-steel/30 space-y-3">
-              <div class="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-steel/40 text-xs font-heading font-bold uppercase text-slate-900 dark:text-white">
-                <i class="fa-solid fa-graduation-cap text-orange"></i> Academic &amp; Enrollment Details
-              </div>
-              <div class="text-xs space-y-2">
-                <div>
-                  <span class="text-slate-400 block font-mono">Official Student ID:</span>
-                  <span class="font-mono font-bold text-orange user-id-display">WP-2026-8942</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Enrolled Program:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white user-program-display">Advanced Pipe &amp; Pressure Vessel Welding</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Cohort / Term:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">Fall / Winter 2026 Advanced Track</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Enrollment Date:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">August 15, 2026</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Cumulative Practical Average:</span>
-                  <span class="font-semibold text-emerald-500 font-mono">94.2% (Grade A • High Distinction)</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Column 3: Shop Floor, Station & Safety Assignments -->
-            <div class="p-4 rounded-lg bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-steel/30 space-y-3">
-              <div class="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-steel/40 text-xs font-heading font-bold uppercase text-slate-900 dark:text-white">
-                <i class="fa-solid fa-wrench text-orange"></i> Shop Floor &amp; Station Assignments
-              </div>
-              <div class="text-xs space-y-2">
-                <div>
-                  <span class="text-slate-400 block font-mono">Assigned Bay &amp; Booth:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">Bay C • Booth #14 (Heavy Industrial 6G)</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Primary Power Source:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">Miller PipeWorx 400 Multi-Process</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Shift &amp; Hours:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">Morning Shift (07:30 AM – 12:00 PM)</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Primary CWI Mentor:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">J. Miller, AWS Senior CWI #140922</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block font-mono">Locker &amp; PPE Sizes:</span>
-                  <span class="font-semibold text-slate-900 dark:text-white">Locker #14 (Helmet: L | Jacket: XL | Gloves: 10)</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- 4. ENROLLED CURRICULUM MODULES BREAKDOWN -->
-        <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/40 p-6 shadow-sm">
-          <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 dark:border-steel/30">
-            <div>
-              <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange">Course Progression</span>
-              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white uppercase">
-                <i class="fa-solid fa-list-check text-orange mr-2"></i> Enrolled Curriculum Modules &amp; Scores
-              </h3>
-            </div>
-            <a href="my-programs.html" class="text-xs font-semibold text-orange hover:underline">Full Syllabus &rarr;</a>
-          </div>
-
-          <div class="table-responsive-wrapper overflow-x-auto">
-            <table class="w-full text-left text-xs min-w-[560px]">
-              <thead class="bg-slate-50 dark:bg-navy-900/60 uppercase font-heading text-slate-400 border-b border-slate-200 dark:border-steel/40">
-                <tr>
-                  <th class="py-3 px-4">Module Code &amp; Title</th>
-                  <th class="py-3 px-4">Welding Process</th>
-                  <th class="py-3 px-4">Status</th>
-                  <th class="py-3 px-4">CWI Score</th>
-                  <th class="py-3 px-4">Practical Hours</th>
-                  <th class="py-3 px-4">Inspector Sign-off</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-steel/30">
-                <tr>
-                  <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">
-                    MOD-101: Shop Safety, Metallurgy &amp; Blueprint Geometry
-                  </td>
-                  <td class="py-3 px-4 text-slate-500 dark:text-slate-400">Theory &amp; Geometry</td>
-                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400">Completed</span></td>
-                  <td class="py-3 px-4 font-mono font-bold text-emerald-500">98 / 100</td>
-                  <td class="py-3 px-4 font-mono">30 / 30 hrs</td>
-                  <td class="py-3 px-4 text-slate-400">C. Mendez (OSHA-30)</td>
-                </tr>
-                <tr>
-                  <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">
-                    MOD-102: SMAW Open-Root &amp; Fill Passes (E6010 / E7018)
-                  </td>
-                  <td class="py-3 px-4 text-slate-500 dark:text-slate-400">SMAW (Stick)</td>
-                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400">Completed</span></td>
-                  <td class="py-3 px-4 font-mono font-bold text-emerald-500">92 / 100</td>
-                  <td class="py-3 px-4 font-mono">60 / 60 hrs</td>
-                  <td class="py-3 px-4 text-slate-400">J. Miller, CWI</td>
-                </tr>
-                <tr>
-                  <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">
-                    MOD-103: GMAW &amp; FCAW Production Structural 3G/4G
-                  </td>
-                  <td class="py-3 px-4 text-slate-500 dark:text-slate-400">MIG &amp; Flux-Cored</td>
-                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400">Completed</span></td>
-                  <td class="py-3 px-4 font-mono font-bold text-emerald-500">95 / 100</td>
-                  <td class="py-3 px-4 font-mono">45 / 45 hrs</td>
-                  <td class="py-3 px-4 text-slate-400">M. Kowalski, CWI</td>
-                </tr>
-                <tr>
-                  <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">
-                    MOD-104: GTAW (TIG) High-Alloy Sanitary &amp; Aerospace Pipe
-                  </td>
-                  <td class="py-3 px-4 text-slate-500 dark:text-slate-400">GTAW (TIG)</td>
-                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400">Completed</span></td>
-                  <td class="py-3 px-4 font-mono font-bold text-emerald-500">96 / 100</td>
-                  <td class="py-3 px-4 font-mono">40 / 40 hrs</td>
-                  <td class="py-3 px-4 text-slate-400">S. Patel, CWI</td>
-                </tr>
-                <tr class="bg-orange/5">
-                  <td class="py-3 px-4 font-semibold text-slate-900 dark:text-white">
-                    MOD-105: ASME Section IX 5G/6G Pressure Piping
-                  </td>
-                  <td class="py-3 px-4 text-orange font-semibold">TIG Root + E7018 Cap</td>
-                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-orange/20 text-orange border border-orange/30">In Progress (78%)</span></td>
-                  <td class="py-3 px-4 font-mono font-bold text-orange">94 / 100 (Mid)</td>
-                  <td class="py-3 px-4 font-mono text-orange font-bold">39 / 50 hrs</td>
-                  <td class="py-3 px-4 text-slate-400">J. Miller, CWI</td>
-                </tr>
-                <tr>
-                  <td class="py-3 px-4 font-semibold text-slate-500 dark:text-slate-400">
-                    MOD-106: Capstone Guided Bend &amp; Radiographic Testing
-                  </td>
-                  <td class="py-3 px-4 text-slate-500 dark:text-slate-400">NDT &amp; Bend Testing</td>
-                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200 dark:bg-steel/40 text-slate-600 dark:text-slate-300">Scheduled Dec 12</span></td>
-                  <td class="py-3 px-4 font-mono text-slate-400">Pending Exam</td>
-                  <td class="py-3 px-4 font-mono text-slate-400">0 / 75 hrs</td>
-                  <td class="py-3 px-4 text-slate-400">Board Exam</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 5. PRACTICAL LAB HOURS BREAKDOWN BY PROCESS -->
-        <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/40 p-6 shadow-sm">
-          <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 dark:border-steel/30">
-            <div>
-              <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange">Booth Time Allocation</span>
-              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white uppercase">
-                <i class="fa-solid fa-chart-pie text-orange mr-2"></i> Logged Practical Hours Breakdown by Process
-              </h3>
-            </div>
-            <a href="lab-hours.html" class="text-xs font-semibold text-orange hover:underline">View Detailed Hours Log &rarr;</a>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            
-            <div class="p-3.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-50 dark:bg-navy-900/40">
-              <div class="flex items-center justify-between text-xs mb-1 font-bold text-slate-900 dark:text-white">
-                <span>SMAW (Stick)</span>
-                <span class="text-emerald-500">100%</span>
-              </div>
-              <div class="text-xl font-heading font-bold text-slate-900 dark:text-white mb-1.5">60 / 60 <span class="text-xs font-normal text-slate-400">hrs</span></div>
-              <div class="progress-bar-container"><div class="progress-bar-fill bg-emerald-500" style="width: 100%;"></div></div>
-            </div>
-
-            <div class="p-3.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-50 dark:bg-navy-900/40">
-              <div class="flex items-center justify-between text-xs mb-1 font-bold text-slate-900 dark:text-white">
-                <span>GMAW (MIG)</span>
-                <span class="text-emerald-500">100%</span>
-              </div>
-              <div class="text-xl font-heading font-bold text-slate-900 dark:text-white mb-1.5">45 / 45 <span class="text-xs font-normal text-slate-400">hrs</span></div>
-              <div class="progress-bar-container"><div class="progress-bar-fill bg-emerald-500" style="width: 100%;"></div></div>
-            </div>
-
-            <div class="p-3.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-50 dark:bg-navy-900/40">
-              <div class="flex items-center justify-between text-xs mb-1 font-bold text-slate-900 dark:text-white">
-                <span>FCAW (Flux-Cored)</span>
-                <span class="text-emerald-500">100%</span>
-              </div>
-              <div class="text-xl font-heading font-bold text-slate-900 dark:text-white mb-1.5">35 / 35 <span class="text-xs font-normal text-slate-400">hrs</span></div>
-              <div class="progress-bar-container"><div class="progress-bar-fill bg-emerald-500" style="width: 100%;"></div></div>
-            </div>
-
-            <div class="p-3.5 rounded border border-slate-200 dark:border-steel/30 bg-slate-50 dark:bg-navy-900/40">
-              <div class="flex items-center justify-between text-xs mb-1 font-bold text-slate-900 dark:text-white">
-                <span>GTAW (TIG)</span>
-                <span class="text-emerald-500">100%</span>
-              </div>
-              <div class="text-xl font-heading font-bold text-slate-900 dark:text-white mb-1.5">40 / 40 <span class="text-xs font-normal text-slate-400">hrs</span></div>
-              <div class="progress-bar-container"><div class="progress-bar-fill bg-emerald-500" style="width: 100%;"></div></div>
-            </div>
-
-            <div class="p-3.5 rounded border border-orange/40 bg-orange/10">
-              <div class="flex items-center justify-between text-xs mb-1 font-bold text-slate-900 dark:text-white">
-                <span>ASME 6G Pipe</span>
-                <span class="text-orange">28% Target</span>
-              </div>
-              <div class="text-xl font-heading font-bold text-orange mb-1.5">34 / 120 <span class="text-xs font-normal text-slate-400">hrs</span></div>
-              <div class="progress-bar-container"><div class="progress-bar-fill bg-orange" style="width: 28%;"></div></div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- 6. 2-COLUMN SECTION: RECENT ACTIVITIES & UPCOMING SCHEDULE -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          <!-- Recent Practical Activity -->
-          <div class="lg:col-span-7 bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/40 p-6 shadow-sm">
-            <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 dark:border-steel/30">
               <div>
-                <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange">Booth Sign-offs</span>
-                <h3 class="font-heading font-bold text-base text-slate-900 dark:text-white uppercase">
-                  <i class="fa-solid fa-clock-rotate-left text-orange mr-2"></i> Recent Practical Lab Activities
-                </h3>
+                <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                  <span class="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold uppercase bg-orange/20 border border-orange/40 text-orange user-id-display">
+                    ID: WP-2026-8942
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded text-[11px] font-bold uppercase bg-emerald-500/20 text-emerald-400">
+                    Active • Level 3
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded text-[11px] font-bold uppercase bg-blue-500/20 text-blue-400">
+                    OSHA-10 Verified
+                  </span>
+                </div>
+                <h2 class="user-name-display text-2xl sm:text-3xl font-heading font-bold text-white uppercase tracking-wide">
+                  Marcus Vance
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
+                  Specialization: <strong class="text-orange">Advanced Pipe &amp; Pressure Vessel Welding</strong>. Stationed at <strong class="text-white">Booth #14 (Heavy Industrial 6G Rig)</strong> under Primary Mentor <strong class="text-white">J. Miller, CWI</strong>.
+                </p>
               </div>
-              <a href="lab-hours.html" class="text-xs font-semibold text-orange hover:underline">Full Log &rarr;</a>
             </div>
 
-            <div class="space-y-3.5">
-              <div class="flex items-start gap-3 p-3 rounded bg-slate-50 dark:bg-navy-900/50">
-                <div class="w-8 h-8 rounded bg-emerald-500/20 text-emerald-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <i class="fa-solid fa-check text-xs"></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center justify-between">
-                    <h5 class="text-xs font-bold text-slate-900 dark:text-white">Pipe 6G Joint Coupon Test Passed (4.5 hrs)</h5>
-                    <span class="text-[10px] text-slate-400 font-mono">Nov 10, 2026</span>
-                  </div>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Schedule 80 Carbon Pipe 45° fixed coupon passed 180° guided side-bend test. Signed by J. Miller, CWI.</p>
-                </div>
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3 flex-wrap sm:flex-nowrap flex-shrink-0">
+              <a href="lab-hours.html" class="btn-weld btn-primary-weld text-xs sm:text-sm py-2 px-4 rounded-lg flex items-center gap-2 shadow">
+                <i class="fa-solid fa-plus"></i>
+                <span>Log Lab Session</span>
+              </a>
+              <a href="certifications.html" class="btn-weld btn-secondary-weld text-xs sm:text-sm py-2 px-4 rounded-lg flex items-center gap-2 shadow">
+                <i class="fa-solid fa-award"></i>
+                <span>View Credentials</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Four Core KPI Metrics Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          
+          <!-- Stat 1: Completed Booth Hours -->
+          <div class="p-5 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/50 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">Booth Hours</span>
+              <div class="w-8 h-8 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-sm">
+                <i class="fa-solid fa-stopwatch"></i>
+              </div>
+            </div>
+            <div class="flex items-baseline gap-1.5">
+              <span class="user-hours-completed text-2xl sm:text-3xl font-heading font-bold text-slate-900 dark:text-white">214</span>
+              <span class="text-xs text-slate-500 font-mono">/ 300 Hrs</span>
+            </div>
+            <div class="w-full bg-slate-100 dark:bg-navy-900 h-2 rounded-full overflow-hidden mt-3">
+              <div class="bg-orange h-full rounded-full transition-all duration-500" style="width: 71%;"></div>
+            </div>
+            <span class="text-[11px] text-slate-500 dark:text-slate-400 block mt-2">71% practical shop requirements logged</span>
+          </div>
+
+          <!-- Stat 2: Remaining Lab Hours -->
+          <div class="p-5 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/50 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">Remaining Lab</span>
+              <div class="w-8 h-8 rounded-lg bg-blue-500/15 text-blue-500 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-hourglass-half"></i>
+              </div>
+            </div>
+            <div class="flex items-baseline gap-1.5">
+              <span class="user-hours-remaining text-2xl sm:text-3xl font-heading font-bold text-slate-900 dark:text-white">86</span>
+              <span class="text-xs text-slate-500 font-mono">Hours</span>
+            </div>
+            <div class="mt-3 flex items-center justify-between text-[11px]">
+              <span class="text-emerald-500 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i> On Schedule</span>
+              <span class="text-slate-400 font-mono">Grad: Dec 20</span>
+            </div>
+            <span class="text-[11px] text-slate-500 dark:text-slate-400 block mt-2">4 weeks remaining to completion</span>
+          </div>
+
+          <!-- Stat 3: Bend Test Coupons -->
+          <div class="p-5 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/50 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">Test Coupons</span>
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-clipboard-check"></i>
+              </div>
+            </div>
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-2xl sm:text-3xl font-heading font-bold text-slate-900 dark:text-white">8</span>
+              <span class="text-xs text-slate-500 font-mono">/ 10 Passed</span>
+            </div>
+            <div class="mt-3 flex items-center justify-between text-[11px]">
+              <span class="text-orange font-semibold"><i class="fa-solid fa-calendar mr-1"></i> ASME 6G Scheduled</span>
+              <span class="text-slate-400 font-mono">Dec 12</span>
+            </div>
+            <span class="text-[11px] text-slate-500 dark:text-slate-400 block mt-2">80% coupon evaluation milestone</span>
+          </div>
+
+          <!-- Stat 4: Verified Qualifications -->
+          <div class="p-5 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/50 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">Credentials</span>
+              <div class="w-8 h-8 rounded-lg bg-purple-500/15 text-purple-400 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-award"></i>
+              </div>
+            </div>
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-2xl sm:text-3xl font-heading font-bold text-slate-900 dark:text-white">2</span>
+              <span class="text-xs text-slate-500 font-mono">Certifications</span>
+            </div>
+            <div class="mt-3 flex items-center justify-between text-[11px]">
+              <span class="text-emerald-500 font-semibold"><i class="fa-solid fa-shield-halved mr-1"></i> AWS Verified</span>
+              <span class="text-slate-400 font-mono">WQTR Live</span>
+            </div>
+            <span class="text-[11px] text-slate-500 dark:text-slate-400 block mt-2">AWS D1.1 (3G/4G) &amp; OSHA-10</span>
+          </div>
+
+        </div>
+
+        <!-- 3. Two-Column Progress & Activity Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          <!-- Column A: Current Curriculum Progression -->
+          <div class="p-5 sm:p-6 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/50 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-steel/40 mb-4">
+                <h3 class="font-heading text-sm sm:text-base font-bold text-slate-900 dark:text-white uppercase flex items-center gap-2">
+                  <i class="fa-solid fa-book-open text-orange"></i> Curriculum Progress
+                </h3>
+                <a href="my-programs.html" class="text-xs text-orange hover:underline font-semibold font-body">Full Details &rarr;</a>
               </div>
 
-              <div class="flex items-start gap-3 p-3 rounded bg-slate-50 dark:bg-navy-900/50">
-                <div class="w-8 h-8 rounded bg-orange/20 text-orange flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <i class="fa-solid fa-fire text-xs"></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center justify-between">
-                    <h5 class="text-xs font-bold text-slate-900 dark:text-white">TIG Stainless Purge Run (5.0 hrs)</h5>
-                    <span class="text-[10px] text-slate-400 font-mono">Nov 08, 2026</span>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex items-center justify-between text-xs font-bold mb-1.5">
+                    <span class="text-slate-900 dark:text-white">Advanced Pipe &amp; Pressure Vessel Welding</span>
+                    <span class="text-orange font-mono">71% Complete</span>
                   </div>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Sanitary 304 tube with argon backing purge. Zero root oxidation or suckback. Signed by S. Patel, CWI.</p>
+                  <div class="w-full bg-slate-100 dark:bg-navy-900 h-2.5 rounded-full overflow-hidden">
+                    <div class="bg-orange h-full rounded-full transition-all duration-500" style="width: 71%;"></div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="flex items-start gap-3 p-3 rounded bg-slate-50 dark:bg-navy-900/50">
-                <div class="w-8 h-8 rounded bg-steel/20 text-steel-light flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <i class="fa-solid fa-wrench text-xs"></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center justify-between">
-                    <h5 class="text-xs font-bold text-slate-900 dark:text-white">Structural FCAW 3G Multi-Pass (6.0 hrs)</h5>
-                    <span class="text-[10px] text-slate-400 font-mono">Nov 05, 2026</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
+                  <div class="p-3 rounded-lg bg-slate-50 dark:bg-navy-900/60 border border-slate-200 dark:border-steel/40">
+                    <span class="text-slate-400 block text-[10px] font-mono uppercase">Assigned Power Rig</span>
+                    <strong class="text-slate-800 dark:text-slate-200">Miller PipeWorx 400</strong>
+                    <span class="text-slate-500 block text-[10px] mt-0.5">Bay C • Booth #14</span>
                   </div>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">1/2" bevel plate vertical progression. Interpass temperature verified at 250°F. Signed by M. Kowalski, CWI.</p>
+                  <div class="p-3 rounded-lg bg-slate-50 dark:bg-navy-900/60 border border-slate-200 dark:border-steel/40">
+                    <span class="text-slate-400 block text-[10px] font-mono uppercase">Upcoming Benchmark</span>
+                    <strong class="text-orange">ASME 6G Pipe Coupon</strong>
+                    <span class="text-slate-500 block text-[10px] mt-0.5">Scheduled: Dec 12, 2026</span>
+                  </div>
+                </div>
+
+                <div class="space-y-2 text-xs pt-1">
+                  <div class="flex items-center justify-between text-slate-700 dark:text-slate-300">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i> SMAW Stick (AWS D1.1 Structural Plate)</span>
+                    <span class="text-emerald-500 font-bold font-mono">100%</span>
+                  </div>
+                  <div class="flex items-center justify-between text-slate-700 dark:text-slate-300">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i> GMAW MIG (Solid Wire Production)</span>
+                    <span class="text-emerald-500 font-bold font-mono">100%</span>
+                  </div>
+                  <div class="flex items-center justify-between text-slate-700 dark:text-slate-300">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-spinner text-orange text-xs animate-spin"></i> GTAW TIG (High-Pressure 6G Rig)</span>
+                    <span class="text-orange font-bold font-mono">75%</span>
+                  </div>
                 </div>
               </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 dark:border-steel/40 mt-5">
+              <a href="my-programs.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-orange hover:underline">
+                <i class="fa-solid fa-arrow-right"></i> Review Complete 6-Process Progression
+              </a>
             </div>
           </div>
 
-          <!-- Upcoming Scheduled Practical Sessions -->
-          <div class="lg:col-span-5 bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/40 p-6 shadow-sm flex flex-col justify-between">
+          <!-- Column B: Recent Shop Floor Logs -->
+          <div class="p-5 sm:p-6 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/50 shadow-sm flex flex-col justify-between">
             <div>
-              <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 dark:border-steel/30">
-                <div>
-                  <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange">Shop Shift</span>
-                  <h3 class="font-heading font-bold text-base text-slate-900 dark:text-white uppercase">
-                    <i class="fa-solid fa-calendar-days text-orange mr-2"></i> Upcoming Practical Sessions
-                  </h3>
-                </div>
-                <span class="text-xs font-mono text-orange font-bold">Shift: Morning</span>
+              <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-steel/40 mb-4">
+                <h3 class="font-heading text-sm sm:text-base font-bold text-slate-900 dark:text-white uppercase flex items-center gap-2">
+                  <i class="fa-solid fa-stopwatch text-orange"></i> Recent Booth Sessions
+                </h3>
+                <a href="lab-hours.html" class="text-xs text-orange hover:underline font-semibold font-body">All Logs &rarr;</a>
               </div>
 
               <div class="space-y-3">
-                <div class="p-3 rounded border border-orange/30 bg-orange/5">
-                  <div class="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white">
-                    <span>Tomorrow • 7:30 AM – 12:00 PM</span>
-                    <span class="text-orange font-mono">Booth 14</span>
+                
+                <!-- Log Entry 1 -->
+                <div class="p-3 rounded-lg bg-slate-50 dark:bg-navy-900/60 border border-slate-200 dark:border-steel/40 flex items-center justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="flex items-center gap-2">
+                      <strong class="text-xs text-slate-900 dark:text-white">TIG 6G 2" Schedule 80 Pipe</strong>
+                      <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400">Verified</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+                      Root and hot pass inspected • Mentor: J. Miller, CWI
+                    </div>
                   </div>
-                  <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
-                    ASME 6G 6" Pipe Pre-Exam Coupon Run (GTAW Root + E7018 cap).
-                  </p>
-                  <span class="text-[10px] text-slate-400 block mt-1">Instructor: J. Miller, CWI</span>
+                  <div class="text-right flex-shrink-0">
+                    <span class="text-sm font-bold font-heading text-orange block">+4.5 hrs</span>
+                    <span class="text-[10px] text-slate-400 font-mono">Dec 08</span>
+                  </div>
                 </div>
 
-                <div class="p-3 rounded border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/40">
-                  <div class="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white">
-                    <span>Friday • 7:30 AM – 12:00 PM</span>
-                    <span class="text-slate-400 font-mono">Cutting Bay A</span>
+                <!-- Log Entry 2 -->
+                <div class="p-3 rounded-lg bg-slate-50 dark:bg-navy-900/60 border border-slate-200 dark:border-steel/40 flex items-center justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="flex items-center gap-2">
+                      <strong class="text-xs text-slate-900 dark:text-white">MIG 1" Plate 4G Overhead Groove</strong>
+                      <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400">Verified</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+                      Multi-pass spray transfer • Mentor: S. Patel, CWI
+                    </div>
                   </div>
-                  <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
-                    High-definition automated pipe saddle beveling and joint fitup.
-                  </p>
-                  <span class="text-[10px] text-slate-400 block mt-1">Instructor: C. Mendez, OSHA Trainer</span>
+                  <div class="text-right flex-shrink-0">
+                    <span class="text-sm font-bold font-heading text-orange block">+5.0 hrs</span>
+                    <span class="text-[10px] text-slate-400 font-mono">Dec 06</span>
+                  </div>
                 </div>
+
+                <!-- Log Entry 3 -->
+                <div class="p-3 rounded-lg bg-slate-50 dark:bg-navy-900/60 border border-slate-200 dark:border-steel/40 flex items-center justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="flex items-center gap-2">
+                      <strong class="text-xs text-slate-900 dark:text-white">SMAW 3G Vertical Plate Bend Test</strong>
+                      <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-orange/20 text-orange">Passed</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+                      Guided bend coupon cleared • Mentor: J. Miller, CWI
+                    </div>
+                  </div>
+                  <div class="text-right flex-shrink-0">
+                    <span class="text-sm font-bold font-heading text-orange block">+4.0 hrs</span>
+                    <span class="text-[10px] text-slate-400 font-mono">Dec 04</span>
+                  </div>
+                </div>
+
               </div>
             </div>
 
-            <div class="pt-4 border-t border-slate-100 dark:border-steel/30 mt-4">
-              <a href="attendance.html" class="w-full btn-weld btn-outline-weld text-xs py-2 text-center block">
-                View Full Attendance Calendar (96.5% Rate) &rarr;
+            <div class="pt-4 border-t border-slate-200 dark:border-steel/40 mt-5">
+              <a href="lab-hours.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-orange hover:underline">
+                <i class="fa-solid fa-plus-circle"></i> Log Practical Booth Hours
               </a>
             </div>
           </div>
 
         </div>
 
-        <!-- 7. SKILL ASSESSMENTS & CWI INSPECTOR FEEDBACK -->
-        <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/40 p-6 shadow-sm">
-          <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 dark:border-steel/30">
-            <div>
-              <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange">Evaluation Rubrics</span>
-              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white uppercase">
-                <i class="fa-solid fa-clipboard-check text-orange mr-2"></i> Skill Assessments &amp; CWI Inspection Log
-              </h3>
-            </div>
-            <a href="skill-assessments.html" class="text-xs font-semibold text-orange hover:underline">View Rubric Details &rarr;</a>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- 4. Quick Module Shortcuts (4 Clear Action Cards) -->
+        <div>
+          <h3 class="font-heading text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold mb-3">
+            Quick Navigation Modules
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
-            <div class="p-4 rounded-lg border border-emerald-500/30 bg-emerald-500/5">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[10px] font-mono font-bold uppercase text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">PASSED • 94 / 100</span>
-                <span class="text-[11px] text-slate-400 font-mono">Nov 10, 2026</span>
+            <a href="my-profile.html" class="p-4 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/50 hover:border-orange transition group flex items-start gap-3.5 shadow-sm">
+              <div class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-lg flex-shrink-0 group-hover:scale-105 transition-transform">
+                <i class="fa-solid fa-id-badge"></i>
               </div>
-              <h4 class="font-heading font-bold text-sm text-slate-900 dark:text-white mb-1 uppercase">
-                6" Pipe 6G Joint Test Coupon
-              </h4>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">
-                GTAW root pass + E7018 hot and cap passes. 180° guided side bend test passed with zero fissures.
-              </p>
-              <div class="text-[11px] text-slate-400 border-t border-emerald-500/20 pt-2 flex items-center justify-between">
-                <span>Inspector: S. Patel, CWI</span>
-                <span class="font-mono text-emerald-500">ASME Sec IX</span>
+              <div class="min-w-0 flex-1">
+                <h4 class="font-heading text-sm font-bold text-slate-900 dark:text-white group-hover:text-orange transition">Trainee Profile</h4>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-snug mt-0.5">Personal details, PPE sizes, and contact dossier.</p>
               </div>
-            </div>
+            </a>
 
-            <div class="p-4 rounded-lg border border-emerald-500/30 bg-emerald-500/5">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[10px] font-mono font-bold uppercase text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">PASSED • 91 / 100</span>
-                <span class="text-[11px] text-slate-400 font-mono">Oct 28, 2026</span>
+            <a href="my-programs.html" class="p-4 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/50 hover:border-orange transition group flex items-start gap-3.5 shadow-sm">
+              <div class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-lg flex-shrink-0 group-hover:scale-105 transition-transform">
+                <i class="fa-solid fa-book-open"></i>
               </div>
-              <h4 class="font-heading font-bold text-sm text-slate-900 dark:text-white mb-1 uppercase">
-                1" Plate 4G Overhead Groove
-              </h4>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">
-                SMAW E7018 multi-pass with backing strip. Uniform fill with clean tie-ins along bevel walls.
-              </p>
-              <div class="text-[11px] text-slate-400 border-t border-emerald-500/20 pt-2 flex items-center justify-between">
-                <span>Inspector: J. Miller, CWI</span>
-                <span class="font-mono text-emerald-500">AWS D1.1</span>
+              <div class="min-w-0 flex-1">
+                <h4 class="font-heading text-sm font-bold text-slate-900 dark:text-white group-hover:text-orange transition">Enrolled Programs</h4>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-snug mt-0.5">Curriculum progression, blueprint reading, and grades.</p>
               </div>
-            </div>
+            </a>
 
-            <div class="p-4 rounded-lg border border-emerald-500/30 bg-emerald-500/5">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[10px] font-mono font-bold uppercase text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">PASSED • 96 / 100</span>
-                <span class="text-[11px] text-slate-400 font-mono">Oct 15, 2026</span>
+            <a href="skill-assessments.html" class="p-4 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/50 hover:border-orange transition group flex items-start gap-3.5 shadow-sm">
+              <div class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-lg flex-shrink-0 group-hover:scale-105 transition-transform">
+                <i class="fa-solid fa-clipboard-check"></i>
               </div>
-              <h4 class="font-heading font-bold text-sm text-slate-900 dark:text-white mb-1 uppercase">
-                Sanitary Stainless Purge Tube
-              </h4>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">
-                2" Sanitary 304 stainless tube. Argon backing purge produced silver-straw color with zero oxidation.
-              </p>
-              <div class="text-[11px] text-slate-400 border-t border-emerald-500/20 pt-2 flex items-center justify-between">
-                <span>Inspector: S. Patel, CWI</span>
-                <span class="font-mono text-emerald-500">GTAW Sanitary</span>
+              <div class="min-w-0 flex-1">
+                <h4 class="font-heading text-sm font-bold text-slate-900 dark:text-white group-hover:text-orange transition">Skill Assessments</h4>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-snug mt-0.5">CWI bend test scores, defect rates, and inspections.</p>
               </div>
-            </div>
+            </a>
 
-          </div>
-        </div>
-
-        <!-- 8. OFFICIAL EARNED CREDENTIALS & CERTIFICATES -->
-        <div class="bg-white dark:bg-darkcard rounded-lg border border-slate-200 dark:border-steel/40 p-6 shadow-sm">
-          <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 dark:border-steel/30">
-            <div>
-              <span class="text-xs font-mono font-bold uppercase tracking-wider text-orange">Official Qualifications</span>
-              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white uppercase">
-                <i class="fa-solid fa-award text-orange mr-2"></i> Official Earned Certifications &amp; WQTR Records
-              </h3>
-            </div>
-            <a href="certifications.html" class="text-xs font-semibold text-orange hover:underline">All Certificates &rarr;</a>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            
-            <!-- Cert 1 -->
-            <div class="p-5 rounded-lg border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/40 relative flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-lg">
-                    <i class="fa-solid fa-certificate"></i>
-                  </span>
-                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400">
-                    ACTIVE / VERIFIED
-                  </span>
-                </div>
-                <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white uppercase mb-1">
-                  AWS D1.1 Structural Steel
-                </h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">
-                  Plate 3G/4G Unlimited Thickness, E7018 Low-Hydrogen Electrodes.
-                </p>
-                <div class="text-[11px] font-mono text-slate-400 space-y-1">
-                  <div>Credential: <strong class="text-orange">WP-AWS-2026-081</strong></div>
-                  <div>Issued: Oct 14, 2026 • CWI #140922</div>
-                </div>
+            <a href="certifications.html" class="p-4 rounded-xl bg-white dark:bg-darkcard border border-slate-200 dark:border-steel/50 hover:border-orange transition group flex items-start gap-3.5 shadow-sm">
+              <div class="w-10 h-10 rounded-lg bg-orange/15 text-orange flex items-center justify-center text-lg flex-shrink-0 group-hover:scale-105 transition-transform">
+                <i class="fa-solid fa-award"></i>
               </div>
-              <div class="mt-4 pt-3 border-t border-slate-200 dark:border-steel/30">
-                <button class="btn-preview-certificate w-full btn-weld btn-outline-weld text-xs py-1.5"
-                        data-cert="AWS D1.1 Structural Steel Welder Qualification"
-                        data-id="WP-AWS-2026-081"
-                        data-date="October 14, 2026"
-                        data-inspector="J. Miller, CWI #140922">
-                  <i class="fa-solid fa-eye mr-1"></i> View Official Certificate
-                </button>
+              <div class="min-w-0 flex-1">
+                <h4 class="font-heading text-sm font-bold text-slate-900 dark:text-white group-hover:text-orange transition">AWS Certifications</h4>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-snug mt-0.5">Official WQTR records and printable transcripts.</p>
               </div>
-            </div>
-
-            <!-- Cert 2 -->
-            <div class="p-5 rounded-lg border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/40 relative flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="w-10 h-10 rounded-lg bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-lg">
-                    <i class="fa-solid fa-shield-halved"></i>
-                  </span>
-                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400">
-                    ACTIVE / VERIFIED
-                  </span>
-                </div>
-                <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white uppercase mb-1">
-                  OSHA-10 Industrial Safety
-                </h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">
-                  Construction &amp; Industrial Hot Work, Hexavalent Fumes, Confined Space.
-                </p>
-                <div class="text-[11px] font-mono text-slate-400 space-y-1">
-                  <div>Card Number: <strong class="text-emerald-500">OSHA-2026-4491</strong></div>
-                  <div>Issued: Sep 02, 2026 • Authorized Trainer</div>
-                </div>
-              </div>
-              <div class="mt-4 pt-3 border-t border-slate-200 dark:border-steel/30">
-                <button class="btn-preview-certificate w-full btn-weld btn-outline-weld text-xs py-1.5"
-                        data-cert="OSHA-10 Industrial Safety &amp; Hot Work Card"
-                        data-id="OSHA-2026-4491"
-                        data-date="September 02, 2026"
-                        data-inspector="C. Mendez, Authorized OSHA-30 Trainer">
-                  <i class="fa-solid fa-eye mr-1"></i> View Official Certificate
-                </button>
-              </div>
-            </div>
-
-            <!-- Cert 3: AWS Membership -->
-            <div class="p-5 rounded-lg border border-slate-200 dark:border-steel/40 bg-slate-50 dark:bg-navy-900/40 relative flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="w-10 h-10 rounded-lg bg-steel/20 text-steel-light flex items-center justify-center text-lg">
-                    <i class="fa-solid fa-id-badge"></i>
-                  </span>
-                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-200 dark:bg-steel/50 text-slate-600 dark:text-slate-300">
-                    GOOD STANDING
-                  </span>
-                </div>
-                <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white uppercase mb-1">
-                  AWS Student Member
-                </h4>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">
-                  American Welding Society National Student Chapter #84.
-                </p>
-                <div class="text-[11px] font-mono text-slate-400 space-y-1">
-                  <div>Member ID: <strong class="text-steel-light">AWS-STU-88402</strong></div>
-                  <div>Active Through: Dec 2027</div>
-                </div>
-              </div>
-              <div class="mt-4 pt-3 border-t border-slate-200 dark:border-steel/30">
-                <a href="certifications.html" class="w-full btn-weld btn-outline-weld text-xs py-1.5 block text-center">
-                  <i class="fa-solid fa-folder-open mr-1"></i> View Membership File
-                </a>
-              </div>
-            </div>
+            </a>
 
           </div>
         </div>
@@ -873,7 +541,7 @@
 
       <div class="text-center pb-6 border-b border-slate-200 dark:border-steel/40">
         <div class="inline-flex items-center gap-2 mb-2">
-          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-8 w-auto">
+          <img src="../assets/logo/weldpro-logo.svg" alt="WELDPRO" class="h-10 w-auto">
         </div>
         <h3 class="text-xl font-heading font-bold text-slate-900 dark:text-white uppercase">
           Official Welder Qualification Test Record (WQTR)
